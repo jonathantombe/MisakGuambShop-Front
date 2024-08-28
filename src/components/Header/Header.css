@@ -45,8 +45,12 @@
     padding: 10px 15px;
     cursor: pointer;
   }
+
+  .nav-link{
+    margin: 0 10px;
+  }
   
-  .user-actions button {
+  .nav-links .account-button {
     background: none;
     border: none;
     margin-left: 15px;
