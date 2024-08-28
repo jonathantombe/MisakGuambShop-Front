@@ -37,3 +37,22 @@
 .footer-section a:hover {
     text-decoration: underline;
 }
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .footer-content {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+}
