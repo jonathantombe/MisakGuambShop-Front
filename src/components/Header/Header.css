@@ -1,58 +1,115 @@
 .header {
-    background-color: #191919;
-    padding: 10px ;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  .menu-button {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  .logo {
-    font-size: 24px;
-    color: #0000FF;
-    margin: 0;
-  }
-  
-  .search-bar {
-    display: flex;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    overflow: hidden;
-  }
-  
-  .search-bar input {
-    border: none;
-    padding: 10px 15px;
-    width: 200px;
-  }
-  
-  .search-bar button {
-    background: none;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-  }
+  background-color: #191919;
+  padding: 10px 0;
+}
 
-  .nav-link{
-    margin: 0 10px;
-  }
-  
-  .nav-links .account-button {
-    background: none;
-    border: none;
-    margin-left: 15px;
-    cursor: pointer;
-  }
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.menu-categories {
+  display: flex;
+  align-items: center;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.menu-button svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
+}
+
+.categories-text {
+  color: white;
+  margin-left: 10px;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.logo-m {
+  color: #3498db;
+}
+
+.logo-g {
+  color: #e74c3c;
+}
+
+.logo-s {
+  color: #e67e22;
+}
+.logo a{
+  text-decoration: none;
+}
+
+.search-bar {
+  display: flex;
+  background-color: white;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.search-bar input {
+  border: none;
+  padding: 10px 15px;
+  width: 300px;
+}
+
+.search-bar button {
+  background: none;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.search-bar button svg {
+  width: 20px;
+  height: 20px;
+  fill: #191919;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 15px;
+  padding: 0;
+}
+
+.icon-button svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
+}
+
+.nav-link:hover,
+.icon-button:hover svg {
+  opacity: 0.8;
+}
