@@ -4,6 +4,45 @@
     --background-color: #FFFFFF;
     --accent-color: #FF0000;
     --gray-color: #F0F0F0;
+
+    /* Negros claros y opacos */
+    --charcoal: #36454F;
+    --onyx: #353839;
+    --jet: #343434;
+    --eclipse: #3C3C3C;
+    --raisin-black: #242124;
+    --eerie-black: #1B1B1B;
+    
+    /* Grises opacos */
+    --llm: #666;
+    --davy-grey: #555555;
+    --dim-gray: #696969;
+    --granite-gray: #676767;
+    --sonic-silver: #757575;
+    --spanish-gray: #989898;
+    
+    /* Blancos opacos */
+    --platinum: #E5E4E2;
+    --gainsboro: #DCDCDC;
+    --light-gray: #D3D3D3;
+    --cultured: #F5F5F5;
+    
+    /* Colores complementarios opacos */
+    --faded-blue: #6699CC;
+    --pastel-blue: #A7C7E7;
+    --sage: #B2AC88;
+    --khaki: #C3B091;
+    --pale-silver: #C9C0BB;
+    --champagne-pink: #F1E0D6;
+    
+    /* Marrones opacos */
+    --taupe: #483C32;
+    --coffee: #6F4E37;
+    --beaver: #9F8170;
+    --pale-taupe: #BC987E;
+    --tan: #D2B48C;
+    --wheat: #F5DEB3;
+    
 }
 
 body {

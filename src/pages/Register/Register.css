@@ -1,62 +1,134 @@
 .register-container {
     display: flex;
     justify-content: center;
-    align-items: center;
     min-height: 100vh;
+    gap: 100px;
+    padding: 20px;
     background-color: #f3f4f6;
 }
 
 .register-box {
     width: 100%;
     max-width: 400px;
-    padding: 20px;
+    padding: 30px;
     background-color: #ffffff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    text-align: center;
 }
 
 .register-title {
     font-size: 24px;
     font-weight: bold;
-    text-align: center;
     margin-bottom: 20px;
-    color: #333333;
+    color: #333;
 }
-
-.register-form .form-row {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
+p{
+    color: #1B1B1B;
 }
-
-.register-form .form-input {
+.register-form .form-input,
+.register-form .select-options {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #cccccc;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
     border-radius: 5px;
-    font-size: 14px;
-    color: #333333;
+    font-size: 16px;
+    color: #757575;
     transition: border-color 0.3s;
+    background-color: #ffffff;
 }
 
-.register-form .form-input:focus {
-    border-color: #38b2ac;
+.register-form .select-options {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23757575' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 40px;
+}
+
+.register-form .form-input:hover,
+.register-form .select-options:hover {
+    border-color: #999999;
+}
+
+.register-form .form-input:focus,
+.register-form .select-options:focus {
     outline: none;
+    border-color: #999999;
+    box-shadow: none;
 }
 
 .register-form .register-button {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
+    padding: 12px;
+    font-size: 18px;
     font-weight: bold;
     color: #ffffff;
-    background-color: #38b2ac;
+    background-color: #222;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-top: 20px;
 }
 
 .register-form .register-button:hover {
-    background-color: #319795;
+    background-color: #3e3e3e;
+}
+
+.register-footer {
+    font-size: 12px;
+    color: #1B1B1B;
+    margin-top: 20px;
+}
+
+.custom-link {
+    color: #3C3C3C;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.custom-link:hover {
+    text-decoration: underline;
+}
+/* Media Queries */
+@media screen and (max-width: 480px) {
+    .register-box {
+        padding: 20px;
+    }
+
+    .register-title {
+        font-size: 22px;
+    }
+
+    .register-form .form-input,
+    .register-form .select-options,
+    .register-form .register-button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .register-box {
+        max-width: 450px;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .register-box {
+        margin: 30px 0;
+        max-width: 350px;
+        padding: 20px 25px;
+    }
+
+    .register-form .form-input,
+    .register-form .select-options,
+    .register-form .register-button {
+        font-size: 13px;
+    }
 }
