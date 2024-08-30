@@ -1,10 +1,6 @@
-
-
-
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from '../../services/api';  // Asegúrate de que esta ruta sea correcta
+import axios from '../../services/api';
 import './Register.css';
 
 const Register = () => {
@@ -18,17 +14,15 @@ const Register = () => {
 
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
-
-    // Maneja los cambios en el formulario
     const handleChange = (e) => {
         if (e.target.name === 'roles') {
+
             setForm({ ...form, roles: [e.target.value] });
         } else {
             setForm({ ...form, [e.target.name]: e.target.value });
         }
     };
 
-    // Maneja el envío del formulario
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (form.password !== form.confirmPassword) {

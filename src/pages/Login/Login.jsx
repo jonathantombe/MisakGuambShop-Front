@@ -18,7 +18,6 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Form submitted', form);
-        // Aquí iría la lógica de inicio de sesión
     };
 
     return (
