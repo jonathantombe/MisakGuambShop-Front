@@ -1,3 +1,7 @@
+body{
+  margin: 0%;
+}
+
 .header {
   background-color: #191919;
   padding: 10px 0;
@@ -47,7 +51,7 @@
 }
 
 .logo-g {
-  color: #e74c3c;
+  color: #ED00AA;
 }
 
 .logo-s {
