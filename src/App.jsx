@@ -11,6 +11,7 @@ import Header from './components/Header/Header';
 import NotFound from './pages/NotFound/NotFound';
 import Contact from './pages/Contact/Contact';
 
+
 const App = () => {
   return (
     <Router>
