@@ -1,38 +1,100 @@
 :root {
+    --background-light: #F3F4F6;
     --primary-color: #0000FF;
     --secondary-color: #000000;
     --background-color: #FFFFFF;
     --accent-color: #FF0000;
     --gray-color: #F0F0F0;
+
+    /* Negros claros y opacos */
+    --charcoal: #36454F;
+    --onyx: #353839;
+    --jet: #343434;
+    --eclipse: #3C3C3C;
+    --raisin-black: #242124;
+    --eerie-black: #1B1B1B;
+
+    --text-dark: #333333;
+    --text-medium: #757575;
+    --text-light: #999999;
+    --text-darker: #222222;
+
+    --element-dark: #3E3E3E;
+    
+    /* Grises opacos */
+    --llm: #666;
+    --davy-grey: #555555;
+    --dim-gray: #696969;
+    --granite-gray: #676767;
+    --spanish-gray: #989898;
+    
+    /* Blancos opacos */
+    --platinum: #E5E4E2;
+    --gainsboro: #DCDCDC;
+    --light-gray: #D3D3D3;
+    --cultured: #F5F5F5;
+    --light-gray: #E0E0E0;
+    
+    /* Colores complementarios opacos */
+    --faded-blue: #6699CC;
+    --pastel-blue: #A7C7E7;
+    --sage: #B2AC88;
+    
+    --khaki: #C3B091;
+    --pale-silver: #C9C0BB;
+    --champagne-pink: #F1E0D6;
+    
+    /* Marrones opacos */
+    --taupe: #483C32;
+    --coffee: #6F4E37;
+    --beaver: #9F8170;
+    --pale-taupe: #BC987E;
+    --tan: #D2B48C;
+    --wheat: #F5DEB3;
+
+    /* Sombra de Caja */
+    --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+     
+    --font-body: 'Open Sans', sans-serif;
+    --font-heading: 'Playfair Display', serif;
+    --font-accent: 'Caveat', cursive;
+
+    /* Fuentes serif */
+    --font-merriweather: 'Merriweather', serif;
+    --font-libre-baskerville: 'Libre Baskerville', serif;
+    --font-lora: 'Lora', serif;
+    --font-cormorant: 'Cormorant', serif;
+    --font-playfair-display: 'Playfair Display', serif;
+    --font-crimson-text: 'Crimson Text', serif;
+    
+    /* Fuentes sans-serif */
+    --font-open-sans: 'Open Sans', sans-serif;
+    --font-lato: 'Lato', sans-serif;
+    --font-roboto: 'Roboto', sans-serif;
+    --font-montserrat: 'Montserrat', sans-serif;
+    --font-poppins: 'Poppins', sans-serif;
+    --font-nunito: 'Nunito', sans-serif;
+    
+        /* Fuentes display */
+    --font-bebas-neue: 'Bebas Neue', cursive;
+    --font-pacifico: 'Pacifico', cursive;
+    --font-quicksand: 'Quicksand', sans-serif;
+    --font-amatic-sc: 'Amatic SC', cursive;
+    --font-caveat: 'Caveat', cursive;
+    
+        /* Variables para uso general */
+    --font-heading: var(--font-playfair-display);
+    --font-subheading: var(--font-montserrat);
+    --font-body: var(--font-open-sans);
+    --font-accent: var(--font-caveat);
+    
+    --font-size-base: 16px;
+    --font-size-accent: 1.2em;
+    --font-size-product-title: 24px;
+    --font-size-product-description: 14px;
+    --font-size-price: 18px;
+    --font-size-handmade-label: 16px;
+    
+    --line-height-base: 1.6;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--background-color);
-    color: var(--secondary-color);
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-.btn {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn-primary {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: darken(var(--primary-color), 10%);
-}
