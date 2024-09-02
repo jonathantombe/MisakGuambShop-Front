@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
-import isotipomisak from '../../assets/images/isotipomisak.png'
+import isotipoblack from '../../assets/images/isotipoblack.png';
 import api from '../../services/api';
 import './Register.css';
 
@@ -14,6 +12,7 @@ const Register = () => {
         confirmPassword: '',
         roles: ['user']
     });
+    
 
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
@@ -63,7 +62,7 @@ const Register = () => {
             <div className="welcome-container">
                 <h2 className='welcome-h2'>¡Bienvenido a MisakGuambShop!</h2>
                 <p className='welcome-p'>Regístrate con tus datos personales para usar todas las funciones del sitio.</p>
-                <img src={isotipomisak} alt="" />
+                <img src={isotipoblack} alt="" />
             </div>
 
             <div className="register-box">
@@ -169,5 +168,3 @@ const Register = () => {
 };
 
 export default Register;
-
-

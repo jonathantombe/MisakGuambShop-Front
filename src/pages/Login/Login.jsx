@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import isotipomisak from '../../assets/images/isotipomisak.png'
+import isotipoblack from '../../assets/images/isotipoblack.png';
 import api from '../../services/api';
 import './Login.css';
 
@@ -47,8 +47,9 @@ const Login = () => {
             <div className="welcome-container">
                 <h2 className='welcome-h2'>¡Bienvenido a MisakGuambShop!</h2>
                 <p className='welcome-p'>Inicia sesión para acceder a todas las funciones del sitio.</p>
-                <img src={isotipomisak} alt="" />
+                <img src={isotipoblack} alt="" />
             </div>
+
 
             <div className="login-box">
                 <h2 className="login-title">Iniciar Sesión</h2>

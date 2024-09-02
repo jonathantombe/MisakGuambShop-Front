@@ -24,10 +24,16 @@
     font-family: var(--font-heading);
 
 }
+.welcome-container > img {
+   
+    object-fit: cover
+    
+}
 
 .register-box {
     width: 100%;
-    max-width: 400px;
+    height: 20%;
+    max-width: 200px;
     padding: 30px;
     background-color: var(--background-color);
     box-shadow: var(--box-shadow);
@@ -147,6 +153,11 @@
     text-decoration: underline;
 }
 
+
+.p-icons{
+    cursor: pointer;
+}
+
 @media screen and (max-width: 480px) {
     .register-box {
         padding: 20px;
@@ -166,7 +177,8 @@
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
     .register-box {
-        max-width: 450px;
+        max-width: 40px;
+        
     }
 }
 

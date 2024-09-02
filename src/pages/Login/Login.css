@@ -16,12 +16,14 @@
     font-family: var(--font-heading);
 }
 
+
 .welcome-container img{
-    width: 50%;
-    height: 50%;
+    width: 10rem;
+    height: 10rem;
     object-fit: cover;
 
 }
+img{border-radius:20%; width:100%; height: auto;} 
 
 .welcome-container .welcome-p{
     color: var(--eerie-black);
