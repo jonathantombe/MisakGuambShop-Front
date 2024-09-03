@@ -1,49 +1,75 @@
+.carousel-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  margin: 50px auto;
+  padding-top: 30px;
+  padding: 40px;
+  background-color:var(--champagne-pink); 
+  border-radius: 15px; 
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+  overflow: hidden;
+  padding-left: 35px; 
+}
+
 .slider-container {
   position: relative;
-  width: 100%;
-  max-width: 1200px;
-  height: 400px;
-  margin: 0 auto;
+  flex: 2;
+  max-width: 55%; /* Ajustado para que sea más prominente */
+  height: 100%;
   overflow: hidden;
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+  background-color:var(--gray-color);
 }
 
 .slider-wrapper {
   display: flex;
   width: 100%;
   height: 100%;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.7s ease-in-out; 
 }
 
 .slider-image {
   flex-shrink: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
+  border-radius: 15px; 
+  filter: brightness(95%); 
 }
 
 .slider-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
   border: none;
-  padding: 10px;
+  padding: 15px;
   cursor: pointer;
   z-index: 10;
+  border-radius: 50%; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  transition: background 0.3s ease;
+}
+
+.slider-button:hover {
+  background: rgba(255, 255, 255, 1); /* Efecto de hover */
 }
 
 .slider-button-left {
-  left: 10px;
+  left: 10px; /* Ajusta la posición del botón izquierdo */
 }
 
 .slider-button-right {
-  right: 10px;
+  right: 10px; /* Ajusta la posición del botón derecho */
 }
 
 .slider-dots {
   position: absolute;
-  bottom: 10px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -51,13 +77,36 @@
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.dot.active {
-  background-color: white;
+.dot.active, .dot:hover {
+  background-color: var(--tan);
+}
+
+.side-images {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding-left: 35px; 
+}
+
+.side-images img {
+  width: 30%;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.side-images img:hover {
+  transform: scale(1.05); 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+  cursor: pointer;
 }

@@ -7,12 +7,7 @@ import product1 from '../../assets/products/mochila-tejido-misak-1.jpg';
 
 import './Home.css';
 
-// Imágenes del slider
-const sliderImages = [
-  'https://via.placeholder.com/800x400?text=Slide+1',
-  'https://via.placeholder.com/800x400?text=Slide+2',
-  'https://via.placeholder.com/800x400?text=Slide+3',
-];
+
 
 const topOffers = [
   { id: 1, name: 'Producto 1', image: product1, rating: 1, price: 19.99 },
@@ -35,10 +30,9 @@ const Home = () => {
   return (
     <div className="home-page">
       <main className="main-content">
-        <ImageSlider images={sliderImages} />
+        <ImageSlider images={ImageSlider} />
         <ProductList products={topOffers} title="Ofertas Top" />
         <div className="banner">
-          {/* Aquí iría el banner "Destacados del día" */}
         </div>
         <ProductList products={featuredProducts} title="Productos destacados" />
       </main>
