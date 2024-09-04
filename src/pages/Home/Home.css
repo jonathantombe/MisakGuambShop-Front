@@ -1,5 +1,5 @@
 .product-item {
-  flex: 1 1 calc(33.333% - 20px); /* Tres productos por fila con espacio entre ellos */
+  flex: 1 1 calc(33.333% - 20px); 
   box-sizing: border-box;
 }
 

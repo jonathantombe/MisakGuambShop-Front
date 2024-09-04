@@ -16,10 +16,10 @@
 .slider-container {
   position: relative;
   flex: 2;
-  max-width: 55%; /* Ajustado para que sea más prominente */
+  max-width: 55%; 
   height: 100%;
   overflow: hidden;
-  border-radius: 15px; /* Bordes redondeados */
+  border-radius: 15px; 
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
   background-color:var(--gray-color);
 }
@@ -56,15 +56,15 @@
 }
 
 .slider-button:hover {
-  background: rgba(255, 255, 255, 1); /* Efecto de hover */
+  background: rgba(255, 255, 255, 1); 
 }
 
 .slider-button-left {
-  left: 10px; /* Ajusta la posición del botón izquierdo */
+  left: 10px;
 }
 
 .slider-button-right {
-  right: 10px; /* Ajusta la posición del botón derecho */
+  right: 10px; 
 }
 
 .slider-dots {
