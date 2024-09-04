@@ -1,11 +1,3 @@
-/* Añade estos estilos si es necesario */
-
-.product-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; /* Espacio entre los productos */
-}
-
 .product-item {
   flex: 1 1 calc(33.333% - 20px); /* Tres productos por fila con espacio entre ellos */
   box-sizing: border-box;
