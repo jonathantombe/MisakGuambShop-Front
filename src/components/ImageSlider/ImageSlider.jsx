@@ -6,7 +6,7 @@ import bolso2 from '../../assets/products/bolso2.png';
 import bolso3 from '../../assets/products/bolso3.png';
 import bolso4 from '../../assets/products/bolso4.png';
 import imagenDerecha1 from '../../assets/prom/prom1.png';
-import imagenDerecha2 from '../../assets/prom/prom1.png';
+import imagenDerecha2 from '../../assets/prom/prom2.png';
 
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
