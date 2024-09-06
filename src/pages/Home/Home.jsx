@@ -1,6 +1,7 @@
 import React from 'react';
 import ImageSlider from '../../components/ImageSlider/ImageSlider';
 import ProductList from '../../components/ProductList/ProductList';
+import UserProfile from '../../components/UserProfile/Userprofile';
 import Footer from '../../components/Footer/Footer';
 
 import product1 from '../../assets/products/mochila-tejido-misak-1.jpg';
@@ -8,6 +9,7 @@ import product1 from '../../assets/products/mochila-tejido-misak-1.jpg';
 import './Home.css';
 
 
+  
 
 const topOffers = [
   { id: 1, name: 'Bolso Misak', image: product1, rating: 1, price: 19.99, totalSales: 89.63 },
@@ -48,6 +50,7 @@ const Home = () => {
         </div>
         <ProductList products={featuredProducts} title="Productos destacados" />
       </main>
+      <UserProfile/>
       <Footer />
     </div>
   );
