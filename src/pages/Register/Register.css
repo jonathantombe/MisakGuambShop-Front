@@ -157,7 +157,16 @@
 .p-icons{
     cursor: pointer;
 }
+.error-message {
+    color: red;
+    font-size: 0.8em;
+    margin: 0;
+    text-align: start;
+}
 
+.form-input.error {
+    border-color: red;
+}
 @media screen and (max-width: 480px) {
     .register-box {
         padding: 20px;

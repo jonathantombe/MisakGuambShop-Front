@@ -71,6 +71,7 @@ body{
 .search-bar input {
   border: none;
   padding: 10px 15px;
+  margin: 0;
   width: 300px;
 }
 
@@ -92,6 +93,36 @@ body{
   align-items: center;
 }
 
+.user-profile {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.user-name {
+  font-weight: bold;
+  margin-right: 12px;
+}
+
+.logout-button {
+  background-color: transparent;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.logout-button:hover {
+  color: #007bff;
+}
 .nav-link {
   color: white;
   text-decoration: none;
