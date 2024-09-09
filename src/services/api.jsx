@@ -1,5 +1,14 @@
 const baseURL = 'http://localhost:8080';
 
+const parseResponse = async (response) => {
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json();
+    } else {
+        return response.text();
+    }
+};
+
 const api = {
     get: async (url, options = {}) => {
         const response = await fetch(`${baseURL}${url}`, {
@@ -10,7 +19,10 @@ const api = {
                 ...options.headers,
             },
         });
-        return response.json();
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return parseResponse(response);
     },
     post: async (url, data, options = {}) => {
         const response = await fetch(`${baseURL}${url}`, {
@@ -22,7 +34,11 @@ const api = {
             },
             body: JSON.stringify(data),
         });
-        return response.json();
+        if (!response.ok) {
+            const errorBody = await parseResponse(response);
+            throw new Error(typeof errorBody === 'string' ? errorBody : JSON.stringify(errorBody));
+        }
+        return parseResponse(response);
     },
     put: async (url, data, options = {}) => {
         const response = await fetch(`${baseURL}${url}`, {
@@ -34,7 +50,10 @@ const api = {
             },
             body: JSON.stringify(data),
         });
-        return response.json();
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return parseResponse(response);
     },
     delete: async (url, options = {}) => {
         const response = await fetch(`${baseURL}${url}`, {
@@ -45,7 +64,10 @@ const api = {
                 ...options.headers,
             },
         });
-        return response.json();
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return parseResponse(response);
     },
 };
 
