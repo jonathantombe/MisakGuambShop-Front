@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Profile from '../../assets/icons/no-user-avatar.svg'
+import { useAuth } from '../../context/AuthContext';
 import './Header.css';
 
-const Header = () => {
+export const Header = () => {
+  const { user, logout } = useAuth();
+
+  useEffect(() => {
+    console.log('Current user in Header:', user);
+  }, [user]);
+
+  
   return (
     <header className="header">
       <div className="header-content">
@@ -37,8 +46,18 @@ const Header = () => {
         </div>
 
         <nav className="nav-links">
-          <Link to="/register" className="nav-link">Registrar</Link>
-          <Link to="/login" className="nav-link">Iniciar Sesión</Link>
+          {user ? (
+            <div className="user-profile">
+              <img src={Profile} alt="Profile" className="profile-icon" />
+              <span className="user-name">{user.username || 'Tu Perfil'}</span>
+              <button onClick={logout} className="logout-button">Cerrar Sesión</button>
+            </div>
+          ) : (
+            <>
+              <Link to="/register" className="nav-link">Registrar</Link>
+              <Link to="/login" className="nav-link">Iniciar Sesión</Link>
+            </>
+          )}
           <button className="icon-button">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M20.877 12.52c.054-.076.103-.157.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753c.044.082.093.162.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025c.293-.278.557-.584.789-.915l.673-.961Zm-14.916.425L12 18.667l6.04-5.722c.195-.185.371-.39.525-.61l.673-.961a.335.335 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002a3.975 3.975 0 0 0-1.237-2.574 4 4 0 0 0-6.031 5.193c.009.03.023.058.043.086l.673.961a4 4 0 0 0 .526.61Z"></path>
