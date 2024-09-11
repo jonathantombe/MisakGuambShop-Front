@@ -1,0 +1,79 @@
+.carousel-container {
+  width: 100%;
+  margin: 20px auto;
+  text-align: center;
+  border-style: solid;
+  border-color: var(--secondary-color);
+  background-color: var(--spanish-gray);
+  position: relative;
+  
+
+}
+
+.carousel-title {
+  font-size: 2rem;
+  margin: 20px 0; /* Separar el título del carrusel */
+}
+
+.carousel {
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: calc(100% * 8); /* Ajustar basado en el número de categorías visibles */
+}
+
+.carousel-item {
+  flex: 0 0 12.5%; /* Ajustar esto según el número de elementos visibles */
+  text-align: center;
+  padding: 10px;
+}
+
+.carousel-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  transition: transform 0.3s;
+}
+
+.carousel-image:hover {
+  transform: scale(1.1);
+}
+
+.carousel-button {
+  background-color: #fff;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 15px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.prev-button {
+  left: 10px; /* Espacio ajustado */
+}
+
+.next-button {
+  right: 10px; /* Espacio ajustado */
+}
+
+.carousel-item p {
+  font-size: 1rem;
+  color: #333;
+}

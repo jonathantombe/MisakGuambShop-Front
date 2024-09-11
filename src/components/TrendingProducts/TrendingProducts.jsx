@@ -6,7 +6,7 @@ const TrendingProducts = ({ products }) => {
         <div className="trending-products-container">
             <h2 className="trending-products-title">Productos de tendencia</h2>
             <div className="trending-products-grid">
-                {/* Contenedor para el producto especial */}
+           
                 <div className="trending-product-card-special-wrapper">
                     <div className="trending-product-card-special">
                         <div className="trending-offer-timer">
@@ -54,7 +54,7 @@ const TrendingProducts = ({ products }) => {
                     </div>
                 </div>
 
-                {/* Contenedor para los productos adicionales */}
+                
                 <div className="trending-product-card-wrapper">
                     <div className="trending-product-card-container">
                         {products.slice(1, 4).map((product) => (

@@ -1,10 +1,13 @@
 .trending-products-container {
     margin-bottom: 2rem;
+    padding-top: 30px;
 }
 
 .trending-products-title {
     position: relative;
-    left: 8%;
+    display: flex;
+    justify-content:center;
+    border-top-color: rgb(0, 0, 0);
 
 }
 
