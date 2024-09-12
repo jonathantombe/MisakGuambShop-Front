@@ -86,7 +86,7 @@
 }
 
 .dot.active, .dot:hover {
-  background-color: var(--tan);
+  background-color: var(--secondary-color);
 }
 
 .side-images {

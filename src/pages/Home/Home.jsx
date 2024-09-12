@@ -5,8 +5,9 @@ import UserProfile from '../../components/UserProfile/Userprofile';
 import Footer from '../../components/Footer/Footer';
 import TrendingProducts from '../../components/TrendingProducts/TrendingProducts';
 import product1 from '../../assets/products/mochila-tejido-misak-1.jpg';
-
 import './Home.css';
+
+import CategoryCarousel from '../../components/CategoryCarousel/CategoryCarousel';
 
 
 
@@ -48,7 +49,8 @@ const Home = () => {
         <ImageSlider images={ImageSlider} />
         <ProductList products={topOffers} title="Ofertas Top" />
         <div className="banner">
-          <img src='../../assets/images/isotipoblack.png'></img>
+       
+        <CategoryCarousel />
         </div>
         <TrendingProducts products={featuredProducts} title="Productos destacados" />
       </main>
