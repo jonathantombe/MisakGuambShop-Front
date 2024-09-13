@@ -1,79 +1,80 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+
 import './CategoryCarousel.css';
 
 const categories = [
-  { name: 'Electrónica', image: 'https://example.com/electronica.jpg' },
-  { name: 'Electrodomésticos', image: 'https://example.com/electrodomesticos.jpg' },
-  { name: 'Bolsos y maletas', image: 'https://example.com/bolsos.jpg' },
-  { name: 'Disfraces', image: 'https://example.com/disfraces.jpg' },
-  { name: 'Deporte y ocio', image: 'https://example.com/deporte.jpg' },
-  { name: 'Infantil y premamá', image: 'https://example.com/infantil.jpg' },
-  { name: 'Informática y escuela', image: 'https://example.com/informatica.jpg' },
-  { name: 'Mascotas', image: 'https://example.com/mascotas.jpg' },
-  { name: 'Hogar y jardín', image: 'https://example.com/hogar.jpg' },
-  { name: 'Moda hombre', image: 'https://example.com/modahombre.jpg' },
-  { name: 'Motor', image: 'https://example.com/motor.jpg' },
-  { name: 'Zapatos', image: 'https://example.com/zapatos.jpg' },
-  { name: 'Moda mujer', image: 'https://example.com/modamujer.jpg' },
-  { name: 'Juguetes y juegos', image: 'https://example.com/juguetes.jpg' },
-  { name: 'Telefónica y comunicación', image: 'https://example.com/telefonia.jpg' },
-  { name: 'Muebles', image: 'https://example.com/muebles.jpg' },
-  { name: 'Seguridad', image: 'https://example.com/seguridad.jpg' },
-  { name: 'Cabello y pelucas', image: 'https://example.com/cabello.jpg' },
-  { name: 'Accesorios', image: 'https://example.com/accesorios.jpg' }
+  { id: 1, name: 'Chumbe', image: '/api/placeholder/80/80' },
+  { id: 2, name: 'Manillas', image: '/api/placeholder/80/80' },
+  { id: 3, name: 'Aretes', image: '/api/placeholder/80/80' },
+  { id: 4, name: 'Collar', image: '/api/placeholder/80/80' },
+  { id: 5, name: 'Sombreros', image: '/api/placeholder/80/80' },
+  { id: 6, name: 'Manillas', image: '/api/placeholder/80/80' },
+  { id: 7, name: 'Camisas', image: '/api/placeholder/80/80' },
+  { id: 8, name: 'Pantalones', image: '/api/placeholder/80/80' },
+  { id: 9, name: 'Zapatos', image: '/api/placeholder/80/80' },
+  { id: 10, name: 'Joyas', image: '/api/placeholder/80/80' },
+  { id: 11, name: 'Decoracion', image: '/api/placeholder/80/80' },
+  { id: 12, name: 'Hogar y jardín', image: '/api/placeholder/80/80' },
+  { id: 13, name: 'Muebles', image: '/api/placeholder/80/80' },
+  { id: 14, name: 'Electrónica', image: '/api/placeholder/80/80' },
+  { id: 15, name: 'Bolsos y maletas', image: '/api/placeholder/80/80' },
+  { id: 16, name: 'Bisutería y relojes', image: '/api/placeholder/80/80' },
+  { id: 17, name: 'Hogar y jardín', image: '/api/placeholder/80/80' },
+  { id: 18, name: 'Muebles', image: '/api/placeholder/80/80' },
+  { id: 19, name: 'Electrónica', image: '/api/placeholder/80/80' },
+  { id: 20, name: 'Bolsos y maletas', image: '/api/placeholder/80/80' },
 ];
 
 const CategoryCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const visibleItems = 8;
-  const [isHovered, setIsHovered] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const carouselRef = useRef(null);
 
+  // Función para manejar el scroll manual con los botones
+  const scroll = (direction) => {
+    const container = carouselRef.current;
+    if (container) {
+      const scrollAmount = direction === 'left' ? -400 : 400;
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  // Detectar la posición de desplazamiento para mostrar/ocultar el botón izquierdo
   useEffect(() => {
-    const autoScroll = setInterval(() => {
-      if (!isHovered) {
-        setCurrentIndex((prevIndex) =>
-          prevIndex === categories.length - visibleItems ? 0 : prevIndex + 1
-        );
-      }
-    }, 3000); // Cambia cada 3 segundos
+    const container = carouselRef.current;
+    if (container) {
+      const handleScroll = () => {
+        setScrollPosition(container.scrollLeft);
+      };
+      container.addEventListener('scroll', handleScroll);
+      return () => container.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
 
-    return () => clearInterval(autoScroll);
-  }, [isHovered]);
 
-  const handlePrevClick = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? categories.length - visibleItems : prevIndex - 1
-    );
-  };
-
-  const handleNextClick = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === categories.length - visibleItems ? 0 : prevIndex + 1
-    );
-  };
 
   return (
-    <div 
-      className="carousel-container"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <div className="carousel-categories">
       <h2 className="carousel-title">Compra por categorías</h2>
-      <div className="carousel">
-        <button className="carousel-button prev-button" onClick={handlePrevClick}>
-          &lt;
-        </button>
-        <div className="carousel-track">
-          {categories.slice(currentIndex, currentIndex + visibleItems).map((category, index) => (
-            <div className="carousel-item" key={index}>
-              <img src={category.image} alt={category.name} className="carousel-image" />
-              <p>{category.name}</p>
+      <div className="carousel-wrapper">
+        
+        
+        {/* Contenedor de los ítems de la categoría */}
+        <div ref={carouselRef} className="carousel-items-container">
+          {categories.map((category) => (
+            <div key={category.id} className="carousel-item">
+              <div className="carousel-image-wrapper">
+                <img
+                  src={category.image}
+                  alt={category.name}
+                  className="carousel-image"
+                />
+              </div>
+              <p className="carousel-item-text">{category.name}</p>
             </div>
           ))}
         </div>
-        <button className="carousel-button next-button" onClick={handleNextClick}>
-          &gt;
-        </button>
+
+        
       </div>
     </div>
   );

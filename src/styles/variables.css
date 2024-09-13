@@ -19,7 +19,6 @@
     --text-medium: #757575;
     --text-light: #999999;
     --text-darker: #222222;
-
     --element-dark: #3E3E3E;
     
     /* Grises opacos */
@@ -55,7 +54,6 @@
 
     /* Sombra de Caja */
     --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-     
     --font-body: 'Open Sans', sans-serif;
     --font-heading: 'Playfair Display', serif;
     --font-accent: 'Caveat', cursive;
@@ -95,7 +93,6 @@
     --font-size-product-description: 14px;
     --font-size-price: 18px;
     --font-size-handmade-label: 16px;
-    
     --line-height-base: 1.6;
 }
 
