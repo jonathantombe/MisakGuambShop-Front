@@ -26,7 +26,7 @@ const ImageSlider = () => {
   }, []);
 
   return (
-    <div className="carousel-container">
+    <div className="carousel-container-d">
       <div className="slider-container">
         <button 
           onClick={goToPrevious} 

@@ -1,13 +1,11 @@
-.carousel-container {
+.carousel-container-d {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 100%;
-  margin: 50px auto;
+  margin: 0;
   padding-top: 30px;
   padding: 40px;
   background-color:var(--pale-silver); 
-  
   box-shadow: 0 10px 20px (--champagne-pink);
   overflow: hidden;
   padding-left: 35px; 
