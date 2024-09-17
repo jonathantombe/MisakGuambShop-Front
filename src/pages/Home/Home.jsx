@@ -4,7 +4,7 @@ import HeroMisakWelcome from '../../components/HeroMisakWelcome/HeroMisakWelcome
 import UserProfile from '../../components/UserProfile/Userprofile';
 import Footer from '../../components/Footer/Footer';
 import TrendingProducts from '../../components/TrendingProducts/TrendingProducts';
-import product1 from '../../assets/products/mochila-tejido-misak-1.jpg';
+import product1 from '../../assets/products/04_900x.webp';
 import './Home.css';
 
 import CategoryCarousel from '../../components/CategoryCarousel/CategoryCarousel';
@@ -13,16 +13,14 @@ import CategoryCarousel from '../../components/CategoryCarousel/CategoryCarousel
 
 
 const topOffers = [
-  { id: 1, name: 'Bolso Misak', image: product1, rating: 1, price: 19.99, totalSales: 89.63 },
-  { id: 2, name: 'Bolso Misak', image: product1, rating: 2, price: 29.99, totalSales: 89.63 },
-  { id: 3, name: 'Bolso Misak', image: product1, rating: 3, price: 29.99, totalSales: 89.63 },
-  { id: 4, name: 'Bolso Misak', image: product1, rating: 4, price: 29.99, totalSales: 89.69 },
-  { id: 5, name: 'Bolso Misak', image: product1, rating: 5, price: 29.99, totalSales: 86.65 },
-  { id: 1, name: 'Bolso Misak', image: product1, rating: 1, price: 19.99, totalSales: 89.63 },
-  { id: 2, name: 'Bolso Misak', image: product1, rating: 2, price: 29.99, totalSales: 89.63 },
-  { id: 3, name: 'Bolso Misak', image: product1, rating: 3, price: 29.99, totalSales: 89.63 },
-  { id: 1, name: 'Bolso Misak', image: product1, rating: 1, price: 19.99, totalSales: 89.63 },
-  { id: 2, name: 'Bolso Misak', image: product1, rating: 2, price: 29.99, totalSales: 89.63 },
+  { id: 1, name: 'Bolso Misak', image: product1, rating: 1, price: 250.00, totalSales: 89.63 },
+  { id: 2, name: 'Bolso Misak', image: product1, rating: 2, price: 250.00, totalSales: 89.63 },
+  { id: 3, name: 'Bolso Misak', image: product1, rating: 3, price: 250.00, totalSales: 89.63 },
+  { id: 4, name: 'Bolso Misak', image: product1, rating: 4, price: 250.00, totalSales: 89.69 },
+  { id: 5, name: 'Bolso Misak', image: product1, rating: 5, price: 250.00, totalSales: 86.65 },
+  { id: 6, name: 'Bolso Misak', image: product1, rating: 1, price: 250.00, totalSales: 89.63 },
+  { id: 7, name: 'Bolso Misak', image: product1, rating: 2, price: 250.00, totalSales: 89.63 },
+  { id: 8, name: 'Bolso Misak', image: product1, rating: 3, price: 250.00, totalSales: 89.63 },
 
 
 
