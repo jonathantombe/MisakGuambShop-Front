@@ -1,6 +1,6 @@
 import React from 'react';
-import ImageSlider from '../../components/ImageSlider/ImageSlider';
 import ProductList from '../../components/ProductList/ProductList';
+import HeroMisakWelcome from '../../components/HeroMisakWelcome/HeroMisakWelcome';
 import UserProfile from '../../components/UserProfile/Userprofile';
 import Footer from '../../components/Footer/Footer';
 import TrendingProducts from '../../components/TrendingProducts/TrendingProducts';
@@ -46,7 +46,7 @@ const Home = () => {
   return (
     <div className="home-page">
       <main className="main-content">
-        <ImageSlider images={ImageSlider} />
+        <HeroMisakWelcome />
         <ProductList products={topOffers} title="Ofertas Top" />
         <div className="banner">
        

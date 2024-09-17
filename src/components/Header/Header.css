@@ -39,6 +39,8 @@ body{
 .categories-text {
   color: white;
   margin-left: 10px;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-heading-weight);
 }
 
 .logo-text {
@@ -46,6 +48,8 @@ body{
   font-weight: bold;
   color: white;
   text-decoration: none;
+  font-family: var(--font-logo);
+  font-weight: var(--font-logo-weight);
 }
 
 .logo-m {
@@ -80,6 +84,8 @@ body{
   width: 300px;
   box-sizing: border-box;
   outline: none;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-heading-weight);
 }
 
 .search-bar:hover,
@@ -141,6 +147,8 @@ body{
   text-decoration: none;
   margin-right: 15px;
   font-size: 14px;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-heading-weight);
 }
 
 .icon-button {
@@ -162,7 +170,6 @@ body{
   opacity: 0.8;
 }
 
-/* Estilos base para todos los tamaños */
 body {
   font-size: 16px;
   line-height: 1.5;
@@ -209,7 +216,8 @@ body {
     color: white;
     margin-left: 10px;
     font-size: 14px;
-    font-family: var(--font-roboto);
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight);
     display: none;
   }
   
@@ -223,6 +231,8 @@ body {
     right: 0;
     left: 20px;
     margin: 8px;
+    font-family: var(--font-logo);
+    font-weight: var(--font-logo-weight);
   }
   
   .search-bar {
@@ -250,7 +260,9 @@ body {
     font-size: 14px;
     border: none;
     border-radius: 20px 0 0 20px;
-    outline: none box
+    outline: none box;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight);
   }
   
   .search-bar:hover {
@@ -282,7 +294,8 @@ body {
     text-decoration: none;
     margin-right: 15px;
     font-size: 14px;
-    font-family: var(--font-roboto);
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight);
     display: none;
   }
   
@@ -350,7 +363,8 @@ body {
     color: white;
     margin-left: 10px;
     font-size: 14px;
-    font-family: var(--font-roboto);
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight);
     display: none;
   }
   
@@ -359,6 +373,7 @@ body {
     font-weight: bold;
     color: white;
     text-decoration: none;
+    
   }
   
   .search-bar {
@@ -380,7 +395,9 @@ body {
     font-size: 14px;
     border: none;
     border-radius: 20px 0 0 20px;
-    outline: none box
+    outline: none;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight);
   }
   
   .search-bar:hover {
@@ -406,7 +423,8 @@ body {
     text-decoration: none;
     margin-right: 15px;
     font-size: 14px;
-    font-family: var(--font-roboto);
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight);
     display: none;
   }
   
@@ -452,104 +470,110 @@ body {
     margin: 0;
   }
 
-    .menu-button svg {
-      width: 22px;
-      height: 22px;
-      fill: white;
-    }
+  .menu-button svg {
+    width: 22px;
+    height: 22px;
+    fill: white;
+  }
   
-    .categories-text {
-      color: white;
-      margin-left: 10px;
-      font-size: 14px;
-      font-family: var(--font-roboto);
-    }
+  .categories-text {
+    color: white;
+    margin-left: 10px;
+    font-size: 14px;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight);
+  }
   
-    .logo-text {
-      font-size: 20px;
-      font-weight: bold;
-      color: white;
-      text-decoration: none;
-    }
+  .logo-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    font-family: var(--font-logo);
+    font-weight: var(--font-logo-weight);
+  }
+
+  .search-bar {
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 0;
+    font-family: var(--font-roboto);
+    height: 2.2rem;
+  }
   
-    .search-bar {
-      background-color: white;
-      border-radius: 20px;
-      overflow: hidden;
-      margin-bottom: 0;
-      font-family: var(--font-roboto);
-      height: 2.2rem;
-    }
+  .search-bar input {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    border: none;
+    padding: 10px 15px;
+    margin: 0;
+    font-size: 14px;
+    border: none;
+    border-radius: 20px 0 0 20px;
+    outline: none;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight);
+  }
   
-    .search-bar input {
-      width: 200px;
-      display: flex;
-      justify-content: space-between;
-      border: none;
-      padding: 10px 15px;
-      margin: 0;
-      font-size: 14px;
-      border: none;
-      border-radius: 20px 0 0 20px;
-      outline: none box
-    }
+  .search-bar:hover {
+    border: 3px solid #e67e22;
+  }
   
-    .search-bar:hover {
-      border: 3px solid #e67e22;
-    }
+  .search-bar button {
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+     background-color: var(--lights-gray);
+  }
   
-    .search-bar button {
-      background: none;
-      border: none;
-      padding: 10px 15px;
-      cursor: pointer;
-      background-color: var(--lights-gray);
-    }
+  .search-bar button svg {
+    width: 17px;
+    height: 17px;
+    fill: #191919;
+  }
   
-    .search-bar button svg {
-      width: 17px;
-      height: 17px;
-      fill: #191919;
-    }
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 14px;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight);
+  }
   
-    .nav-link {
-      color: white;
-      text-decoration: none;
-      margin-right: 15px;
-      font-size: 14px;
-      font-family: var(--font-roboto);
-    }
+  .icon-button {
+    width: 2.3rem;
+    height: 2.3rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 15px;
+    padding: 0;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   
-    .icon-button {
-      width: 2.3rem;
-      height: 2.3rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      margin-left: 15px;
-      padding: 0;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  .icon-button:hover {
+    background-color: #ccebff;
+    fill: #3498db;
+  }
   
-    .icon-button:hover {
-      background-color: #ccebff;
-      fill: #3498db;
-    }
+  .icon-button svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+    transition: fill 0.2s ease;
+  }
   
-    .icon-button svg {
-      width: 20px;
-      height: 20px;
-      fill: white;
-      transition: fill 0.2s ease;
-    }
-  
-    .icon-button:hover svg {
-      fill: #3498db;
-    }
+  .icon-button:hover svg {
+    fill: #3498db;
+  }
 }
 
 /* Pantallas de escritorio medianas (1200px - 1399px) */
@@ -566,20 +590,22 @@ body {
     color: white;
     margin-left: 10px;
     font-size: 16px;
-    font-family: var(--font-roboto);
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight);
   }
   .logo-text {
     font-size: 23px;
     font-weight: bold;
     color: white;
     text-decoration: none;
+    font-family: var(--font-logo);
+    font-weight: var(--font-logo-weight);
   }
   .search-bar {
     background-color: white;
     border-radius: 20px;
     overflow: hidden;
     margin-bottom: 0;
-    font-family: var(--font-roboto);
     height: 2.5rem;
   }
   .search-bar input {
@@ -592,8 +618,9 @@ body {
     font-size: 14px;
     border: none;
     border-radius: 20px 0 0 20px;
-    outline: none
-    box
+    outline: none;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight);
   }
   .search-bar:hover {
     border: 3px solid #e67e22;
@@ -615,7 +642,8 @@ body {
     text-decoration: none;
     margin-right: 15px;
     font-size: 16px;
-    font-family: var(--font-roboto);
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight);
   }
   .icon-button {
     width: 2.3rem;
@@ -660,13 +688,16 @@ body {
     color: white;
     margin-left: 10px;
     font-size: 18px;
-    font-family: var(--font-roboto);
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight);
   }
   .logo-text {
     font-size: 30px;
     font-weight: bold;
     color: white;
     text-decoration: none;
+    font-family: var(--font-logo);
+    font-weight: var(--font-logo-weight);
   }
   .search-bar {
     background-color: white;
@@ -686,7 +717,9 @@ body {
     font-size: 17px;
     border: none;
     border-radius: 20px 0 0 20px;
-    outline: none
+    outline: none;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight);
   }
   .search-bar:hover {
     border: 3px solid #e67e22;
@@ -708,7 +741,8 @@ body {
     text-decoration: none;
     margin-right: 15px;
     font-size: 18px;
-    font-family: var(--font-roboto);
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight);
   }
   .icon-button {
     width: 1.8rem;
@@ -760,13 +794,16 @@ body {
     color: white;
     margin-left: 10px;
     font-size: 20px;
-    font-family: var(--font-roboto);
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight);
   }
   .logo-text {
     font-size: 35px;
     font-weight: bold;
     color: white;
     text-decoration: none;
+    font-family: var(--font-logo);
+    font-weight: var(--font-logo-weight);
   }
   .search-bar {
     background-color: white;
@@ -786,7 +823,9 @@ body {
     font-size: 17px;
     border: none;
     border-radius: 20px 0 0 20px;
-    outline: none
+    outline: none;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight);
   }
   .search-bar:hover {
     border: 3px solid #e67e22;
@@ -808,7 +847,8 @@ body {
     text-decoration: none;
     margin-right: 15px;
     font-size: 20px;
-    font-family: var(--font-roboto);
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight);
   }
   .icon-button {
     width: 2.8rem;
@@ -861,13 +901,16 @@ body {
     color: white;
     margin-left: 10px;
     font-size: 23px;
-    font-family: var(--font-roboto);
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight);
   }
   .logo-text {
     font-size: 40px;
     font-weight: bold;
     color: white;
     text-decoration: none;
+    font-family: var(--font-logo);
+    font-weight: var(--font-logo-weight);
   }
   .search-bar {
     background-color: white;
@@ -887,7 +930,9 @@ body {
     font-size: 17px;
     border: none;
     border-radius: 20px 0 0 20px;
-    outline: none
+    outline: none;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight); 
   }
   .search-bar:hover {
     border: 3px solid #e67e22;
@@ -919,33 +964,34 @@ body {
     justify-content: center;
   }
 
-.icon-button:hover {
-   background-color: #ccebff; 
-   fill: #3498db;
-}
+  .icon-button:hover {
+    background-color: #ccebff; 
+    fill: #3498db;
+  }
 
-.icon-button svg {
-  width: 24px;
-  height: 24px;
-  fill: #ffffff; 
-  transition: fill 0.2s ease; 
-}
+  .icon-button svg {
+    width: 24px;
+    height: 24px;
+    fill: #ffffff; 
+    transition: fill 0.2s ease; 
+  }
 
-.icon-button:hover svg {
-  fill: #3498db;
-}
-.nav-link {
-  color: white;
-  text-decoration: none;
-  margin-right: 15px;
-  font-size: 22px;
-  font-family: var(--font-roboto);
-}
-.icon-button svg {
-  width: 30px;
-  height: 30px;
-  fill: white;
-}
+  .icon-button:hover svg {
+    fill: #3498db;
+  }
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 22px;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-heading-weight);
+  }
+  .icon-button svg {
+    width: 30px;
+    height: 30px;
+    fill: white;
+  }
 }
 
 @media print {
