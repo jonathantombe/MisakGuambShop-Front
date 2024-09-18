@@ -4,7 +4,7 @@ import HeroMisakWelcome from '../../components/HeroMisakWelcome/HeroMisakWelcome
 import UserProfile from '../../components/UserProfile/Userprofile';
 import Footer from '../../components/Footer/Footer';
 import TrendingProducts from '../../components/TrendingProducts/TrendingProducts';
-import product1 from '../../assets/products/04_900x.webp';
+import product1 from '../../assets/products/mochilas/04_900x.webp';
 import './Home.css';
 
 import CategoryCarousel from '../../components/CategoryCarousel/CategoryCarousel';
@@ -52,7 +52,7 @@ const Home = () => {
         </div>
         <TrendingProducts products={featuredProducts} title="Productos destacados" />
       </main>
-      <UserProfile />
+    
       <Footer />
     </div>
   );
