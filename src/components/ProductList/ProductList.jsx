@@ -20,7 +20,7 @@ const ProductList = ({ products, title }) => {
             </div>
             <div className="product-price-container">
               <p className="product-price">${product.price.toFixed(2)}</p>
-              <p className="product-discount">{product.discount}</p>
+              <p className="product-discount">{product.discount}$280.00</p>
             </div>
             <div className='product-sold-container'>
               <p className='title-ventas'>Ventas</p>
