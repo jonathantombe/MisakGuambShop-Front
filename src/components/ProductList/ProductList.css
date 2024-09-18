@@ -1,8 +1,11 @@
 @import '../../styles/variables.css';
 
 .product-list-container {
-  margin: 20px ;
-  padding: 30px 60px;
+  
+  padding: 30px 9rem;
+  background-color: var(--color-contrast-bg);
+  border: 1px solid transparent;
+
 }
 
 .product-list-title {
@@ -26,6 +29,7 @@
   text-align: center;
   position: relative;
   background-color: var(--color-contrast-bg);
+  width: 250px;
 }
 
 .product-image {

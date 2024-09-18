@@ -91,7 +91,6 @@ body{
 .search-bar:hover,
 .search-bar:focus-within {
   border-color: #e67e22;
-  /* Cambia solo el color del borde al hacer hover o cuando se escribe */
 }
 
 .search-bar button {
