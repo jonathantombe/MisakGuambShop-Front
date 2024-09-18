@@ -13,30 +13,28 @@ import CategoryCarousel from '../../components/CategoryCarousel/CategoryCarousel
 
 
 const topOffers = [
-  { id: 1, name: 'Bolso Misak', image: product1, rating: 1, price: 250.00, totalSales: 89.63 },
-  { id: 2, name: 'Bolso Misak', image: product1, rating: 2, price: 250.00, totalSales: 89.63 },
-  { id: 3, name: 'Bolso Misak', image: product1, rating: 3, price: 250.00, totalSales: 89.63 },
-  { id: 4, name: 'Bolso Misak', image: product1, rating: 4, price: 250.00, totalSales: 89.69 },
-  { id: 5, name: 'Bolso Misak', image: product1, rating: 5, price: 250.00, totalSales: 86.65 },
-  { id: 6, name: 'Bolso Misak', image: product1, rating: 1, price: 250.00, totalSales: 89.63 },
-  { id: 7, name: 'Bolso Misak', image: product1, rating: 2, price: 250.00, totalSales: 89.63 },
-  { id: 8, name: 'Bolso Misak', image: product1, rating: 3, price: 250.00, totalSales: 89.63 },
+  { id: 1, name: 'Mochila | Patrimonio Culinario', image: product1, rating: 1, price: 250.00, totalSales: 89.63 },
+  { id: 2, name: 'Mochila | Patrimonio Culinario', image: product1, rating: 2, price: 250.00, totalSales: 89.63 },
+  { id: 3, name: 'Mochila | Patrimonio Culinario', image: product1, rating: 3, price: 250.00, totalSales: 89.63 },
+  { id: 4, name: 'Mochila | Patrimonio Culinario', image: product1, rating: 4, price: 250.00, totalSales: 89.69 },
+  { id: 5, name: 'Mochila | Patrimonio Culinario', image: product1, rating: 5, price: 250.00, totalSales: 86.65 },
+  { id: 6, name: 'Mochila | Patrimonio Culinario', image: product1, rating: 1, price: 250.00, totalSales: 89.63 },
+  { id: 7, name: 'Mochila | Patrimonio Culinario', image: product1, rating: 2, price: 250.00, totalSales: 89.63 },
+  { id: 8, name: 'Mochila | Patrimonio Culinario', image: product1, rating: 3, price: 250.00, totalSales: 89.63 },
 
 
 
 ];
 
 const featuredProducts = [
-  { id: 6, name: 'Bolso Misak', image: product1, rating: 6, price: 15.99, totalSales: 12.59 },
-  { id: 7, name: 'Bolso Misak', image: product1, rating: 7, price: 22.99, totalSales: 13.56 },
-  { id: 8, name: 'Bolso Misak', image: product1, rating: 8, price: 22.99, totalSales: 25.89 },
-  { id: 9, name: 'Bolso Misak', image: product1, rating: 9, price: 22.99, totalSales: 57.89 },
-  { id: 10, name: 'Bolso Misak', image: product1, rating: 10, price: 22.99, totalSales: 89.65 },
-  { id: 6, name: 'Bolso Misak', image: product1, rating: 6, price: 15.99, totalSales: 12.59 },
-  { id: 7, name: 'Bolso Misak', image: product1, rating: 7, price: 22.99, totalSales: 13.56 },
-  { id: 8, name: 'Bolso Misak', image: product1, rating: 8, price: 22.99, totalSales: 25.89 },
-  { id: 9, name: 'Bolso Misak', image: product1, rating: 9, price: 22.99, totalSales: 57.89 },
-  { id: 10, name: 'Bolso Misak', image: product1, rating: 10, price: 22.99, totalSales: 89.65 },
+  { id: 9, name: 'Bolso Misak', image: product1, rating: 6, price: 15.99, totalSales: 12.59 },
+  { id: 10, name: 'Bolso Misak', image: product1, rating: 7, price: 22.99, totalSales: 13.56 },
+  { id: 11, name: 'Bolso Misak', image: product1, rating: 8, price: 22.99, totalSales: 25.89 },
+  { id: 12, name: 'Bolso Misak', image: product1, rating: 9, price: 22.99, totalSales: 57.89 },
+  { id: 13, name: 'Bolso Misak', image: product1, rating: 10, price: 22.99, totalSales: 89.65 },
+  { id: 14, name: 'Bolso Misak', image: product1, rating: 6, price: 15.99, totalSales: 12.59 },
+  { id: 15, name: 'Bolso Misak', image: product1, rating: 7, price: 22.99, totalSales: 13.56 },
+  
 
 ];
 
@@ -52,7 +50,6 @@ const Home = () => {
         </div>
         <TrendingProducts products={featuredProducts} title="Productos destacados" />
       </main>
-    
       <Footer />
     </div>
   );
