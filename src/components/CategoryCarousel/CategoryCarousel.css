@@ -27,8 +27,8 @@
 
 .carousel-items-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Para que los ítems se distribuyan más */
-  grid-template-rows: repeat(2, 1fr); /* Dos filas */
+  grid-template-columns: repeat(5, 1fr); 
+  grid-template-rows: repeat(2, 1fr); 
   gap: 16px;
   overflow: hidden;
   scroll-behavior: smooth;
@@ -38,12 +38,12 @@
 }
 
 .carousel-items-container:hover {
-  animation-play-state: paused; /* Pausa cuando el mouse pasa encima */
+  animation-play-state: paused; 
 }
 
 @keyframes slide {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); } /* Mueve todo el carrusel para un loop continuo */
+  100% { transform: translateX(-100%); } 
 }
 
 .carousel-button-left,

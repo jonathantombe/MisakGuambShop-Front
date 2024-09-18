@@ -3,11 +3,7 @@
   box-sizing: border-box;
 }
 
-.product-item img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
+
 
 .slider-image {
   width: 100%;

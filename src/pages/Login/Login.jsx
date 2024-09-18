@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import isotipoblack from '../../assets/images/isotipoblack.png';
+import Footer from '../../components/Footer/Footer';
 import api from '../../services/api';
 import './Login.css';
 
@@ -43,6 +44,7 @@ const Login = () => {
     };
 
     return (
+        <div>
         <div className="login-container">
             <div className="welcome-container">
                 <h2 className='welcome-h2'>¡Bienvenido a MisakGuambShop!</h2>
@@ -114,8 +116,12 @@ const Login = () => {
                     ¿No tienes una cuenta? <Link to="/register" className='custom-link'>Regístrate</Link>
                 </p>
             </div>
+            
+            </div>
+            <Footer />
         </div>
     );
+    
 };
 
 export default Login;
