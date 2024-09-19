@@ -27,13 +27,13 @@ const topOffers = [
 ];
 
 const featuredProducts = [
-  { id: 9, name: 'Bolso Misak', image: product1, rating: 6, price: 15.99, totalSales: 12.59 },
-  { id: 10, name: 'Bolso Misak', image: product1, rating: 7, price: 22.99, totalSales: 13.56 },
-  { id: 11, name: 'Bolso Misak', image: product1, rating: 8, price: 22.99, totalSales: 25.89 },
-  { id: 12, name: 'Bolso Misak', image: product1, rating: 9, price: 22.99, totalSales: 57.89 },
-  { id: 13, name: 'Bolso Misak', image: product1, rating: 10, price: 22.99, totalSales: 89.65 },
-  { id: 14, name: 'Bolso Misak', image: product1, rating: 6, price: 15.99, totalSales: 12.59 },
-  { id: 15, name: 'Bolso Misak', image: product1, rating: 7, price: 22.99, totalSales: 13.56 },
+  { id: 9, name: 'Bolso Misak', image: product1, rating: 6, price: 250.00, totalSales: 12.59 },
+  { id: 10, name: 'Bolso Misak', image: product1, rating: 7, price: 250.00, totalSales: 13.56 },
+  { id: 11, name: 'Bolso Misak', image: product1, rating: 8, price: 250.00, totalSales: 25.89 },
+  { id: 12, name: 'Bolso Misak', image: product1, rating: 9, price: 250.00, totalSales: 57.89 },
+  { id: 13, name: 'Bolso Misak', image: product1, rating: 10, price: 250.00, totalSales: 89.65 },
+  { id: 14, name: 'Bolso Misak', image: product1, rating: 6, price: 250.00, totalSales: 12.59 },
+  { id: 15, name: 'Bolso Misak', image: product1, rating: 7, price: 250.00, totalSales: 13.56 },
   
 
 ];
