@@ -3,7 +3,7 @@
     justify-content: center;
     min-height: 100vh;
     gap: 100px;
-    background-color: var(--background-light);
+    background-color: var(--background-warm);
 }
 
 .welcome-container {

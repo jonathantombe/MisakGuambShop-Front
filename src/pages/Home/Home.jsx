@@ -1,10 +1,10 @@
 import React from 'react';
 import ProductList from '../../components/ProductList/ProductList';
 import HeroMisakWelcome from '../../components/HeroMisakWelcome/HeroMisakWelcome';
-import UserProfile from '../../components/UserProfile/Userprofile';
+// import UserProfile from '../../components/UserProfile/Userprofile';
 import Footer from '../../components/Footer/Footer';
 import TrendingProducts from '../../components/TrendingProducts/TrendingProducts';
-import product1 from '../../assets/products/04_900x.webp';
+import product1 from '../../assets/products/mochilas/04_900x.webp';
 import './Home.css';
 
 import CategoryCarousel from '../../components/CategoryCarousel/CategoryCarousel';
@@ -45,7 +45,6 @@ const Home = () => {
         <HeroMisakWelcome />
         <ProductList products={topOffers} title="Ofertas Top" />
         <div className="banner">
-       
         <CategoryCarousel />
         </div>
         <TrendingProducts products={featuredProducts} title="Productos destacados" />
