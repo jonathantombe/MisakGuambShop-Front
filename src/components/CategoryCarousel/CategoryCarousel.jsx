@@ -4,7 +4,6 @@ import chumbe from '../../assets/products/chumbes/chumbe.png';
 import manilla from '../../assets/products/manillas/manilla.png';
 import aretes from '../../assets/products/aretes/aretemisak.png';
 import collar from '../../assets/products/collar/collar.png';
-import sombreros from '../../assets/products/sombreros/sombrero.png'; // Cambiado a sombreros para que coincida con el import
 import camisas from '../../assets/products/camisas/camisa.png';
 import pantalones from '../../assets/products/pantalones/pantalones.png';
 import zapatos from '../../assets/products/zapatos/zapatos.png';
@@ -23,18 +22,18 @@ const categories = [
   { id: 2, name: 'Manillas', image: manilla },
   { id: 3, name: 'Aretes', image: aretes },
   { id: 4, name: 'Collar', image: collar },
-  { id: 5, name: 'Sombreros', image: sombreros }, // Aquí está corregido
   { id: 6, name: 'Instrumentos', image: capador },
   { id: 7, name: 'Camisas', image: camisas },
   { id: 8, name: 'Pantalones', image: pantalones },
   { id: 9, name: 'Zapatos', image: zapatos },
   { id: 10, name: 'Joyas', image: joyas },
-  { id: 11, name: 'Decoracion', image: decoracion },
+  { id: 11, name: 'Decoración', image: decoracion },
   { id: 12, name: 'Mochilas', image: mochilas },
-  { id: 13, name: 'Lamparas', image: lamparas },
+  { id: 13, name: 'Lámparas', image: lamparas },
   { id: 14, name: 'Juegos', image: juegos },
   { id: 15, name: 'Vajilla', image: vajilla },
 ];
+
 
 const CategoryCarousel = () => {
 
