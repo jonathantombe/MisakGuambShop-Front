@@ -1,10 +1,10 @@
 import React from 'react';
 import ProductList from '../../components/ProductList/ProductList';
 import HeroMisakWelcome from '../../components/HeroMisakWelcome/HeroMisakWelcome';
-import UserProfile from '../../components/UserProfile/Userprofile';
+// import UserProfile from '../../components/UserProfile/Userprofile';
 import Footer from '../../components/Footer/Footer';
 import TrendingProducts from '../../components/TrendingProducts/TrendingProducts';
-import product1 from '../../assets/products/04_900x.webp';
+import product1 from '../../assets/products/mochilas/04_900x.webp';
 import './Home.css';
 
 import CategoryCarousel from '../../components/CategoryCarousel/CategoryCarousel';
@@ -27,13 +27,13 @@ const topOffers = [
 ];
 
 const featuredProducts = [
-  { id: 9, name: 'Bolso Misak', image: product1, rating: 6, price: 15.99, totalSales: 12.59 },
-  { id: 10, name: 'Bolso Misak', image: product1, rating: 7, price: 22.99, totalSales: 13.56 },
-  { id: 11, name: 'Bolso Misak', image: product1, rating: 8, price: 22.99, totalSales: 25.89 },
-  { id: 12, name: 'Bolso Misak', image: product1, rating: 9, price: 22.99, totalSales: 57.89 },
-  { id: 13, name: 'Bolso Misak', image: product1, rating: 10, price: 22.99, totalSales: 89.65 },
-  { id: 14, name: 'Bolso Misak', image: product1, rating: 6, price: 15.99, totalSales: 12.59 },
-  { id: 15, name: 'Bolso Misak', image: product1, rating: 7, price: 22.99, totalSales: 13.56 },
+  { id: 9, name: 'Bolso Misak', image: product1, rating: 6, price: 250.00, totalSales: 12.59 },
+  { id: 10, name: 'Bolso Misak', image: product1, rating: 7, price: 250.00, totalSales: 13.56 },
+  { id: 11, name: 'Bolso Misak', image: product1, rating: 8, price: 250.00, totalSales: 25.89 },
+  { id: 12, name: 'Bolso Misak', image: product1, rating: 9, price: 250.00, totalSales: 57.89 },
+  { id: 13, name: 'Bolso Misak', image: product1, rating: 10, price: 250.00, totalSales: 89.65 },
+  { id: 14, name: 'Bolso Misak', image: product1, rating: 6, price: 250.00, totalSales: 12.59 },
+  { id: 15, name: 'Bolso Misak', image: product1, rating: 7, price: 250.00, totalSales: 13.56 },
   
 
 ];
@@ -45,7 +45,6 @@ const Home = () => {
         <HeroMisakWelcome />
         <ProductList products={topOffers} title="Ofertas Top" />
         <div className="banner">
-       
         <CategoryCarousel />
         </div>
         <TrendingProducts products={featuredProducts} title="Productos destacados" />

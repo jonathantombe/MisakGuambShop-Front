@@ -1,7 +1,7 @@
 @import '../../styles/variables.css';
 
 .product-list-container {
-  
+
   padding: 30px 9rem;
   background-color: var(--color-contrast-bg);
   border: 1px solid transparent;
@@ -14,6 +14,7 @@
   color: var(--taupe);
   font-family: var(--font-logo);
   font-weight: var(--font-heading-weight);
+  margin: 10px 0 40px;
 }
 
 .product-list {
@@ -52,10 +53,10 @@
   justify-content: space-between;
   align-items: center;
   height: 2rem;
-  margin: 2px 10px;
+  margin: 2px 11px;
   font-family: var(--font-montserrat);
   font-weight: var(--font-heading-weight);
-  
+
 }
 
 .product-rating {
@@ -71,7 +72,7 @@
   font-family: var(--font-montserrat);
   font-weight: var(--font-heading-weight);
   opacity: 0.7;
-  
+
 }
 
 .star {
@@ -87,7 +88,7 @@
   justify-content: space-between;
   align-items: center;
   height: 2rem;
-  margin: 3px 10px;
+  margin: 3px 11px;
   font-family: var(--font-roboto);
   font-weight: var(--font-body-weight);
 }
@@ -106,14 +107,15 @@
   font-size: 14px;
   font-family: var(--font-montserrat);
   font-weight: var(--font-heading-weight);
-  
+  text-decoration: line-through;
+
 }
 
 .product-sold-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 3px 10px 10px;
+  margin: 3px 11px 10px;
 }
 
 .product-sold {
@@ -123,7 +125,7 @@
   font-size: 14px;
   font-family: var(--font-montserrat);
   font-weight: var(--font-heading-weight);
-  
+
 }
 
 .title-ventas {
@@ -149,9 +151,8 @@
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.add-to-cart-button:hover{
 
-}
+.add-to-cart-button:hover {}
 
 .heart-button {
   font-size: 50px;

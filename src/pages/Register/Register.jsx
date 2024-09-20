@@ -209,6 +209,7 @@ const Register = () => {
                     ¿Ya tienes una cuenta? <Link to="/login" className='custom-link'>Iniciar sesión</Link>
                 </p>
             </div>
+          
         </div>
     );
 };
