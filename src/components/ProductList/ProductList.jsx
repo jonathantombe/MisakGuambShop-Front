@@ -1,5 +1,5 @@
 import React from 'react';
-import './ProductList.css'; 
+import './ProductList.css';
 
 const ProductList = ({ products, title }) => {
   return (
@@ -39,3 +39,4 @@ const ProductList = ({ products, title }) => {
 };
 
 export default ProductList;
+
