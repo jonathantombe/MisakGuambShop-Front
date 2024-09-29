@@ -9,6 +9,8 @@ import Register from './pages/Register/Register';
 import { AuthProvider } from './context/AuthContext';
 import Login from './pages/Login/Login';
 import Header from './components/Header/Header';
+import UserProfile from './components/UserProfile/Userprofile'
+import UserProfileEdit from './components/UserProfile/UserProfileEdit'
 import NotFound from './pages/NotFound/NotFound';
 import Contact from './pages/Contact/Contact';
 
@@ -22,6 +24,9 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/user-profile" element={<UserProfile />} />
+            <Route path="/user/profile/edit" element={<UserProfileEdit />} />
+
             <Route path="*" element={<NotFound />} />
             <Route path='/contact' element={<Contact />} />
           </Routes>
