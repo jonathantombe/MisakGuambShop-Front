@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import isotipoblack from '../../assets/images/isotipoblack.png';
 import Footer from '../../components/Footer/Footer';
-import api from '../../services/api';
+import { loginUser } from '../../services/auth';
+import { useAuth } from '../../context/AuthContext';
 import './Login.css';
 
 const Login = () => {
+    const { login } = useAuth();
     const [form, setForm] = useState({
         email: '',
         password: ''
@@ -25,15 +27,14 @@ const Login = () => {
         setError('');
 
         try {
-            const response = await api.post('/api/auth/login', form);
-
-            console.log('Respuesta del servidor:', response); // Para depuración
+            const response = await loginUser(form);
 
             if (response.accessToken) {
-                // Guardar el token en el localStorage
-                localStorage.setItem('token', response.accessToken);
-                // Redirigir al usuario a la página principal o dashboard
-                navigate('/dashboard');
+                login({
+                    ...response.user,
+                    email: form.email,
+                });
+                navigate('/');
             } else {
                 setError('Inicio de sesión fallido. Por favor, intenta de nuevo.');
             }
@@ -43,11 +44,9 @@ const Login = () => {
         }
     };
 
+
     return (
         <div>
-            <header>
-                {/* Aquí iría el contenido del encabezado */}
-            </header>
             <main>
                 <div className="login-container">
                     <div className="welcome-container">
