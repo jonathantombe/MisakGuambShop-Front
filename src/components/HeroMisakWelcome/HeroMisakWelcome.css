@@ -35,7 +35,6 @@
     color: #4a3933;
 }
 
-
 .hero-misak-content h2 {
     font-size: 2rem;
     color: #8b4513;
@@ -60,7 +59,6 @@
     gap: 1.5rem;
 }
 
-
 .hero-misak-features span {
     text-transform: uppercase;
     font-family: var(--font-body);
@@ -83,11 +81,13 @@
     transition: opacity .25s ease;
     border-radius: 8px;
 }
+
 .hero-misak-features span:hover {
-    background-color: rgba(58, 9, 44, 0.85); 
-    color: var(--color-button-text); 
+    background-color: rgba(58, 9, 44, 0.85);
+    color: var(--color-button-text);
     cursor: pointer;
 }
+
 .hero-misak-image {
     flex: 1;
     max-width: 45%;
@@ -100,7 +100,7 @@
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* @media (max-width: 1024px) {
+@media (max-width: 1024px) {
     .hero-misak {
         flex-direction: column;
         text-align: center;
@@ -126,7 +126,12 @@
 
     .hero-misak-features {
         justify-content: center;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        padding-bottom: 10px;
+    }
+
+    .hero-misak-features span {
+        flex: 0 0 auto;
     }
 }
 
@@ -142,4 +147,42 @@
     .hero-misak-content p {
         font-size: 1.1rem;
     }
-} */
+
+    .hero-misak-features {
+        gap: 1rem;
+    }
+
+    .hero-misak-features span {
+        padding: 8px 20px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-misak {
+        padding: 3rem 5%;
+    }
+
+    .hero-misak-content h1 {
+        font-size: 2.4rem;
+        margin: 30px 0 20px;
+    }
+
+    .hero-misak-content h2 {
+        font-size: 1.4rem;
+    }
+
+    .hero-misak-content p {
+        font-size: 1rem;
+    }
+
+    .hero-misak-features {
+        flex-direction: row;
+        gap: 0.8rem;
+    }
+
+    .hero-misak-features span {
+        padding: 6px 15px;
+        font-size: 0.8em;
+    }
+}

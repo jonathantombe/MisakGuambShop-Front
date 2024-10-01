@@ -39,7 +39,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div className="footer-section">
-                    <h3>Únete a MisakuuamboShop</h3>
+                    <h3>Únete a MisakGuambShop</h3>
                     <p>Información sobre cómo unirse</p>
                 </div>
             </div>
