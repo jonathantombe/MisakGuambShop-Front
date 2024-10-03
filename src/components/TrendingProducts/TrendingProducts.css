@@ -326,10 +326,211 @@
     top: 0;
     width: 50%;
     overflow: hidden;
-    color: #ffd700;
+    
 }
 .trending-product-card-wrapper{
     display: grid; 
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
+}
+
+
+@media only screen and (max-width: 575px) {
+    .trending-product-image-div {
+        width: 130px;
+        height: 155px;
+        object-fit: cover;
+        border-radius: 0;
+    }
+    .trending-products-grid {
+        padding: 15px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .trending-product-card-wrapper {
+        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .trending-product-card,
+    .trending-product-card-special {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Móviles grandes y tablets pequeñas (576px - 767px) */
+@media only screen and (max-width: 575px) {
+    .trending-product-image-div {
+        width: 130px;
+        height: 155px;
+        object-fit: cover;
+        border-radius: 0;
+    }
+    .trending-products-grid {
+        padding: 10px;
+    }
+
+    .trending-product-card-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .trending-product-card,
+    .trending-product-card-special {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .trending-product-image-container {
+        height: 120px;
+    }
+
+    .trending-product-image {
+        height: 120px;
+        object-fit: cover;
+    }
+
+    .trending-product-info {
+        padding: 8px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .trending-product-name {
+        font-size: 12px;
+        margin: 0 0 4px;
+        line-height: 1.2;
+        height: 2.4em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+
+    .trending-rating {
+        margin-bottom: 4px;
+    }
+
+    .trending-star {
+        font-size: 12px;
+    }
+
+    .trending-rating-count {
+        font-size: 10px;
+    }
+
+    .trending-price-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .trending-price {
+        font-size: 14px;
+        margin-bottom: 2px;
+    }
+
+    .trending-discount-info {
+        font-size: 10px;
+        margin: 0;
+    }
+
+    .trending-container {
+        margin: 4px 0;
+    }
+
+    .trending-ventas {
+        font-size: 12px;
+    }
+
+    .trending-sold {
+        font-size: 10px;
+    }
+
+    .trending-shipping {
+        font-size: 10px;
+        margin: 4px 0 0;
+        color: #4caf50;
+    }
+
+    .trending-discount {
+        top: 70%;
+        right: 4px;
+        width: 24px;
+        height: 24px;
+        font-size: 10px;
+    }
+
+    .trending-favorite-btn {
+        top: 4px;
+        right: 4px;
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* Tablets (768px - 991px) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .trending-products-grid {
+        padding: 25px;
+    }
+
+    .trending-product-card-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Pantallas de escritorio pequeñas (992px - 1199px) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .trending-products-grid {
+        padding: 30px 4rem;
+    }
+}
+
+/* Pantallas de escritorio medianas (1200px - 1399px) */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+    .trending-products-grid {
+        padding: 30px 5rem;
+    }
+}
+
+/* Pantallas de escritorio grandes (1400px - 1599px) */
+@media only screen and (min-width: 1400px) and (max-width: 1599px) {
+    .trending-products-title {
+        font-size: 24px;
+    }
+}
+
+/* Pantallas muy grandes (1600px - 1819px) */
+@media only screen and (min-width: 1600px) and (max-width: 1819px) {
+    .trending-products-title {
+        font-size: 28px;
+    }
+
+    .trending-product-card,
+    .trending-product-card-special {
+        width: 300px;
+    }
+}
+
+/* Pantallas extra grandes (1820px y más) */
+@media only screen and (min-width: 1820px) {
+    .trending-products-title {
+        font-size: 32px;
+    }
+
+    .trending-products-grid {
+        padding: 40px 8rem;
+    }
+
+    .trending-product-card,
+    .trending-product-card-special {
+        width: 320px;
+    }
 }
