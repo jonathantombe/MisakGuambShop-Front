@@ -11,6 +11,7 @@ import Login from './pages/Login/Login';
 import Header from './components/Header/Header';
 import UserProfile from './components/UserProfile/Userprofile'
 import UserProfileEdit from './components/UserProfile/UserProfileEdit'
+import SellerRegister from './pages/Register/SellerRegister';
 import NotFound from './pages/NotFound/NotFound';
 import Contact from './pages/Contact/Contact';
 
