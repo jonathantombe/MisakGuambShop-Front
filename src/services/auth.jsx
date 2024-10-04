@@ -1,6 +1,8 @@
 import api from './api';
 
+
 const API_URL = '/api/auth';
+
 
 export const registerUser = async (userData) => {
     try {
@@ -75,6 +77,40 @@ export const loginUser = async (loginData) => {
     }
 };
 
+export const forgotPassword = async (email) => {
+    try {
+        const response = await api.post(`/api/users/forgot-password`, { email });
+        return response;
+    } catch (error) {
+        console.error("Error al solicitar restablecimiento de contraseña:", error);
+        throw error;
+    }
+};
+
+export const resetPassword = async (token, newPassword) => {
+    try {
+        const response = await api.put(`/api/users/reset-password`, { token, newPassword });
+        return response;
+    } catch (error) {
+        console.error("Error al restablecer la contraseña:", error);
+        if (error.response) {
+            const errorMessage = await handleError(error);
+            throw new Error(errorMessage);
+        }
+        throw error;
+    }
+};
+
+export const validateResetToken = async (token) => {
+    try {
+        const response = await api.get(`/api/users/reset-password?token=${token}`);
+        return response;
+    } catch (error) {
+        console.error("Error al validar el token de restablecimiento:", error);
+        throw error;
+    }
+};
+
 export const logout = () => {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
@@ -102,53 +138,126 @@ export const updateUserProfile = async (userId, profileData) => {
     try {
         const response = await api.put(`/api/users/${userId}`, profileData);
 
-        if (response && response.user) {
-            const currentUser = JSON.parse(localStorage.getItem('user') || '{}');
-            const updatedUser = { ...currentUser, ...response.user };
-            localStorage.setItem('user', JSON.stringify(updatedUser));
-        }
+        console.log("Respuesta del servidor:", response);
 
-        return response;
+        if (response && typeof response === 'object' && !Array.isArray(response)) {
+            console.log("Datos actualizados:", response);
+
+            const currentUser = JSON.parse(localStorage.getItem('user') || '{}');
+            const updatedUser = { ...currentUser, ...response };
+            localStorage.setItem('user', JSON.stringify(updatedUser));
+            return updatedUser;
+        } else {
+            console.error("Estructura de respuesta inesperada:", response);
+            throw new Error('La respuesta del servidor no tiene la estructura esperada');
+        }
     } catch (error) {
         console.error("Error al actualizar el perfil de usuario:", error);
         throw error;
     }
 };
 
-export const deleteProfileImage = async () => {
-    const currentUser = getCurrentUser();
-    if (!currentUser || !currentUser.id) {
-        console.error('Usuario no autenticado o ID no encontrado');
-        throw new Error('Usuario no autenticado. Por favor, inicia sesión.');
-    }
+export const uploadProfileImage = async (userId, imageFile) => {
     try {
-        const response = await api.delete(`/api/users/${currentUser.id}/profile-image`);
-        if (response && response.user) {
-            const updatedUser = { ...currentUser, profileImageUrl: null };
+        const formData = new FormData();
+        formData.append('image', imageFile);
+
+        const token = localStorage.getItem('token');
+        console.log('Token being used:', token);
+
+        if (!token) {
+            throw new Error('No se encontró el token de autenticación');
+        }
+
+        console.log('Making API call to:', `/api/users/${userId}/profile-image`);
+        console.log('FormData:', formData);
+
+        const response = await api.post(`/api/users/${userId}/profile-image`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        console.log('Upload response:', response);
+
+        if (response && response.id) {
+            const currentUser = JSON.parse(localStorage.getItem('user') || '{}');
+            const updatedUser = { ...currentUser, profileImageUrl: response.profileImageUrl };
             localStorage.setItem('user', JSON.stringify(updatedUser));
             return updatedUser;
         }
-        throw new Error('La respuesta del servidor no incluyó los datos del usuario actualizados');
+        throw new Error(`La respuesta del servidor no incluyó los datos del usuario actualizados. Respuesta: ${JSON.stringify(response)}`);
     } catch (error) {
-        console.error("Error al eliminar la imagen de perfil:", error);
+        console.error("Error uploading profile image:", error);
         throw error;
     }
 };
 
-const handleImageUpload = async (imageFile) => {
+export const deleteProfileImage = async (userId) => {
     try {
-        const formData = new FormData();
-        formData.append('image', imageFile);
-        const response = await api.post(`/api/users/${user.id}/profile-image`, formData, {
-            headers: { 'Content-Type': 'multipart/form-data' },
+        const token = localStorage.getItem('token');
+        if (!token) {
+            throw new Error('No se encontró el token de autenticación');
+        }
+
+        const response = await api.delete(`/api/users/${userId}/profile-image`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
         });
-        if (response && response.user) {
-            const updatedUser = { ...user, profileImageUrl: response.user.profileImageUrl };
+
+        if (response && response.success) {
+            const updatedUser = response.user;
             localStorage.setItem('user', JSON.stringify(updatedUser));
-            setUser(updatedUser);
+            return {
+                user: updatedUser,
+                message: response.message
+            };
+        }
+        throw new Error(response.message || 'Error desconocido al eliminar la imagen de perfil');
+    } catch (error) {
+        console.error("Error en deleteProfileImage:", error);
+        throw error;
+    }
+};
+
+export const deactivateUserAccount = async (id) => {
+    try {
+        const response = await api.patch(`/api/users/${id}/deactivate`);
+        console.log("Respuesta del servidor:", response);
+
+        if (response && response.success) {
+            return {
+                success: true,
+                message: response.message || 'Cuenta desactivada exitosamente'
+            };
+        }
+
+        throw new Error(response.message || 'No se pudo desactivar la cuenta');
+    } catch (error) {
+        console.error("Error al desactivar la cuenta:", error);
+        throw error;
+    }
+};
+
+export const reactivateAccount = async (email) => {
+    try {
+        console.log("Intentando reactivar cuenta, respuesta esperada:", response);
+        const response = await api.post(`/api/users/reactivate`, { email });
+        console.log("Respuesta del servidor (reactivación):", response);
+
+        if (response && response.success) {
+            return {
+                success: true,
+                message: response.message || 'Cuenta reactivada exitosamente'
+            };
+        } else {
+            throw new Error(response.message || 'No se pudo reactivar la cuenta');
         }
     } catch (error) {
-        console.error("Error uploading profile image:", error);
+        console.error("Error al reactivar la cuenta:", error);
+        throw error;
     }
 };
 
@@ -170,25 +279,7 @@ export const refreshAuth = async () => {
     }
 };
 
-const handleDeleteImage = async () => {
-    try {
-        await refreshAuth(); // Intenta refrescar la autenticación antes de eliminar
-        const updatedUser = await deleteProfileImage();
-        setUser(updatedUser);
-        // Actualizar la UI para reflejar que la imagen ha sido eliminada
-    } catch (error) {
-        if (error.message === 'Usuario no autenticado. Por favor, inicia sesión.') {
-            alert('Tu sesión ha expirado. Por favor, inicia sesión de nuevo.');
-            // Redirigir al usuario a la página de inicio de sesión
-            // history.push('/login');
-        } else {
-            console.error("Error al eliminar la imagen de perfil:", error);
-            alert('Hubo un problema al eliminar la imagen de perfil. Por favor, intenta de nuevo.');
-        }
-    }
-};
 
-// Manejo de respuesta para los registros
 const handleResponse = async (response) => {
     if (response && response.headers) {
         const contentType = response.headers.get("content-type");
@@ -198,22 +289,20 @@ const handleResponse = async (response) => {
             return await response.text();
         }
     } else {
-        return "Operación exitosa"; // Si no hay respuesta o headers, devolver un mensaje genérico
+        return "Operación exitosa"; 
     }
 };
 
 const handleError = async (error) => {
-    console.error("Error:", error);
-
     if (error.response) {
-        const contentType = error.response.headers && error.response.headers.get("content-type");
-        if (contentType && contentType.indexOf("application/json") !== -1) {
+        const contentType = error.response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
             const errorData = await error.response.json();
-            throw new Error(errorData.message || "Ocurrió un error inesperado");
+            return errorData.message || "Ocurrió un error inesperado";
         } else {
             const errorText = await error.response.text();
-            throw new Error(errorText || "Ocurrió un error inesperado");
+            return errorText || "Ocurrió un error inesperado";
         }
     }
-    throw new Error("Ocurrió un error inesperado");
+    return "Ocurrió un error inesperado";
 };

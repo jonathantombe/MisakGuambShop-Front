@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import Profile from '../../assets/icons/Profile.jpg';
+import { useAuth } from '../../context/AuthContext';
+import DefaultProfileIcon from '../../assets/icons/no-user-avatar.svg';
 import "./UserProfile.css";
 
 const UserProfile = () => {
-  const userName = "Juan Perez";
+
+  const { user } = useAuth();
+
+  const getProfileImage = () => {
+    if (user && user.profileImageUrl) {
+      return user.profileImageUrl;
+    }
+    return DefaultProfileIcon;
+  };
+
   return (
     <div className="profile-container">
       <div className="profile-header">
         <div className="user-profile-iconss">
-          <img src={Profile} alt="Perfil" className="profile-icon" />
-          <span className="user-name">{userName}</span>
+          <img src={getProfileImage()} alt={`Perfil de ${user ? user.name : 'Usuario'}`} className="profile-icon" />
+          <span className="user-name">{user ? user.name : 'Usuario'}</span>
           <span><Link to="/user/profile/edit" className="editar-perfil">Editar perfil</Link></span>
         </div>
         <div className="profile-nav">

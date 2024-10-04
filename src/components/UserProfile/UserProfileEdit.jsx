@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { updateUserProfile, deleteProfileImage } from '../../services/auth';
+import { updateUserProfile, deleteProfileImage, uploadProfileImage, deactivateUserAccount } from '../../services/auth';
 import './UserProfileEdit.css';
+
 
 
 const UserProfileEdit = () => {
     const navigate = useNavigate();
-    const { user, updateUser } = useAuth();
+    const { user, updateUser, logout } = useAuth();
     const [profileData, setProfileData] = useState({
         username: '',
         email: '',
         phone: '',
         is_active: true,
-        profileImage: null,
+        
     });
+    const [profileImage, setProfileImage] = useState(null);
     const [imagePreview, setImagePreview] = useState('');
     const [error, setError] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
+    const [showConfirmDialog, setShowConfirmDialog] = useState(false);
 
     useEffect(() => {
         if (user) {
@@ -25,7 +29,6 @@ const UserProfileEdit = () => {
                 email: user.email || '',
                 phone: user.phone || '',
                 is_active: user.is_active || true,
-                profileImage: null,
             });
             setImagePreview(user.profileImageUrl || '');
         }
@@ -33,67 +36,108 @@ const UserProfileEdit = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setProfileData(prevData => ({
-            ...prevData,
-            [name]: value
-        }));
+        if (name === 'is_active' && value === 'false') {
+            setShowConfirmDialog(true);
+        } else {
+            setProfileData(prevData => ({
+                ...prevData,
+                [name]: value
+            }));
+        }
     };
 
-    const handleImageChange = (e) => {
+    const handleImageChange = async (e) => {
         const file = e.target.files[0];
         if (file) {
             if (file.size > 1024 * 1024) {
                 setError('El archivo es demasiado grande. El tamaño máximo es 1MB.');
                 return;
             }
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setImagePreview(reader.result);
-                setProfileData(prevData => ({
-                    ...prevData,
-                    profileImage: file
-                }));
-            };
-            reader.readAsDataURL(file);
+            try {
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    setImagePreview(reader.result);
+                };
+                reader.readAsDataURL(file);
+
+                console.log('User ID:', user.id);
+                const updatedUser = await uploadProfileImage(user.id, file);
+                console.log('Updated user:', updatedUser);
+                if (updatedUser && updatedUser.profileImageUrl) {
+                    updateUser(updatedUser);
+                    setSuccessMessage("Imagen de perfil actualizada con éxito.");
+                    setImagePreview(updatedUser.profileImageUrl);
+                } else {
+                    throw new Error('No se recibió la URL de la imagen actualizada');
+                }
+            } catch (error) {
+                console.error('Error al subir la imagen de perfil:', error);
+                if (error.message.includes('401') || error.message.includes('Unauthorized')) {
+                    setError('Tu sesión ha expirado. Por favor, inicia sesión de nuevo.');
+                    // Aquí puedes agregar lógica para redirigir al usuario a la página de inicio de sesión
+                    // navigate('/login');
+                } else {
+                    setError(`No se pudo subir la imagen de perfil: ${error.message}`);
+                }
+            }
         }
     };
-
+    
     const handleDeleteImage = async () => {
         try {
-            setError('');
-            const updatedUser = await deleteProfileImage(user.id);
+            if (!user || !user.id) {
+                throw new Error('No se pudo obtener el ID del usuario');
+            }
+            const result = await deleteProfileImage(user.id);
+            updateUser(result.user);
             setImagePreview('');
-            setProfileData(prevData => ({
-                ...prevData,
-                profileImage: null
-            }));
-            updateUser(updatedUser);
+            setSuccessMessage(result.message);
         } catch (error) {
-            console.error('Error al eliminar la imagen de perfil:', error);
-            setError('No se pudo eliminar la imagen de perfil. Por favor, intenta de nuevo.');
+            console.error("Error al eliminar la imagen de perfil:", error);
+            if (error.message.includes('401') || error.message.includes('Unauthorized')) {
+                setError('Tu sesión ha expirado. Por favor, inicia sesión de nuevo.');
+                // Aquí puedes agregar lógica para redirigir al usuario a la página de inicio de sesión
+                // navigate('/login');
+            } else {
+                setError(`No se pudo completar la operación: ${error.message}`);
+            }
         }
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError('');
+        setSuccessMessage('');
+
         try {
-            setError('');
-            const formData = new FormData();
-            for (const key in profileData) {
-                if (key === 'profileImage' && profileData[key] instanceof File) {
-                    formData.append(key, profileData[key]);
-                } else if (key !== 'profileImage') {
-                    formData.append(key, profileData[key]);
-                }
-            }
-            const updatedUser = await updateUserProfile(user.id, formData);
+            const updatedUser = await updateUserProfile(user.id, profileData);
             updateUser(updatedUser);
-            navigate('/profile');
+            setSuccessMessage("Perfil actualizado con éxito.");
         } catch (error) {
-            console.error('Error al actualizar el perfil:', error);
-            setError('No se pudo actualizar el perfil. Por favor, intenta de nuevo.');
+            console.error("Error al actualizar el perfil:", error);
+            setError(error.message || "Hubo un error al actualizar el perfil. Por favor, intenta de nuevo.");
         }
     };
+
+    const handleDeactivateAccount = async () => {
+        try {
+            if (!user || !user.id) {
+                throw new Error('ID de usuario no disponible');
+            }
+            await deactivateUserAccount(user.id);
+            setSuccessMessage("¡Cuenta desactivada con éxito!");
+            logout();
+            setTimeout(() => {
+                navigate('/');
+            }, 2000);
+        } catch (error) {
+            console.error("Error al desactivar la cuenta:", error);
+            setError(error.message || "Hubo un error al desactivar la cuenta. Por favor, intenta de nuevo.");
+        }
+    };
+
+
+
 
     return (
         <div className="edit-profile-container-fe">
@@ -177,9 +221,18 @@ const UserProfileEdit = () => {
                             <small>Extensión de archivo: .JPEG, .PNG</small>
                         </div>
                     </div>
+                    {successMessage && <div className="success-message">{successMessage}</div>}
+                    {error && <div className="error-message">{error}</div>}
                     <button type="submit" className="save-button">Guardar</button>
                 </form>
             </div>
+            {showConfirmDialog && (
+                <div className="confirm-dialog">
+                    <p>¿Estás seguro de que deseas desactivar tu cuenta?</p>
+                    <button onClick={handleDeactivateAccount}>Sí, desactivar</button>
+                    <button onClick={() => setShowConfirmDialog(false)}>Cancelar</button>
+                </div>
+            )}
         </div>
     );
 };

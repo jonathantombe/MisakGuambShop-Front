@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Profile from '../../assets/icons/no-user-avatar.svg'
+import DefaultProfileIcon from '../../assets/icons/no-user-avatar.svg';
 import { useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../../context/AuthContext';
@@ -11,12 +11,10 @@ export const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
-  // Función para abrir/cerrar el menú desplegable
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  // Cerrar el menú desplegable al hacer clic fuera de él
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (!event.target.closest('.user-profile')) {
@@ -29,15 +27,21 @@ export const Header = () => {
     };
   }, []);
 
-  // Redirigir al perfil del usuario al hacer clic en "Ver tu perfil"
   const handleProfileClick = () => {
-    navigate('/user-profile'); // Asegúrate de que esta ruta coincida con tu ruta de perfil
+    navigate('/user-profile'); 
     setIsDropdownOpen(false);
   };
 
-  // useEffect(() => {
-  //   console.log('Current user in Header:', user);
-  // }, [user]);
+  const getProfileImage = () => {
+    if (user && user.profileImageUrl) {
+      return user.profileImageUrl;
+    }
+    return DefaultProfileIcon;
+  };
+
+  useEffect(() => {
+     console.log('Current user in Header:', user);
+  }, [user]);
 
 
   return (
@@ -79,7 +83,11 @@ export const Header = () => {
           {user ? (
               <div className="user-profile-wrapper">
                 <div className={`user-profile ${isDropdownOpen ? 'open' : ''}`} onClick={toggleDropdown}>
-                  <img src={Profile} alt="Profile" className="profile-icon" />
+                  <img
+                    src={getProfileImage()}
+                    alt="Profile"
+                    className="profile-icon"
+                  />
                   <span className="wt-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                       <polygon points="16.5 10 12 16 7.5 10 16.5 10"></polygon>
@@ -93,9 +101,13 @@ export const Header = () => {
                 {isDropdownOpen && (
                   <div className="dropdown-menu">
                     <div className="dropdown-header">
-                      <img src={Profile} alt="Profile" className="profile-icon" />
+                      <img
+                        src={getProfileImage()}
+                        alt="Profile"
+                        className="profile-icon"
+                      />
                       <div>
-                        <span className="user-name">{user.username}</span>
+                        <span className="user-name">{user.username || 'Usuario'}</span>
                         <button onClick={handleProfileClick} className="view-profile-btn">Ver tu perfil</button>
                       </div>
                     </div>
