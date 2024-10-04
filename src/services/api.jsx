@@ -7,7 +7,12 @@ const parseResponse = async (response) => {
     if (contentType && contentType.indexOf("application/json") !== -1) {
         return response.json();
     } else {
-        return response.text();
+        const text = await response.text();
+        try {
+            return JSON.parse(text);
+        } catch (e) {
+            return text;
+        }
     }
 };
 
@@ -30,17 +35,32 @@ const api = {
         return parseResponse(response);
     },
     post: async (url, data, options = {}) => {
-        const token = getAuthToken();
+        let headers = {
+            ...options.headers,
+        };
+
+        if (!url.includes('/reset-password') && !url.includes('/forgot-password')) {
+            const token = getAuthToken();
+            if (token) {
+                headers['Authorization'] = `Bearer ${token}`;
+            }
+        }
+
+        let body;
+        if (data instanceof FormData) {
+            body = data;
+        } else {
+            headers['Content-Type'] = 'application/json';
+            body = JSON.stringify(data);
+        }
+
         const response = await fetch(`${baseURL}${url}`, {
             ...options,
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
-                ...options.headers,
-            },
-            body: JSON.stringify(data),
+            headers: headers,
+            body: body,
         });
+
         if (!response.ok) {
             const errorBody = await parseResponse(response);
             throw new Error(typeof errorBody === 'string' ? errorBody : JSON.stringify(errorBody));
@@ -49,27 +69,60 @@ const api = {
     },
     put: async (url, data, options = {}) => {
         const token = getAuthToken();
-        const response = await fetch(`${baseURL}${url}`, {
-            ...options,
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
-                ...options.headers,
-            },
-            body: JSON.stringify(data),
-        });
-        if (!response.ok) {
-            const errorBody = await parseResponse(response);
-            throw new Error(typeof errorBody === 'string' ? errorBody : JSON.stringify(errorBody));
+        try {
+            const response = await fetch(`${baseURL}${url}`, {
+                ...options,
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                    ...options.headers,
+                },
+                body: JSON.stringify(data),
+            });
+
+            console.log('Response status:', response.status);
+            console.log('Response headers:', response.headers);
+
+            if (!response.ok) {
+                const errorBody = await parseResponse(response);
+                console.error('Error body:', errorBody);
+                throw new Error(typeof errorBody === 'string' ? errorBody : JSON.stringify(errorBody));
+            }
+            return parseResponse(response);
+        } catch (error) {
+            console.error('Error in PUT request:', error);
+            console.error('Request URL:', `${baseURL}${url}`);
+            console.error('Request data:', data);
+            throw error;
         }
-        return parseResponse(response);
+    },
+
+    patch: async (url, data, options = {}) => {
+        const token = getAuthToken();
+        try {
+            const response = await fetch(`${baseURL}${url}`, {
+                ...options,
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                    ...options.headers,
+                },
+                body: JSON.stringify(data),
+            });
+            if (!response.ok) {
+                const errorBody = await parseResponse(response);
+                throw new Error(typeof errorBody === 'string' ? errorBody : JSON.stringify(errorBody));
+            }
+            return parseResponse(response);
+        } catch (error) {
+            console.error('Error in PATCH request:', error);
+            throw error;
+        }
     },
     delete: async (url, options = {}) => {
         const token = getAuthToken();
-        if (!token) {
-            throw new Error('No authentication token found');
-        }
         try {
             const response = await fetch(`${baseURL}${url}`, {
                 ...options,
@@ -81,15 +134,15 @@ const api = {
                 },
             });
 
+            const data = await response.json();
+
             if (!response.ok) {
-                const errorBody = await parseResponse(response);
-                console.error('Server response:', response.status, errorBody);
-                throw new Error(typeof errorBody === 'string' ? errorBody : JSON.stringify(errorBody));
+                throw new Error(data.message || 'Error en la solicitud al servidor');
             }
 
-            return parseResponse(response);
+            return data;
         } catch (error) {
-            console.error('Error in delete request:', error);
+            console.error('Error en delete request:', error);
             throw error;
         }
     },

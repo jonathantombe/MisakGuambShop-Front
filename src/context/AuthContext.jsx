@@ -22,7 +22,6 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = (userData) => {
-        // Asegurarse de que todos los datos relevantes se guarden
         const userToStore = {
             ...userData,
             username: userData.username,
@@ -31,6 +30,11 @@ export const AuthProvider = ({ children }) => {
         };
         setUser(userToStore);
         localStorage.setItem('user', JSON.stringify(userToStore));
+    };
+
+    const updateUser = (userData) => {
+        setUser(userData);
+        localStorage.setItem('user', JSON.stringify(userData));
     };
 
     const logout = () => {

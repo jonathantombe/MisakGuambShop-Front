@@ -113,7 +113,17 @@
 .login-form .login-button:hover {
     background-color: var(--element-dark);
 }
-
+.button-olvide-contrasena{
+    text-align: start;
+}
+.button-olvide-contrasena .forgot-password-button{
+    padding: 2px;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+    color: var(--input-background);
+    background-color: var(--button-warm);
+}
 .login-footer {
     font-size: 12px;
     color: var(--text-warm);
