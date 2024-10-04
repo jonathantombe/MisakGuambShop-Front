@@ -1,0 +1,123 @@
+.seller-register-container {
+    display: flex;
+    padding: 5rem 0rem 0rem 13rem;
+    background-color: #f9f9f9;
+    gap: 24rem;
+    min-height: 100vh;
+}
+
+.welcome-container {
+    text-align: center;
+    margin-bottom: 3rem;
+    position:static ;
+}
+
+.welcome-container img {
+    width: 15rem;
+    height: 15rem;
+}
+
+.welcome-h2 {
+    font-size: 8rem;
+    font-family:var ;
+    color: #333;
+}
+
+.welcome-p {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.register-box {
+    width: 100%;
+    max-width: 500px;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.register-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.success-message {
+    color: green;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+}
+
+@media only screen and (min-width: 1600px) and (max-width: 1820px){
+
+    .seller-register-container {
+        display: flex;
+        padding: 6rem 0rem 0rem 20rem; 
+        background-color: #f9f9f9;
+        gap: 26rem;
+        min-height: 100vh;
+    }
+    
+    .welcome-container {
+        text-align: center;
+        margin-bottom: 2rem;
+        position:static ;
+    }
+    
+    .welcome-h2 {
+        font-size: 2rem;
+        color: #333;
+    }
+    
+    .welcome-p {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        color: #666;
+    }
+    
+    .register-box {
+        width: 100%;
+        max-width: 500px;
+        background-color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .register-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+    
+    .error-message {
+        color: red;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+    }
+    
+    .success-message {
+        color: green;
+        font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+    
+    .register-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+}

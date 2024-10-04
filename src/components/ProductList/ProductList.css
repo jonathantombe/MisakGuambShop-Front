@@ -152,7 +152,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.add-to-cart-button:hover {}
+/* .add-to-cart-button:hover {} */
 
 .heart-button {
   font-size: 50px;
@@ -166,7 +166,7 @@
   .product-list-container {
     padding: 20px;
     background-color: var(--color-contrast-bg);
-    margin: 0 auto;
+   
   }
 
   .product-list {
@@ -234,7 +234,6 @@
   .product-list-container {
     padding: 20px;
     background-color: var(--color-contrast-bg);
-    margin: 0 auto;
   }
 
   .product-list-title {
@@ -312,7 +311,7 @@
   .product-list-container {
     padding: 20px;
     background-color: var(--color-contrast-bg);
-    margin: 0 auto;
+   
   }
 
   .product-list-title {
@@ -390,7 +389,6 @@
   .product-list-container {
     padding: 20px;
     background-color: var(--color-contrast-bg);
-    margin: 0 auto;
   }
 
   .product-list-title {
@@ -497,7 +495,7 @@
   .product-list-container {
     padding: 30px 9rem;
     background-color: var(--color-contrast-bg);
-    margin: 0 auto;
+ 
   }
 
   .product-list-title {

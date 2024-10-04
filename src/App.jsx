@@ -13,6 +13,8 @@ import UserProfile from './components/UserProfile/Userprofile'
 import UserProfileEdit from './components/UserProfile/UserProfileEdit'
 import ResetPassword from './pages/ResetPassword/ResetPassword';
 import ResetPasswordForm from './pages/ResetPassword/ResetPasswordForm'
+import SellerRegister from './pages/Register/SellerRegister';
+
 import NotFound from './pages/NotFound/NotFound';
 import Contact from './pages/Contact/Contact';
 
