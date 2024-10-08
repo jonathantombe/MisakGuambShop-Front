@@ -8,11 +8,10 @@ const ResetPasswordForm = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
     const [isSuccess, setIsSuccess] = useState(false);
-    const [isLoading, setIsLoading] = useState(true); // Definimos isLoading
+    const [isLoading, setIsLoading] = useState(true);
+    const [token, setToken] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
-
-    const [token, setToken] = useState('');
 
     useEffect(() => {
         const searchParams = new URLSearchParams(location.search);
@@ -43,12 +42,6 @@ const ResetPasswordForm = () => {
             setError('Las contraseñas no coinciden.');
             return;
         }
-        const searchParams = new URLSearchParams(location.search);
-        const token = searchParams.get('token');
-        if (!token) {
-            setError('Token no válido o faltante.');
-            return;
-        }
         try {
             await resetPassword(token, password);
             setIsSuccess(true);
@@ -57,10 +50,6 @@ const ResetPasswordForm = () => {
             setError(error.message || 'Error al restablecer la contraseña. Por favor, inténtalo de nuevo.');
         }
     };
-
-    if (isLoading) {
-        return <div>Cargando...</div>;
-    }
 
     if (isSuccess) {
         return (
@@ -77,10 +66,11 @@ const ResetPasswordForm = () => {
 
     return (
         <div className="reset-password-container">
-            <h2 className="reset-password-title">Establece tu nueva contraseña</h2>
+            <div className='reset-password-container-v'>
+                <h2 className="title-set-your-new-password">Establece tu nueva contraseña</h2>
             <form onSubmit={handleSubmit} className="reset-password-form">
-                <div className="form-group">
-                    <label htmlFor="password" className="form-label">
+                    <div className="form-group">
+                        <label htmlFor="password" className="form-label">
                         Nueva contraseña
                     </label>
                     <input
@@ -90,6 +80,7 @@ const ResetPasswordForm = () => {
                         onChange={(e) => setPassword(e.target.value)}
                         className="form-input"
                         required
+                        placeholder="Ingresa tu nueva contraseña"
                     />
                 </div>
                 <div className="form-group">
@@ -102,14 +93,15 @@ const ResetPasswordForm = () => {
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         className="form-input"
-                        required
+                        placeholder="Confirma tu nueva contraseña"
                     />
                 </div>
-                {error && <p className="error-message">{error}</p>}
-                <button type="submit" className="submit-button">
+                
+                    <button type="submit" className="submit-button">
                     RESTABLECER CONTRASEÑA
                 </button>
-            </form>
+                </form>
+            </div>
         </div>
     );
 };

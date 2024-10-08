@@ -4,21 +4,43 @@ import DefaultProfileIcon from '../../assets/icons/no-user-avatar.svg';
 import { useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../../context/AuthContext';
+
+import mochilas from '../../assets/products/mochilas/03_900x.webp';
+import manillas from '../../assets/products/manillas/manilla.png';
+import aretes from '../../assets/products/aretes/aretemisak.png';
+import collar from '../../assets/products/collar/collar.png';
+import instrumentos from '../../assets/products/instrumentos/capador.png';
+import camisas from '../../assets/products/camisas/camisa.png';
+import pantalones from '../../assets/products/pantalones/pantalones.png';
+import zapatos from '../../assets/products/zapatos/zapatos.png';
+import joyas from '../../assets/products/joyas/joya.png';
+import decoracion from '../../assets/products/decoracion/manteles.png';
+import lamparas from '../../assets/products/lamparas/lamparas.png';
+import juegos from '../../assets/products/juegos/trompo.png';
+import vajilla from '../../assets/products/vajilla/vajilla.png';
 import './Header.css';
 
 export const Header = () => {
   const { user, logout } = useAuth();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  const toggleCategoryMenu = () => {
+    setIsCategoryMenuOpen(!isCategoryMenuOpen);
+  };
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (!event.target.closest('.user-profile')) {
         setIsDropdownOpen(false);
+      }
+      if (!event.target.closest('.menu-categories') && !event.target.closest('.category-menu')) {
+        setIsCategoryMenuOpen(false);
       }
     };
     document.addEventListener('click', handleClickOutside);
@@ -28,7 +50,7 @@ export const Header = () => {
   }, []);
 
   const handleProfileClick = () => {
-    navigate('/user-profile'); 
+    navigate('/user-profile');
     setIsDropdownOpen(false);
   };
 
@@ -43,23 +65,61 @@ export const Header = () => {
      console.log('Current user in Header:', user);
   }, [user]);
 
+  const handleLogout = () => {
+    logout();
+    setTimeout(() => {
+      navigate('/');
+    }, 1000); 
+  };
+
+  const categories = [
+    { name: 'Bolsos', image: mochilas },
+    { name: 'Manillas', image: manillas },
+    { name: 'Aretes', image: aretes },
+    { name: 'Collar', image: collar },
+    { name: 'Instrumentos', image: instrumentos },
+    { name: 'Camisas', image: camisas },
+    { name: 'Pantalones', image: pantalones },
+    { name: 'Zapatos', image: zapatos },
+    { name: 'Joyas', image: joyas },
+    { name: 'Decoración', image: decoracion },
+    { name: 'Lámparas', image: lamparas },
+    { name: 'Juegos', image: juegos },
+    { name: 'Vajilla', image: vajilla },
+  ];
 
   return (
     <>
       {isDropdownOpen && <div className="backdrop"></div>}
     <header className="header">
       <div className="header-content">
-        <div className="menu-categories">
-          <button className="menu-button">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" aria-hidden="true" focusable="false">
-              <rect x="2" y="8" width="14" height="2"></rect>
-              <rect x="2" y="13" width="14" height="2"></rect>
-              <rect x="2" y="3" width="14" height="2"></rect>
-            </svg>
-          </button>
-          <span className="categories-text">Categorías</span>
-        </div>
-
+          <div className="menu-categories">
+            <button className="menu-button" onClick={toggleCategoryMenu}>
+              {isCategoryMenuOpen ? (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                  <path fill="none" d="M0 0h24v24H0z" />
+                  <path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" aria-hidden="true" focusable="false">
+                  <rect x="2" y="8" width="14" height="2"></rect>
+                  <rect x="2" y="13" width="14" height="2"></rect>
+                  <rect x="2" y="3" width="14" height="2"></rect>
+                </svg>
+              )}
+            </button>
+            <span className="categories-text">Categorías</span>
+            {isCategoryMenuOpen && (
+              <div className="category-menu">
+                {categories.map((category, index) => (
+                  <div key={index} className="category-item">
+                    <img src={category.image} alt={category.name} />
+                    <span>{category.name}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         <div className="logo">
           <Link to="/">
             <span className="logo-text">
@@ -134,16 +194,18 @@ export const Header = () => {
                         </Link>
                       </li>
                       <li>
-                        <Link to="/offers">
+                        <Link to="/product/search">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
                             <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
                             <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5" />
                           </svg>
-                          <p className="message-text">Registrarse como vendedor</p>
+                          <p className="message-text">Vender</p>
                         </Link>
                       </li>
                       <li>
-                        <button onClick={logout}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.7 11.3L2 12l.7.7 4 4c.4.4 1 .4 1.4 0 .4-.4.4-1 0-1.4L5.8 13H15c.6 0 1-.4 1-1s-.4-1-1-1H5.8l2.3-2.3c.2-.2.3-.4.3-.7 0-.6-.4-1-1-1-.3 0-.5.1-.7.3l-4 4z"></path><path d="M22 19H10v-2h10V7H10V5h12z"></path></svg>
+                        <button onClick={handleLogout}>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.7 11.3L2 12l.7.7 4 4c.4.4 1 .4 1.4 0 .4-.4.4-1 0-1.4L5.8 13H15c.6 0 1-.4 1-1s-.4-1-1-1H5.8l2.3-2.3c.2-.2.3-.4.3-.7 0-.6-.4-1-1-1-.3 0-.5.1-.7.3l-4 4z"></path><path d="M22 19H10v-2h10V7H10V5h12z"></path>
+                          </svg>
                           <p className='message-text'>Cerrar Sesión</p>
                         </button>
                       </li>

@@ -74,8 +74,6 @@ const UserProfileEdit = () => {
                 console.error('Error al subir la imagen de perfil:', error);
                 if (error.message.includes('401') || error.message.includes('Unauthorized')) {
                     setError('Tu sesión ha expirado. Por favor, inicia sesión de nuevo.');
-                    // Aquí puedes agregar lógica para redirigir al usuario a la página de inicio de sesión
-                    // navigate('/login');
                 } else {
                     setError(`No se pudo subir la imagen de perfil: ${error.message}`);
                 }
@@ -96,8 +94,6 @@ const UserProfileEdit = () => {
             console.error("Error al eliminar la imagen de perfil:", error);
             if (error.message.includes('401') || error.message.includes('Unauthorized')) {
                 setError('Tu sesión ha expirado. Por favor, inicia sesión de nuevo.');
-                // Aquí puedes agregar lógica para redirigir al usuario a la página de inicio de sesión
-                // navigate('/login');
             } else {
                 setError(`No se pudo completar la operación: ${error.message}`);
             }
