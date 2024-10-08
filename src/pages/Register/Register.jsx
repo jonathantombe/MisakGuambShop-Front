@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import isotipoblack from '../../assets/images/isotipoblack.png';
 import { registerUser, loginUser } from '../../services/auth';
+import Footer from '../../components/Footer/Footer'
 import './Register.css';
 import { useAuth } from '../../context/AuthContext';
 
@@ -21,24 +22,41 @@ const Register = () => {
 
     const validateForm = () => {
         let tempErrors = {};
-        if (!form.username.trim()) tempErrors.username = "El nombre de usuario es requerido";
+        // Validación del nombre de usuario
+        if (!form.username.trim()) {
+            tempErrors.username = "El nombre de usuario es requerido";
+        } else if (form.username.length < 3 || form.username.length > 20) {
+            tempErrors.username = "El nombre de usuario debe tener entre 3 y 20 caracteres";
+        } else if (!/^[a-zA-Z0-9 ]+$/.test(form.username)) {
+            tempErrors.username = "El nombre de usuario solo puede contener letras y números";
+        }
+
+        // Validación del correo electrónico
         if (!form.email.trim()) {
             tempErrors.email = "El correo electrónico es requerido";
-        } else if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(form.email)) {
-            tempErrors.email = "El correo electrónico no es válido";
+        } else if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(form.email)) {
+            tempErrors.email = "El correo electrónico debe estar en minúsculas y tener un formato válido";
         }
+
+        // Validación de la contraseña
         if (!form.password) {
             tempErrors.password = "La contraseña es requerida";
-        } else if (form.password.length < 9 || form.password.length > 12) {
-            tempErrors.password = "La contraseña debe tener entre 9 y 12 caracteres";
-        } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{9,12}$/.test(form.password)) {
-            tempErrors.password = "La contraseña debe contener al menos una mayúscula, una minúscula, un número y un carácter especial";
+        } else if (form.password.length < 8 || form.password.length > 20) {
+            tempErrors.password = "La contraseña debe tener entre 8 y 20 caracteres";
+        } else if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(form.password)) {
+            tempErrors.password = "La contraseña debe tener al menos una mayúscula, una minúscula, un número y un carácter especial";
         }
+
+        // Validación de la confirmación de la contraseña
         if (form.password !== form.confirmPassword) {
             tempErrors.confirmPassword = "Las contraseñas no coinciden";
         }
-        if (!/^\d+$/.test(form.phone)) {
-            tempErrors.phone = "El número de teléfono solo debe contener dígitos";
+
+        // Validación del número de teléfono
+        if (!form.phone.trim()) {
+            tempErrors.phone = "El número de teléfono es requerido";
+        } else if (!/^\d{10}$/.test(form.phone)) {
+            tempErrors.phone = "El número de teléfono debe tener exactamente 10 dígitos";
         }
         setErrors(tempErrors);
         return Object.keys(tempErrors).length === 0;
@@ -61,41 +79,50 @@ const Register = () => {
         setSuccess('');
         if (validateForm()) {
             try {
-                const response = await registerUser({
+                const registerResponse = await registerUser({
                     username: form.username,
                     email: form.email,
                     password: form.password,
+                    confirmPassword: form.confirmPassword,
                     phone: form.phone
                 });
 
-                if (typeof response === 'string') {
-                    setSuccess(response);
-                } else if (response && response.message) {
-                    setSuccess(response.message);
-                } else {
-                    throw new Error('Unexpected response from server');
-                }
+                setSuccess(registerResponse.message || 'Registro exitoso');
+
                 try {
                     const loginResponse = await loginUser({
                         email: form.email,
                         password: form.password
                     });
-                    console.log('Login response:', loginResponse);
-                    login(loginResponse.data);
-                    console.log('User logged in:', loginResponse.data);
-                    navigate('/');
+                    if (loginResponse && loginResponse.accessToken) {
+                        login({
+                            ...loginResponse.user,
+                            username: form.username,
+                            email: form.email,
+                            phone: form.phone
+                        });
+                        navigate('/');
+                    } else {
+                        throw new Error('Login failed: No access token received');
+                    }
                 } catch (loginError) {
                     console.error('Error logging in automatically:', loginError);
                     setErrors({ submit: 'Registration successful, but there was a problem logging in. Please try logging in manually.' });
+                    navigate('/login');
                 }
             } catch (error) {
-                console.error('Error in registration:', error);
-                setErrors({ submit: error.message || 'An unexpected error occurred. Please try again.' });
+                if (error.message.includes('nombre de usuario')) {
+                    setErrors(prevErrors => ({ ...prevErrors, username: 'El nombre de usuario ya está en uso' }));
+                } else if (error.message.includes('correo electrónico')) {
+                    setErrors(prevErrors => ({ ...prevErrors, email: 'El correo electrónico ya está en uso' }));
+                } else {
+                    setErrors({ submit: error.message || 'Ocurrió un error inesperado. Por favor, intenta de nuevo.' });
+                }
             }
         }
     };
-
     return (
+        <>
         <div className="register-container">
             <div className="welcome-container">
                 <h2 className='welcome-h2'>¡Bienvenido a MisakGuambShop!</h2>
@@ -131,7 +158,7 @@ const Register = () => {
                 {errors.submit && <p className="error-message">{errors.submit}</p>}
                 {success && <p className="success-message">{success}</p>}
 
-                <form onSubmit={handleSubmit} className="register-form">
+                <form onSubmit={handleSubmit} className="register-form" noValidate>
                     <div className="form-row">
                         <input
                             type="text"
@@ -209,8 +236,9 @@ const Register = () => {
                     ¿Ya tienes una cuenta? <Link to="/login" className='custom-link'>Iniciar sesión</Link>
                 </p>
             </div>
-          
-        </div>
+            </div>
+            <Footer />
+        </>
     );
 };
 

@@ -76,7 +76,8 @@
 
 @media (max-width: 768px) {
     .footer-content {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         align-items: center;
     }
 

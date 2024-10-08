@@ -1,0 +1,271 @@
+.edit-profile-container-fe{
+    padding: 5rem 20rem;
+    background-color: #f5f5f5;
+}
+
+.edit-profile-container {
+    max-width: 800px;
+    padding: 2rem;
+    background-color: var(--color-bg);
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+}
+
+.edit-profile-title {
+    color: #333;
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    margin: 0;
+    text-transform: capitalize;
+}
+
+.edit-profile-subtitle {
+    font-family: var(--font-body);
+    font-size: var(--font-size-body-small);
+    color: var(--color-text-meta);
+    margin: 2px 0 2rem;
+}
+
+.edit-profile-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+.form-layout{
+    display: flex;
+    justify-content: space-between;
+}
+.profile-image-container-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.profile-image-container-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.form-group label {
+    font-family: Graphik Webfont, -apple-system, Helvetica Neue, Droid Sans, Arial, "sans-serif";
+    font-size: 15.99px;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.form-group input,
+.form-group select {
+    font-family: var(--font-body);
+    font-size: var(--font-size-body-base);
+    padding: 0.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background-color: var(--color-input);
+    color: var(--color-input-text);
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, .14);
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .02);
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: flex;
+    height: 40px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.form-group input:hover,
+.form-group select:hover {
+    background-color: var(--color-input-bg-hover);
+}
+
+.form-group small {
+    color: var(--color-text-meta);
+    margin-top: 0.25rem;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    margin: 0;
+    padding: 4px 0 0;
+
+}
+
+.add-button,
+.save-button {
+    text-transform: uppercase;
+    font-family: var(--font-body);
+    font-weight: var(--font-body-weight);
+    font-size: var(--font-size-body-small);
+    letter-spacing: .05em;
+    text-align: center;
+    height: 44px;
+    height: var(--height-button);
+    padding: 10px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.5em;
+    border-radius: 1px;
+    background-color: var(--color-accent);
+    color: var(--color-button-text);
+    border: none;
+    opacity: 1;
+    transition: opacity .25s ease;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.save-button {
+    text-transform: uppercase;
+    font-family: var(--font-body);
+    font-weight: var(--font-body-weight);
+    font-size: var(--font-size-body-small);
+    letter-spacing: .05em;
+    text-align: center;
+    height: 44px;
+    height: var(--height-button);
+    padding: 10px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.5em;
+    border-radius: 1px;
+    background-color: var(--color-accent);
+    color: var(--color-button-text);
+    border: none;
+    opacity: 1;
+    transition: opacity .25s ease;
+    border-radius: 8px;
+    align-self: flex-start;
+}
+
+.add-button:hover,
+.save-button:hover {
+    opacity: 0.9;
+}
+
+
+
+.profile-image-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-image-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.select-image-button {
+    text-transform: uppercase;
+    font-family: var(--font-body);
+    font-weight: var(--font-body-weight);
+    font-size: var(--font-size-body-small);
+    letter-spacing: .05em;
+    text-align: center;
+    height: 44px;
+    height: var(--height-button);
+    padding: 10px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.5em;
+    border-radius: 1px;
+    background-color: var(--color-accent);
+    color: var(--color-button-text);
+    border: none;
+    opacity: 1;
+    transition: opacity .25s ease;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.save-button:hover {
+    opacity: 0.9;
+}
+.select-image-button:hover{
+    opacity: 0.9;
+}
+
+.delete-image-button {
+    position: absolute;
+    
+    background-color: rgba(255, 0, 0, 0.8);
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.delete-image-button:hover {
+    color: currentColor;
+    color: white;
+}
+
+.select-image-button {
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+
+
+/* Media Queries */
+@media only screen and (max-width: 575px) {
+    .edit-profile-container {
+        padding: 1rem;
+    }
+
+    .edit-profile-title {
+        font-size: var(--font-size-heading-3);
+    }
+
+    .form-group input,
+    .form-group select,
+    .add-button,
+    .save-button {
+        font-size: var(--font-size-body-small);
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .edit-profile-container {
+        padding: 1.5rem;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .edit-profile-container {
+        max-width: 700px;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .edit-profile-container {
+        max-width: 800px;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .edit-profile-container {
+        max-width: 900px;
+    }
+}
