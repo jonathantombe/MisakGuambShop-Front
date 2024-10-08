@@ -19,14 +19,15 @@ const parseResponse = async (response) => {
 const api = {
     get: async (url, options = {}) => {
         const token = getAuthToken();
+        const headers = {
+            'Content-Type': 'application/json',
+            ...(url.includes('/reset-password') || url.includes('/forgot-password') ? {} : { 'Authorization': `Bearer ${token}` }), // No agregar Auth header para reset-password y forgot-password
+            ...options.headers,
+        };
         const response = await fetch(`${baseURL}${url}`, {
             ...options,
             method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
-                ...options.headers,
-            },
+            headers: headers,
         });
         if (!response.ok) {
             const errorBody = await parseResponse(response);
