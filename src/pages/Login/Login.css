@@ -209,7 +209,7 @@
     }
 
     .login-form .form-input {
-        width: 100%;
+        width: 92%;
         margin-bottom: 15px;
         padding: 12px;
         border: 1px solid var(--input-border);
@@ -253,4 +253,35 @@
     .custom-link:hover {
         text-decoration: underline;
     }
-}
+    .form-input:focus {
+        outline: none;
+        border-color: #007bff;
+    }
+    .input-error {
+      border: 1px solid red;
+   }
+   .error-text {
+    color: red;
+    font-size: 0.8em;
+    margin: 0;
+    text-align: start;
+   }
+
+   .button-olvide-contrasena button{
+    padding: 2px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid var(--light-gray);
+    background-color: var(--background-light);
+    border-radius: 5px;
+    
+            
+        
+   }
+   .button-olvide-contrasena button a{
+    text-decoration: none;
+    color: var(--text-warm);
+        font-family: var(--font-subheading);
+   }
+   
+ }
