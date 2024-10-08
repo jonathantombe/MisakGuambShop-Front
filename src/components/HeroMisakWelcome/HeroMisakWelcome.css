@@ -6,6 +6,7 @@
     background: linear-gradient(135deg, #e2e2e2 0%, #e6d5b8 100%);
     margin-bottom: -50px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative; /* Cambiado para el ::after */
 }
 
 .hero-misak::after {
@@ -28,7 +29,6 @@
     font-size: 3.1rem;
     line-height: 1.3em;
     margin: 50px 0 30px;
-    line-height: var(--line-height-heading);
     font-family: var(--font-heading), sans-serif;
     font-weight: var(--font-heading-weight);
     font-style: var(--font-heading-style);
@@ -38,7 +38,6 @@
 .hero-misak-content h2 {
     font-size: 2rem;
     color: #8b4513;
-    font-size: var(--font-size-heading-1);
     line-height: 1.7em;
     margin: 0;
     font-family: var(--font-heading), sans-serif;
@@ -49,7 +48,7 @@
 .hero-misak-content p {
     font-size: var(--font-size-body-base);
     line-height: 1.5em;
-    font-family: var(--font-body), georgia;
+    font-family: var(--font-body), Georgia;
     color: #5a4a42;
     margin: 0 0 30px;
 }
@@ -64,28 +63,27 @@
     font-family: var(--font-body);
     font-weight: var(--font-body-weight);
     font-size: var(--font-size-body-small);
-    letter-spacing: .05em;
+    letter-spacing: 0.05em;
     text-align: center;
     height: 44px;
-    height: var(--height-button);
     padding: 10px 25px;
     display: flex;
     align-items: center;
     justify-content: center;
     line-height: 1.5em;
-    border-radius: 1px;
+    border-radius: 8px; /* Cambiado a 8px para uniformidad */
     background-color: var(--color-accent);
     color: var(--color-button-text);
     border: none;
     opacity: 1;
-    transition: opacity .25s ease;
-    border-radius: 8px;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+    cursor: pointer; /* Añadido para indicar interactividad */
 }
 
 .hero-misak-features span:hover {
     background-color: rgba(58, 9, 44, 0.85);
     color: var(--color-button-text);
-    cursor: pointer;
+    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
 }
 
 .hero-misak-image {
@@ -99,6 +97,25 @@
     border-radius: 25px;
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
 }
+
+/* Estilo para el botón "Ver más" */
+.hero-misak-content button {
+    margin-top: 20px; /* Espacio superior para separación */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #8b4513; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 1rem; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones */
+}
+
+.hero-misak-content button:hover {
+    background-color: #7a3b10; /* Color más oscuro al pasar el mouse */
+    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+}
+
 
 @media (max-width: 1024px) {
     .hero-misak {
