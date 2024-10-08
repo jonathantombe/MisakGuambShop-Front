@@ -1233,7 +1233,6 @@ body {
   }
   .search-bar input {
     width: 350px;
-    height: 2rem;
     display: flex;
     justify-content: space-between;
     border: none;
@@ -1334,7 +1333,6 @@ body {
   }
   .search-bar input {
     width: 400px;
-    height: 2.5rem;
     display: flex;
     justify-content: space-between;
     border: none;

@@ -13,10 +13,10 @@ import UserProfile from './components/UserProfile/Userprofile'
 import UserProfileEdit from './components/UserProfile/UserProfileEdit'
 import ResetPassword from './pages/ResetPassword/ResetPassword';
 import ResetPasswordForm from './pages/ResetPassword/ResetPasswordForm'
-import SellerRegister from './pages/Register/SellerRegister';
+import HeroMisakWelcome from '../src/components/HeroMisakWelcome/HeroMisakWelcome';
+import History from '../src/pages/History/History';
 import ProductSearch from './pages/SellProduct/ProductSearch';
 import CategoryConfirmation from './pages/SellProduct/CategoryConfirmation'
-
 import NotFound from './pages/NotFound/NotFound';
 import Contact from './pages/Contact/Contact';
 
@@ -39,6 +39,8 @@ const App = () => {
             <Route path="/confirm-category/:categoryId" element={<CategoryConfirmation />} />
             <Route path="*" element={<NotFound />} />
             <Route path='/contact' element={<Contact />} />
+            <Route path="/" exact component={HeroMisakWelcome} />
+            <Route path="/history" component={History} />
           </Routes>
         </div>
       </Router>
