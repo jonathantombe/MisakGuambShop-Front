@@ -6,7 +6,7 @@ const API_URL = '/api/auth';
 
 export const registerUser = async (userData) => {
     try {
-        const response = await api.post(`${API_URL}/signup/user`, userData);
+        const response = await api.post(`${API_URL}/signup`, userData);
 
         if (response && response.user) {
             const userToStore = {
@@ -34,10 +34,12 @@ export const registerSeller = async (sellerData) => {
         const response = await api.post(`${API_URL}/signup/seller`, sellerData);
 
         if (response && response.user) {
-            // Almacenar los datos del vendedor incluyendo el nombre de usuario
             localStorage.setItem('user', JSON.stringify({
-                username: sellerData.username,
-                ...response.user
+                ...response.user,
+                fullName: sellerData.fullName,
+                email: sellerData.email,
+                phone: sellerData.phone,
+                companyName: sellerData.companyName
             }));
             if (response.accessToken) {
                 localStorage.setItem('token', response.accessToken);
@@ -103,7 +105,8 @@ export const resetPassword = async (token, newPassword) => {
 
 export const validateResetToken = async (token) => {
     try {
-        const response = await api.get(`/api/users/reset-password?token=${token}`);
+        console.log("Validando token:", token);
+        const response = await api.get(`/api/users/reset-password?token=${token}`, { headers: {} }); // Sin encabezado Authorization
         return response;
     } catch (error) {
         console.error("Error al validar el token de restablecimiento:", error);
@@ -162,32 +165,18 @@ export const uploadProfileImage = async (userId, imageFile) => {
         const formData = new FormData();
         formData.append('image', imageFile);
 
-        const token = localStorage.getItem('token');
-        console.log('Token being used:', token);
-
-        if (!token) {
-            throw new Error('No se encontró el token de autenticación');
-        }
-
-        console.log('Making API call to:', `/api/users/${userId}/profile-image`);
-        console.log('FormData:', formData);
-
         const response = await api.post(`/api/users/${userId}/profile-image`, formData, {
             headers: {
-                'Content-Type': 'multipart/form-data',
-                'Authorization': `Bearer ${token}`
             }
         });
 
-        console.log('Upload response:', response);
-
-        if (response && response.id) {
+        if (response && response.profileImageUrl) {
             const currentUser = JSON.parse(localStorage.getItem('user') || '{}');
             const updatedUser = { ...currentUser, profileImageUrl: response.profileImageUrl };
             localStorage.setItem('user', JSON.stringify(updatedUser));
             return updatedUser;
         }
-        throw new Error(`La respuesta del servidor no incluyó los datos del usuario actualizados. Respuesta: ${JSON.stringify(response)}`);
+        throw new Error('La respuesta del servidor no incluyó la URL de la imagen de perfil');
     } catch (error) {
         console.error("Error uploading profile image:", error);
         throw error;
@@ -243,7 +232,7 @@ export const deactivateUserAccount = async (id) => {
 
 export const reactivateAccount = async (email) => {
     try {
-        console.log("Intentando reactivar cuenta, respuesta esperada:", response);
+        console.log("Intentando reactivar cuenta para el email:", email);
         const response = await api.post(`/api/users/reactivate`, { email });
         console.log("Respuesta del servidor (reactivación):", response);
 

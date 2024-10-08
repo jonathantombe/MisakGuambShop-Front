@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { forgotPassword } from '../../services/auth';
+import Footer from '../../components/Footer/Footer'
 import "./ResetPassword.css";
 
 const ResetPassword = () => {
@@ -26,7 +27,9 @@ const ResetPassword = () => {
     };
 
     return (
+        <>
         <div className="reset-password-container">
+            <div className='reset-password-container-v'>
             <div className="reset-password-header">
                 <button onClick={handleBackToLogin} className="back-button">
                     Atrás
@@ -72,8 +75,11 @@ const ResetPassword = () => {
                         VOLVER AL INICIO
                     </button>
                 </div>
-            )}
-        </div>
+                )}
+            </div>
+            </div>
+            <Footer/>
+        </>
     );
 };
 
