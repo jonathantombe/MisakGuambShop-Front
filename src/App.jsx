@@ -19,6 +19,7 @@ import ProductSearch from './pages/SellProduct/ProductSearch';
 import CategoryConfirmation from './pages/SellProduct/CategoryConfirmation'
 import NotFound from './pages/NotFound/NotFound';
 import Contact from './pages/Contact/Contact';
+import FAQ from './pages/CustomerServices/FAQ/FAQ';
 
 const App = () => {
   return (
@@ -39,8 +40,7 @@ const App = () => {
             <Route path="/confirm-category/:categoryId" element={<CategoryConfirmation />} />
             <Route path="*" element={<NotFound />} />
             <Route path='/contact' element={<Contact />} />
-            <Route path="/" exact component={HeroMisakWelcome} />
-            <Route path="/history" component={History} />
+            <Route path='/FAQ' element={<FAQ/>}/>
           </Routes>
         </div>
       </Router>
