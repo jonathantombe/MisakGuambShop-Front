@@ -40,8 +40,10 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div className="footer-section">
+                <ul>
                     <h3>Únete a MisakGuambShop</h3>
-                    <p>Información sobre cómo unirse</p>
+                    <li><Link to="/JoinUs">Conoce mas sobre nosotros!</Link> </li>
+                    </ul>
                 </div>
             </div>
         </footer>
