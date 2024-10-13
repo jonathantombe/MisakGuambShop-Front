@@ -16,7 +16,7 @@ import ResetPasswordForm from './pages/ResetPassword/ResetPasswordForm'
 import SellerRegister from './pages/Register/SellerRegister';
 import ProductSearch from './pages/SellProduct/ProductSearch';
 import CategoryConfirmation from './pages/SellProduct/CategoryConfirmation'
-
+import ProductDetails from './pages/SellProduct/ProductDetails';
 import NotFound from './pages/NotFound/NotFound';
 import Contact from './pages/Contact/Contact';
 
@@ -37,6 +37,7 @@ const App = () => {
             <Route path="/reset-password" element={<ResetPasswordForm />} />
             <Route path="/product/search" element={<ProductSearch />} />
             <Route path="/confirm-category/:categoryId" element={<CategoryConfirmation />} />
+            <Route path="/product-details" element={<ProductDetails />} />
             <Route path="*" element={<NotFound />} />
             <Route path='/contact' element={<Contact />} />
           </Routes>

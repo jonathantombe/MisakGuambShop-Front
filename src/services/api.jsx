@@ -62,11 +62,12 @@ const api = {
             body: body,
         });
 
+        const responseData = await parseResponse(response);
+
         if (!response.ok) {
-            const errorBody = await parseResponse(response);
-            throw new Error(typeof errorBody === 'string' ? errorBody : JSON.stringify(errorBody));
+            throw new Error(typeof responseData === 'string' ? responseData : JSON.stringify(responseData));
         }
-        return parseResponse(response);
+        return responseData;
     },
     put: async (url, data, options = {}) => {
         const token = getAuthToken();
