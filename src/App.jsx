@@ -13,12 +13,15 @@ import UserProfile from './components/UserProfile/Userprofile'
 import UserProfileEdit from './components/UserProfile/UserProfileEdit'
 import ResetPassword from './pages/ResetPassword/ResetPassword';
 import ResetPasswordForm from './pages/ResetPassword/ResetPasswordForm'
-import SellerRegister from './pages/Register/SellerRegister';
+import HeroMisakWelcome from '../src/components/HeroMisakWelcome/HeroMisakWelcome';
+import History from '../src/pages/History/History';
 import ProductSearch from './pages/SellProduct/ProductSearch';
 import CategoryConfirmation from './pages/SellProduct/CategoryConfirmation'
 import ProductDetails from './pages/SellProduct/ProductDetails';
 import NotFound from './pages/NotFound/NotFound';
 import Contact from './pages/Contact/Contact';
+import FAQ from './pages/CustomerServices/FAQ/FAQ';
+import JoinUs from './pages/CustomerServices/JoinUs/JoinUs';
 
 const App = () => {
   return (
@@ -32,7 +35,6 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/user-profile" element={<UserProfile />} />
             <Route path="/user/profile/edit" element={<UserProfileEdit />} />
-            <Route path="/register/seller" element={<SellerRegister />} />
             <Route path="/forgot-password" element={<ResetPassword />} />
             <Route path="/reset-password" element={<ResetPasswordForm />} />
             <Route path="/product/search" element={<ProductSearch />} />
@@ -40,6 +42,8 @@ const App = () => {
             <Route path="/product-details" element={<ProductDetails />} />
             <Route path="*" element={<NotFound />} />
             <Route path='/contact' element={<Contact />} />
+            <Route path='/FAQ' element={<FAQ/>}/>
+            <Route path='/JoinUs' element={<JoinUs/>}></Route>
           </Routes>
         </div>
       </Router>
