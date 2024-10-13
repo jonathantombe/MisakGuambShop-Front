@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import DefaultProfileIcon from '../../assets/icons/no-user-avatar.svg';
 import { useNavigate } from 'react-router-dom';
-
 import { useAuth } from '../../context/AuthContext';
-
+import api from '../../services/api';
 import mochilas from '../../assets/products/mochilas/03_900x.webp';
 import manillas from '../../assets/products/manillas/manilla.png';
 import aretes from '../../assets/products/aretes/aretemisak.png';
@@ -21,9 +20,10 @@ import vajilla from '../../assets/products/vajilla/vajilla.png';
 import './Header.css';
 
 export const Header = () => {
-  const { user, logout } = useAuth();
+  const { user, logout, updateUser } = useAuth();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false);
+  
   const navigate = useNavigate();
 
   const toggleDropdown = () => {
@@ -62,14 +62,40 @@ export const Header = () => {
   };
 
   useEffect(() => {
-     console.log('Current user in Header:', user);
+    console.log('useEffect ejecutado');
+    console.log('Estado del usuario:', user);
   }, [user]);
-
   const handleLogout = () => {
     logout();
     setTimeout(() => {
       navigate('/');
     }, 1000); 
+  };
+
+  const handleAdminModeration = () => {
+    navigate('/admin-dashboard');
+  };
+
+  const handleSellerClick = async () => {
+    if (user) {
+      if (user.isSeller) {
+        navigate('/product/search');
+      } else {
+        try {
+          const response = await api.patch(`/api/users/${user.id}/become-seller`);
+          if (response.success) {
+            updateUser({ ...user, isSeller: true, roles: response.user.roles });
+            navigate('/product/search');
+          } else {
+            console.error('Error al convertirse en vendedor:', response.message);
+          }
+        } catch (error) {
+          console.error('Error al convertirse en vendedor:', error);
+        }
+      }
+    } else {
+      navigate('/login');
+    }
   };
 
   const categories = [
@@ -172,6 +198,19 @@ export const Header = () => {
                       </div>
                     </div>
                     <ul>
+                      { user && user.isAdmin === true ? (
+                        <>
+                          <li>
+                            <button onClick={handleAdminModeration}>
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path d="M19 12.3v-.6l.9-.9c.3-.3.5-.7.6-1.2.1-.4 0-.9-.2-1.3l-1-1.7c-.2-.4-.6-.7-1-.9-.4-.2-.9-.2-1.3-.1l-1.2.3c-.2-.1-.4-.2-.5-.3L15 4.4c-.1-.4-.4-.8-.7-1.1-.4-.1-.9-.3-1.3-.3h-2c-.4 0-.9.2-1.2.4-.4.3-.6.7-.7 1.1l-.4 1.2c-.1.1-.3.2-.5.4L7 5.7c-.4-.1-.9-.1-1.3.1s-.8.5-1 .9l-1 1.7c-.2.4-.3.8-.2 1.2.1.4.3.9.6 1.2l.9.9v.6l-1 .9c-.3.3-.5.7-.6 1.2s0 .9.2 1.3l1 1.7c.2.3.4.6.7.7.5.3 1 .3 1.6.2l1.2-.3c.2.1.4.2.5.3l.4 1.2c.1.4.4.8.7 1.1.4.3.8.4 1.2.4h2c.4 0 .9-.2 1.2-.4.4-.3.6-.7.7-1.1l.3-1.2c.2-.1.4-.2.5-.3l1.2.3c.2 0 .4.1.5.1.4 0 .7-.1 1-.3.3-.2.6-.4.7-.7l1-1.7c.2-.4.3-.8.3-1.3-.1-.4-.3-.8-.6-1.2l-.7-.9zm-2-1.4l.1.5v1.1l-.1.6 1.6 1.6-1 1.7-2.2-.6-.4.2c-.3.2-.7.4-1 .6l-.5.2L13 19h-2l-.5-2.2-.5-.2c-.4-.2-.7-.4-1-.6l-.4-.3-2.2.6-1-1.7L7 13.1v-.5V10.9L5.4 9.4l1-1.7 2.2.6L9 8c.3-.2.7-.4 1-.6l.5-.2L11 5h2l.5 2.2.5.2c.4.2.7.4 1 .6l.4.3 2.2-.6 1 1.7-1.6 1.5z"></path><path d="M12 9c-1.7 0-3 1.4-3 3s1.4 3 3 3 3-1.4 3-3-1.3-3-3-3zm0 4c-.6 0-1-.5-1-1s.5-1 1-1 1 .5 1 1-.4 1-1 1z"></path>
+                              </svg>
+                              <p className="message-text">Moderación de Productos</p>
+                            </button>
+                          </li> 
+                        </>
+                      ) : (
+                        <>
                       <li>
                         <Link to="/messages ">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 3H3a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8.65l4.73 3.78a1 1 0 0 0 1.4-.15A1 1 0 0 0 18 20v-3h3a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 12.05h-4V18l-3.38-2.71a.92.92 0 0 0-.62-.22H4V5h16zM8 11a1 1 0 1 0-1-1 1 1 0 0 0 1 1zm4 0a1 1 0 1 0-1-1 1 1 0 0 0 1 1zm4 0a1 1 0 1 0-1-1 1 1 0 0 0 1 1z"></path></svg>
@@ -194,14 +233,16 @@ export const Header = () => {
                         </Link>
                       </li>
                       <li>
-                        <Link to="/product/search">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                        <button onClick={handleSellerClick}>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person-plus" viewBox="0 0 16 16">
                             <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
-                            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5" />
+                            <path fillRule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5" />
                           </svg>
                           <p className="message-text">Vender</p>
-                        </Link>
+                        </button>
                       </li>
+                        </>
+                      )}
                       <li>
                         <button onClick={handleLogout}>
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.7 11.3L2 12l.7.7 4 4c.4.4 1 .4 1.4 0 .4-.4.4-1 0-1.4L5.8 13H15c.6 0 1-.4 1-1s-.4-1-1-1H5.8l2.3-2.3c.2-.2.3-.4.3-.7 0-.6-.4-1-1-1-.3 0-.5.1-.7.3l-4 4z"></path><path d="M22 19H10v-2h10V7H10V5h12z"></path>

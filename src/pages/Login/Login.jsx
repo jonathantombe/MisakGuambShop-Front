@@ -61,8 +61,13 @@ const Login = () => {
         if (validateForm()) {
             try {
                 const response = await loginUser(form);
-                login({ ...response.user, email: form.email });
-                navigate('/');
+                const userWithRole = {
+                    ...response.user,
+                    email: form.email,
+                    isAdmin: response.user.isAdmin
+                };
+                login(userWithRole);
+                navigate('/'); // Redirige a la página principal o dashboard según el rol
             } catch (error) {
                 if (error.message.includes('desactivada')) {
                     setError('Tu cuenta está desactivada. Para reactivarla, haz clic en el botón "Activar mi cuenta".');
@@ -73,6 +78,7 @@ const Login = () => {
             }
         }
     };
+
 
     const handleReactivate = async () => {
         try {

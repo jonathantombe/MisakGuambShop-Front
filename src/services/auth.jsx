@@ -64,6 +64,8 @@ export const loginUser = async (loginData) => {
                 email: loginData.email,
                 username: response.user.username,
                 phone: response.user.phone,
+                isAdmin: response.user.isAdmin,
+                isSeller: response.user.isSeller,
                 is_active: response.user.is_active,
                 profileImageUrl: response.user.profileImageUrl,
             };

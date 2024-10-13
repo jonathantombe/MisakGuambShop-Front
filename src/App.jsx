@@ -17,6 +17,7 @@ import HeroMisakWelcome from '../src/components/HeroMisakWelcome/HeroMisakWelcom
 import History from '../src/pages/History/History';
 import ProductSearch from './pages/SellProduct/ProductSearch';
 import CategoryConfirmation from './pages/SellProduct/CategoryConfirmation'
+import ProductDetails from './pages/SellProduct/ProductDetails';
 import NotFound from './pages/NotFound/NotFound';
 import Contact from './pages/Contact/Contact';
 import FAQ from './pages/CustomerServices/FAQ/FAQ';
@@ -38,6 +39,7 @@ const App = () => {
             <Route path="/reset-password" element={<ResetPasswordForm />} />
             <Route path="/product/search" element={<ProductSearch />} />
             <Route path="/confirm-category/:categoryId" element={<CategoryConfirmation />} />
+            <Route path="/product-details" element={<ProductDetails />} />
             <Route path="*" element={<NotFound />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/FAQ' element={<FAQ/>}/>
