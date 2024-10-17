@@ -6,105 +6,93 @@
   border: 1px solid transparent;
 }
 
-/* Título de la lista */
 .product-list-title {
   text-align: center;
-  margin-bottom: 30px; /* Aumenta el margen inferior */
   color: var(--taupe);
   font-family: var(--font-logo);
   font-weight: var(--font-heading-weight);
   margin: 10px 0 40px;
-  font-size: 28px; /* Tamaño más grande para destacarlo */
+  font-size: 28px;
 }
 
-/* Grid de productos */
 .product-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Ajusta automáticamente según el espacio disponible */
-  gap: 40px; /* Aumenta el gap entre las tarjetas */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 40px;
 }
 
-/* Tarjeta de producto */
 .product-card {
   border: 1px solid var(--color-header-border);
-  border-radius: 12px; /* Bordes más suaves */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombras sutiles para resaltar las tarjetas */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   position: relative;
   background-color: var(--color-contrast-bg);
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animación al hacer hover */
-  overflow: hidden; /* Evita que el contenido sobresalga */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
 }
 
-/* Efecto hover para las tarjetas */
 .product-card:hover {
-  transform: translateY(-5px); /* Efecto de elevación */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Aumenta la sombra */
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Imagen del producto */
 .product-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 12px 12px 0 0; /* Bordes redondeados en la parte superior */
+  border-radius: 12px 12px 0 0;
   transition: transform 0.2s ease;
 }
 
-/* Efecto zoom al hacer hover en la imagen */
 .product-image:hover {
   transform: scale(1.05);
 }
 
-/* Nombre del producto */
 .product-name {
-  margin: 15px 0; /* Aumenta el margen superior e inferior */
-  font-size: 18px; /* Tamaño de texto ligeramente mayor */
+  margin: 15px 0;
+  font-size: 18px;
   color: var(--taupe);
   font-family: var(--font-open-sans);
   font-weight: var(--font-body-bold-weight);
-  line-height: 1.4; /* Espaciado de línea ajustado para mejorar la legibilidad */
+  line-height: 1.4;
 }
 
-/* Contenedor de las estrellas */
 .product-rating-container {
   display: flex;
-  justify-content: center; /* Centra las estrellas */
+  justify-content: center;
   align-items: center;
   height: 2rem;
-  margin: 10px 0; /* Espacio entre la calificación y el nombre */
+  margin: 10px 0;
 }
 
-/* Estrellas */
 .star {
   font-size: 18px;
 }
 
 .star.filled {
-  color: gold; /* Color dorado para las estrellas llenas */
+  color: gold;
 }
 
-/* Calificación numérica */
 .product-rating-value {
   font-weight: 400;
   font-size: 14px;
   font-family: var(--font-heading);
   color: var(--taupe);
   opacity: 0.7;
-  margin-left: 5px; /* Añadir espacio entre las estrellas y la calificación numérica */
+  margin-left: 5px;
 }
 
-/* Precios */
 .product-price-container {
   display: flex;
-  flex-direction: column; /* Coloca los precios uno debajo del otro */
+  flex-direction: column;
   align-items: center;
-  margin: 10px 0; /* Espaciado entre el precio y otros elementos */
+  margin: 10px 0;
 }
 
 .product-price {
-  color: var(--secondary-color); /* Cambia el color del precio de venta */
-  font-size: 18px; /* Tamaño de texto del precio */
+  color: var(--secondary-color);
+  font-size: 18px;
   font-family: var(--font-montserrat);
   font-weight: var(--font-heading-weight);
   margin: 0;
@@ -117,15 +105,14 @@
   font-family: var(--font-montserrat);
   font-weight: var(--font-heading-weight);
   text-decoration: line-through;
-  margin-top: 5px; /* Espacio entre el precio actual y el tachado */
+  margin-top: 5px;
 }
 
-/* Contenedor de ventas */
 .product-sold-container {
   display: flex;
-  justify-content: center; /* Centra la información de ventas */
+  justify-content: center;
   align-items: center;
-  margin: 10px 0; /* Espaciado entre el contenedor de ventas y otros elementos */
+  margin: 10px 0;
 }
 
 .product-sold {
@@ -136,11 +123,15 @@
   font-weight: var(--font-heading-weight);
 }
 
-/* Botón de añadir a favoritos */
-.add-to-cart-button {
+.product-actions {
   position: absolute;
   top: 15px;
   right: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.add-to-cart-button {
   background-color: var(--wheat);
   border: none;
   border-radius: 50%;
@@ -154,16 +145,16 @@
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-/* Efecto hover en el botón de añadir a favoritos */
 .add-to-cart-button:hover {
   transform: scale(1.1);
-  background-color: var(--secondary-color); /* Cambia el color del botón al hacer hover */
+  background-color: var(--secondary-color);
 }
 
 .add-to-cart-button svg {
   color: var(--color-bg);
+  width: 20px;
+  height: 20px;
 }
-
 
 @media only screen and (min-width: 351px) and (max-width: 575px) {
   .product-list-container {
