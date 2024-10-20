@@ -20,6 +20,8 @@ import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
 import MyPublication from './pages/MyPublications/MyPublications'
 import NotFound from './pages/NotFound/NotFound';
 import Contact from './pages/Contact/Contact';
+import FAQ from './pages/CustomerServices/FAQ/FAQ';
+import JoinUs from './pages/CustomerServices/JoinUs/JoinUs';
 
 const App = () => {
   return (
@@ -43,6 +45,8 @@ const App = () => {
             <Route path="/my/publications" element={<MyPublication />} />
             <Route path="*" element={<NotFound />} />
             <Route path='/contact' element={<Contact />} />
+            <Route path='/FAQ' element={<FAQ/>}/>
+            <Route path='/JoinUs' element={<JoinUs/>}></Route>
           </Routes>
         </div>
       </Router>
