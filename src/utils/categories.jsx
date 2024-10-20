@@ -13,7 +13,7 @@ import juegos from '../assets/products/juegos/trompo.png';
 import vajilla from '../assets/products/vajilla/vajilla.png';
 
 export const categories = [
-    { id: 1, name: 'Bolsos', image: mochilas },
+    { id: 1, name: 'Mochilas', image: mochilas },
     { id: 2, name: 'Manillas', image: manillas },
     { id: 3, name: 'Aretes', image: aretes },
     { id: 4, name: 'Collar', image: collar },

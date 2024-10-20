@@ -1,4 +1,5 @@
-const baseURL = 'http://localhost:8080';
+ const baseURL = 'http://localhost:8080';
+// const baseURL = 'misakguambshop-rest-api.up.railway.app'
 
 const getAuthToken = () => localStorage.getItem('token');
 
@@ -72,15 +73,22 @@ const api = {
     put: async (url, data, options = {}) => {
         const token = getAuthToken();
         try {
+            let headers = {
+                'Authorization': `Bearer ${token}`,
+                ...options.headers,
+            };
+
+            // No establecer Content-Type si es FormData
+            if (!(data instanceof FormData)) {
+                headers['Content-Type'] = 'application/json';
+                data = JSON.stringify(data);
+            }
+
             const response = await fetch(`${baseURL}${url}`, {
                 ...options,
                 method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                    ...options.headers,
-                },
-                body: JSON.stringify(data),
+                headers: headers,
+                body: data,
             });
 
             console.log('Response status:', response.status);
@@ -99,7 +107,6 @@ const api = {
             throw error;
         }
     },
-
     patch: async (url, data, options = {}) => {
         const token = getAuthToken();
         try {
@@ -136,13 +143,15 @@ const api = {
                 },
             });
 
-            const data = await response.json();
-
             if (!response.ok) {
-                throw new Error(data.message || 'Error en la solicitud al servidor');
+                const errorText = await response.text();
+                throw new Error(errorText || 'Error en la solicitud al servidor');
             }
-
-            return data;
+            try {
+                return await response.json();
+            } catch (e) {
+                return {};
+            }
         } catch (error) {
             console.error('Error en delete request:', error);
             throw error;

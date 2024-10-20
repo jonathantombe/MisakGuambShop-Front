@@ -7,13 +7,11 @@ const ProductSearch = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [noResults, setNoResults] = useState(false);
-    const [isProductInReview, setIsProductInReview] = useState(false); // Nuevo estado para el mensaje
     const navigate = useNavigate();
+
 
     const handleSearch = (e) => {
         e.preventDefault();
-
-        setIsProductInReview(false);
 
         if (searchTerm.trim() === '') {
             setSearchResults([]);
@@ -27,8 +25,6 @@ const ProductSearch = () => {
 
         setSearchResults(filteredResults);
         setNoResults(filteredResults.length === 0);
-
-        setIsProductInReview(true); 
     };
 
     const handleInputChange = (e) => {
@@ -90,12 +86,6 @@ const ProductSearch = () => {
                             ))}
                         </ul>
                         <Link to="/otra-categoria" className="other-category-link">No corresponde a ninguna categoría</Link>
-                    </div>
-                )}
-
-                {isProductInReview && (
-                    <div className="review-message">
-                        <p>Su producto está en proceso de revisión y se ha guardado como 'pendiente'. Recibirá una notificación cuando sea aprobado. ¡Gracias por su contribución!</p>
                     </div>
                 )}
             </div>
