@@ -61,6 +61,11 @@ export const Header = () => {
     return DefaultProfileIcon;
   };
 
+  const cartPageClick = () => {
+    navigate('/cart');
+    setIsDropdownOpen(false);
+  }
+
   useEffect(() => {
     console.log('useEffect ejecutado');
     console.log('Estado del usuario:', user);
@@ -162,7 +167,7 @@ export const Header = () => {
               <span className="logo-g">G</span>uamb
               <span className="logo-s">S</span>hop
             </span>
-          </Link>
+          </Link> 
         </div>
 
         <div className="search-bar">
@@ -297,10 +302,15 @@ export const Header = () => {
               </svg>
           </button>
           <button className="icon-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.535 7A4 4 0 0 1 12 2.354 4 4 0 0 1 18.465 7H22v9h-1v6H3v-6H2V7h3.535Zm9.466 0H13V5a2 2 0 1 1 2.001 2ZM11 5a2 2 0 1 0-2.001 2H11V5Zm-.764 4c-.55.614-1.348 1-2.236 1v2a4.978 4.978 0 0 0 3-1v3H4V9h6.236ZM13 11c.836.628 1.874 1 3 1v-2a2.992 2.992 0 0 1-2.236-1H20v5h-7v-3Zm-8 5v4h6v-4H5Zm8 4v-4h6v4h-6Z"></path></svg>
+          </button>
+          <button className="icon-button">
+            <Link to="/cart ">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path fill-rule="evenodd" clip-rule="evenodd" d="m5.766 5-.618-3H1v2h2.518l2.17 10.535L6.18 17h14.306l2.4-12H5.767ZM7.82 15l-1.6-8h14.227l-1.6 8H7.82Z"></path>
               <path d="M10.666 20.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm8.334 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"></path>
             </svg>
+            </Link>
           </button>
         </nav>
       </div>
