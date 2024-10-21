@@ -25,27 +25,28 @@ const Login = () => {
         const { name, value } = e.target;
         setForm(prevForm => ({
             ...prevForm,
-            [name]: value
+            [name]: name === 'email' ? value.toLowerCase() : value
         }));
-        setErrors(prevErrors => ({
-            ...prevErrors,
-            [name]: ''
-        }));
+        if (errors[name]) {
+            setErrors(prevErrors => ({ ...prevErrors, [name]: '' }));
+        }
     };
 
     const validateForm = () => {
         let tempErrors = {};
 
         if (!form.email.trim()) {
-            tempErrors.email = "El correo electrónico es requerido";
+            tempErrors.email = "El correo electrónico es obligatorio.";
         } else if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(form.email)) {
-            tempErrors.email = "El correo electrónico debe estar en minúsculas y tener un formato válido";
+            tempErrors.email = "El correo electrónico debe estar en minúsculas y tener un formato válido.";
         }
 
         if (!form.password) {
-            tempErrors.password = "La contraseña es requerida";
+            tempErrors.password = "La contraseña es obligatoria.";
         } else if (form.password.length < 8 || form.password.length > 20) {
-            tempErrors.password = "La contraseña debe tener entre 8 y 20 caracteres";
+            tempErrors.password = "La contraseña debe tener entre 8 y 20 caracteres.";
+        } else if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(form.password)) {
+            tempErrors.password = "La contraseña debe tener al menos una mayúscula, una minúscula, un número y un carácter especial.";
         }
 
         setErrors(tempErrors);
@@ -64,10 +65,10 @@ const Login = () => {
                 const userWithRole = {
                     ...response.user,
                     email: form.email,
-                    isAdmin: response.user.isAdmin
+                    isAdmin: response.user.isAdmin,
                 };
                 login(userWithRole);
-                navigate('/'); // Redirige a la página principal o dashboard según el rol
+                navigate('/');
             } catch (error) {
                 if (error.message.includes('desactivada')) {
                     setError('Tu cuenta está desactivada. Para reactivarla, haz clic en el botón "Activar mi cuenta".');
@@ -78,7 +79,6 @@ const Login = () => {
             }
         }
     };
-
 
     const handleReactivate = async () => {
         try {
@@ -128,10 +128,10 @@ const Login = () => {
                                     placeholder="Correo Electrónico"
                                     value={form.email}
                                     onChange={handleChange}
-                                    className={`form-input ${errors.email ? 'input-error' : ''}`}
+                                    className={`form-input ${errors.email ? 'error' : ''}`}
                                     autoComplete="new-email"
                                 />
-                                {errors.email && <p className="error-text">{errors.email}</p>}
+                                {errors.email && <p className="error-message">{errors.email}</p>}
                             </div>
                             <div className="form-row">
                                 <input
@@ -140,12 +140,12 @@ const Login = () => {
                                     placeholder="Contraseña"
                                     value={form.password}
                                     onChange={handleChange}
-                                    className={`form-input ${errors.password ? 'input-error' : ''}`}
+                                    className={`form-input ${errors.password ? 'error' : ''}`}
                                     autoComplete="new-password"
                                 />
-                                {errors.password && <p className="error-text">{errors.password}</p>}
-                                {error && <p className="error-message">{error}</p>}
+                                {errors.password && <p className="error-message">{errors.password}</p>}
                             </div>
+                            {error && <p className="error-message">{error}</p>}
                             <button type="submit" className="login-button">
                                 Iniciar Sesión
                             </button>
@@ -188,6 +188,5 @@ const Login = () => {
         </div>
     );
 };
-
 
 export default Login;

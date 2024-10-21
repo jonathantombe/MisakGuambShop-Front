@@ -10,14 +10,15 @@ import { AuthProvider } from './context/AuthContext';
 import Login from './pages/Login/Login';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import UserProfile from './components/UserProfile/Userprofile'
-import UserProfileEdit from './components/UserProfile/UserProfileEdit'
+import UserProfile from './components/UserProfile/Userprofile';
+import UserProfileEdit from './components/UserProfile/UserProfileEdit';
 import ResetPassword from './pages/ResetPassword/ResetPassword';
-import ResetPasswordForm from './pages/ResetPassword/ResetPasswordForm'
-import History from '../src/pages/History/History';
+import ResetPasswordForm from './pages/ResetPassword/ResetPasswordForm';
 import ProductSearch from './pages/SellProduct/ProductSearch';
 import CategoryConfirmation from './pages/SellProduct/CategoryConfirmation'
 import ProductDetails from './pages/SellProduct/ProductDetails';
+import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
+import MyPublication from './pages/MyPublications/MyPublications'
 import NotFound from './pages/NotFound/NotFound';
 import Contact from './pages/Contact/Contact';
 import FAQ from './pages/CustomerServices/FAQ/FAQ';
@@ -41,6 +42,9 @@ const App = () => {
             <Route path="/product/search" element={<ProductSearch />} />
             <Route path="/confirm-category/:categoryId" element={<CategoryConfirmation />} />
             <Route path="/product-details" element={<ProductDetails />} />
+            <Route path="/products/:id" element={<ProductDetails />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/my/publications" element={<MyPublication />} />
             <Route path="*" element={<NotFound />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/FAQ' element={<FAQ/>}/>

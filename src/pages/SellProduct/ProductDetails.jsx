@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { categories } from '../../utils/categories';
 import { useAuth } from '../../context/AuthContext';
 import api from '../../services/api';
@@ -7,6 +7,8 @@ import './ProductDetails.css';
 
 const ProductDetails = () => {
     const { user } = useAuth();
+    const { id } = useParams();
+    const isEditing = !!id;
     const [productData, setProductData] = useState({
         name: '',
         price: '',
@@ -15,10 +17,17 @@ const ProductDetails = () => {
         category: '',
         images: []
     });
+
     const [errors, setErrors] = useState({});
     const [submissionMessage, setSubmissionMessage] = useState('');
     const navigate = useNavigate();
     const fileInputRef = useRef(null);
+
+    
+    const containsProfanity = (text) => {
+        const profanityList = ['palabra1', 'palabra2', 'palabra3']; // Añade tu lista de palabras prohibidas
+        return profanityList.some(word => text.toLowerCase().includes(word));
+    };
 
     const validateForm = () => {
         let newErrors = {};
@@ -26,19 +35,27 @@ const ProductDetails = () => {
             newErrors.name = "El nombre es obligatorio";
         } else if (productData.name.length > 100) {
             newErrors.name = "El nombre debe tener menos de 100 caracteres";
+        } else if (containsProfanity(productData.name)) {
+            newErrors.name = "El nombre contiene lenguaje inapropiado";
         }
 
-        if (!productData.description.trim()) {
-            newErrors.description = "La descripción es obligatoria";
-        } else if (productData.description.length > 500) {
+        if (productData.description.length > 500) {
             newErrors.description = "La descripción debe tener menos de 500 caracteres";
+        } else if (containsProfanity(productData.description)) {
+            newErrors.description = "La descripción contiene lenguaje inapropiado";
         }
 
-        if (!productData.price || isNaN(productData.price) || parseFloat(productData.price) <= 0) {
+        if (!productData.price) {
+            newErrors.price = "El precio es obligatorio";
+        } else if (isNaN(productData.price) || parseFloat(productData.price) <= 0) {
             newErrors.price = "El precio debe ser un número mayor que cero";
+        } else if (productData.price.toString().split('.')[0].length > 10) {
+            newErrors.price = "El precio no puede tener más de 10 dígitos enteros";
         }
 
-        if (!productData.stock || isNaN(productData.stock) || parseInt(productData.stock) < 0) {
+        if (!productData.stock) {
+            newErrors.stock = "El stock es obligatorio";
+        } else if (isNaN(productData.stock) || parseInt(productData.stock) < 0) {
             newErrors.stock = "El stock debe ser un número no negativo";
         }
 
@@ -55,8 +72,14 @@ const ProductDetails = () => {
     };
 
     const handleInputChange = (e) => {
-        setProductData({ ...productData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        setProductData(prevData => ({
+            ...prevData,
+            [name]: value
+        }));
+        setErrors(prevErrors => ({ ...prevErrors, [name]: null }));
     };
+
 
     const handleImageUpload = (e) => {
         const files = Array.from(e.target.files);
@@ -95,6 +118,12 @@ const ProductDetails = () => {
         fileInputRef.current.click();
     };
 
+    useEffect(() => {
+        if (isEditing && id) {
+            fetchProductDetails();
+        }
+    }, [isEditing, id]);
+
     const handleRemoveImage = (index) => {
         const newImages = [...productData.images];
         URL.revokeObjectURL(newImages[index].preview);
@@ -103,6 +132,56 @@ const ProductDetails = () => {
             ...productData,
             images: newImages
         });
+    };
+
+    const fetchProductDetails = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                throw new Error('No hay token de autenticación');
+            }
+
+            const response = await api.get(`/api/products/${id}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            // Verificar que la respuesta es válida
+            if (!response || typeof response !== 'object') {
+                throw new Error('Respuesta inválida del servidor');
+            }
+
+            // Mapear directamente los datos recibidos
+            const mappedData = {
+                name: response.name,
+                price: response.price.toString(),
+                description: response.description,
+                stock: response.stock.toString(),
+                // Asegurarse de que la categoría se establezca correctamente
+                category: response.categoryId ? response.categoryId.toString() : '',
+                // Mapear las imágenes correctamente
+                images: response.images.map(image => ({
+                    file: null,
+                    preview: image.imageUrl // Usar la propiedad imageUrl del objeto imagen
+                }))
+            };
+
+            // Actualizar el estado con los datos mapeados
+            setProductData(mappedData);
+
+            console.log('Datos del producto cargados:', {
+                original: response,
+                mapped: mappedData
+            });
+
+        } catch (error) {
+            console.error('Error fetching product details:', error);
+            setErrors(prev => ({
+                ...prev,
+                fetch: 'Error al cargar los detalles del producto: ' + error.message
+            }));
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -115,43 +194,59 @@ const ProductDetails = () => {
                 formData.append('price', parseFloat(productData.price) || 0);
                 formData.append('stock', parseInt(productData.stock) || 0);
                 formData.append('categoryId', parseInt(productData.category) || 0);
-                formData.append('sellerId', user.id);
+                formData.append('userId', user.id);
 
-                productData.images.forEach((image) => {
-                    formData.append('image', image.file);
-                });
+                const existingImages = productData.images
+                    .filter(image => !image.file)
+                    .map(image => image.preview);
 
-                const response = await api.post('/api/products', formData);
-                console.log('Server response:', response);
-
-                if (response && response.data && response.data.id) {
-                    setSubmissionMessage(response.data.message);
-                    // Clear the form or navigate after a delay
-                    setTimeout(() => {
-                        navigate('/seller/dashboard');
-                    }, 5000);
-                } else {
-                    console.error('Unexpected response:', response);
-                    throw new Error('Su producto está en revisión. Le notificaremos cuando sea aprobado.');
+                if (existingImages.length > 0) {
+                    formData.append('existingImages', JSON.stringify(existingImages));
                 }
+
+                productData.images
+                    .filter(image => image.file)
+                    .forEach((image, index) => {
+                        formData.append('image', image.file);
+                    });
+
+                let response;
+                if (isEditing) {
+                    const token = localStorage.getItem('token');
+                    if (!token) {
+                        throw new Error('No hay token de autenticación');
+                    }
+
+                    response = await api.put(`/api/products/${id}`, formData, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+                } else {
+                    formData.append('status', 'PENDING');
+                    response = await api.post('/api/products', formData);
+                }
+
+                setSubmissionMessage(isEditing ? 'Producto actualizado con éxito' : 'Producto creado con éxito');
+
+                setTimeout(() => {
+                    navigate('/my/publications', { state: { refresh: true, newProductId: response.id } });
+                }, 2000);
             } catch (error) {
-                console.error('Error al crear el producto:', error);
-                let errorMessage = "Error al crear el producto. Por favor, inténtalo de nuevo.";
+                console.error('Error:', error);
+                let errorMessage = isEditing ? "Error al actualizar el producto" : "Error al crear el producto";
+                errorMessage += ". Por favor, inténtalo de nuevo.";
                 if (error.response) {
-                    console.error('Error response:', error.response);
                     errorMessage = error.response.data?.message || error.response.statusText;
                 } else if (error.request) {
-                    console.error('Error request:', error.request);
                     errorMessage = "No se recibió respuesta del servidor";
                 } else {
-                    console.error('Error message:', error.message);
                     errorMessage = error.message;
                 }
                 setErrors({ ...errors, submit: errorMessage });
             }
         }
     };
-
 
     const handleBackClick = () => {
         navigate(-1);
@@ -164,14 +259,14 @@ const ProductDetails = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.7 11.3L2 12l.7.7 4 4c.4.4 1 .4 1.4 0 .4-.4.4-1 0-1.4L5.8 13H15c.6 0 1-.4 1-1s-.4-1-1-1H5.8l2.3-2.3c.2-.2.3-.4.3-.7 0-.6-.4-1-1-1-.3 0-.5.1-.7.3l-4 4z"></path><path d="M22 19H10v-2h10V7H10V5h12z"></path></svg>
                     <p>Volver</p>
                 </button>
-                <h1 className="product-details__title">Añadir Nuevo Producto</h1>
+                <h1 className="product-details__title">{isEditing ? 'Editar Producto' : 'Añadir Nuevo Producto'}</h1>
                 <p className="product-details__introduction">
                     Completa los detalles del producto para añadirlo a <strong>nuestra tienda MisakGuambShop</strong>. Proporciona información precisa para ayudar a los clientes a tomar decisiones informadas y valorar el trabajo artesanal único de la comunidad Misak.
                 </p>
-                <form onSubmit={handleSubmit} className="product-details__form">
+                <form onSubmit={handleSubmit} className="product-details__form" noValidate>
                     <div className="product-details__form-group">
                         <label htmlFor="name" className="product-details__label">Nombre del Producto</label>
-                        <div className="product-details__input-wrapper">
+                        <div className={`product-details__input-wrapper ${errors.name ? 'error' : ''}`}>
                             <input
                                 id="name"
                                 type="text"
@@ -187,7 +282,7 @@ const ProductDetails = () => {
                     </div>
                     <div className="product-details__form-group">
                         <label htmlFor="price" className="product-details__label">Precio</label>
-                        <div className="product-details__input-wrapper">
+                        <div className={`product-details__input-wrapper ${errors.price ? 'error' : ''}`}>
                             <input
                                 id="price"
                                 type="number"
@@ -196,6 +291,8 @@ const ProductDetails = () => {
                                 onChange={handleInputChange}
                                 placeholder="Ingresa el precio"
                                 required
+                                step="0.01"
+                                min="0.01"
                                 className="product-details__input"
                             />
                         </div>
@@ -203,7 +300,7 @@ const ProductDetails = () => {
                     </div>
                     <div className="product-details__form-group">
                         <label htmlFor="stock" className="product-details__label">Cantidad en Inventario</label>
-                        <div className="product-details__input-wrapper">
+                        <div className={`product-details__input-wrapper ${errors.stock ? 'error' : ''}`}>
                             <input
                                 id="stock"
                                 type="number"
@@ -212,6 +309,7 @@ const ProductDetails = () => {
                                 onChange={handleInputChange}
                                 placeholder="Ingresa la cantidad disponible"
                                 required
+                                min="0"
                                 className="product-details__input"
                             />
                         </div>
@@ -225,16 +323,15 @@ const ProductDetails = () => {
                             value={productData.category}
                             onChange={handleInputChange}
                             required
-                            className="product-details__select"
+                            className={`product-details__select ${errors.category ? 'error' : ''}`}
                         >
                             <option value="">Selecciona una categoría</option>
                             {categories.map((category) => (
-                                <option key={category.id} value={category.id}>
+                                <option key={category.id} value={category.id.toString()}>
                                     {category.name}
                                 </option>
                             ))}
                         </select>
-
                         {errors.category && <p className="product-details__error">{errors.category}</p>}
                     </div>
                     <div className="product-details__form-group">
@@ -246,14 +343,15 @@ const ProductDetails = () => {
                             onChange={handleInputChange}
                             placeholder="Describe tu producto detalladamente..."
                             required
-                            className="product-details__textarea"
+                            maxLength="500"
+                            className={`product-details__textarea ${errors.description ? 'error' : ''}`}
                         />
                         {errors.description && <p className="product-details__error">{errors.description}</p>}
                     </div>
                     <div className="product-details__form-group">
                         <label htmlFor="images" className="product-details__label">Imágenes del Producto</label>
                         <div
-                            className="product-details__image-upload-area"
+                            className={`product-details__image-upload-area ${errors.images ? 'error' : ''}`}
                             onDragOver={handleDragOver}
                             onDrop={handleDrop}
                         >
@@ -282,8 +380,7 @@ const ProductDetails = () => {
                                     )}
                                 </div>
                             ) : (
-                                <div
-                                    className="product-details__image-upload-b"
+                                <div className={`product-details__image-upload-b ${errors.images ? 'error' : ''}`}
                                     onClick={handleUploadClick}
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -314,7 +411,9 @@ const ProductDetails = () => {
                         </div>
                     )}
                     {errors.submit && <p className="product-details__error">{errors.submit}</p>}
-                    <button type="submit" className="product-details__submit-button">Publicar producto</button>
+                    <button type="submit" className="product-details__submit-button">
+                        {isEditing ? 'Guardar cambios' : 'Publicar producto'}
+                    </button>
                 </form>
             </div>
         </div>

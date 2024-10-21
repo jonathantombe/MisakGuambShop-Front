@@ -84,7 +84,7 @@ const Register = () => {
                     email: form.email,
                     password: form.password,
                     confirmPassword: form.confirmPassword,
-                    phone: form.phone
+                    phone: form.phone,
                 });
 
                 setSuccess(registerResponse.message || 'Registro exitoso');
