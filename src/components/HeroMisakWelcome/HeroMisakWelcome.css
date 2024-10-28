@@ -6,7 +6,7 @@
     background: linear-gradient(135deg, #e2e2e2 0%, #e6d5b8 100%);
     margin-bottom: -50px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    position: relative; /* Cambiado para el ::after */
+    position: relative; 
 }
 
 .hero-misak::after {
@@ -71,19 +71,19 @@
     align-items: center;
     justify-content: center;
     line-height: 1.5em;
-    border-radius: 8px; /* Cambiado a 8px para uniformidad */
+    border-radius: 8px; 
     background-color: var(--color-accent);
     color: var(--color-button-text);
     border: none;
     opacity: 1;
     transition: background-color 0.25s ease, transform 0.2s ease;
-    cursor: pointer; /* Añadido para indicar interactividad */
+    cursor: pointer; 
 }
 
 .hero-misak-features span:hover {
     background-color: rgba(58, 9, 44, 0.85);
     color: var(--color-button-text);
-    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+    transform: scale(1.05); 
 }
 
 .hero-misak-image {
@@ -98,22 +98,22 @@
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Estilo para el botón "Ver más" */
+
 .hero-misak-content button {
-    margin-top: 20px; /* Espacio superior para separación */
-    padding: 10px 20px; /* Espaciado interno */
-    border: none; /* Sin borde */
-    border-radius: 8px; /* Bordes redondeados */
-    background-color: #8b4513; /* Color de fondo */
-    color: white; /* Color del texto */
-    font-size: 1rem; /* Tamaño de fuente */
-    cursor: pointer; /* Cambia el cursor */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones */
+    margin-top: 20px; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 8px; 
+    background-color: #8b4513; 
+    color: white; 
+    font-size: 1rem; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, transform 0.2s ease; 
 }
 
 .hero-misak-content button:hover {
-    background-color: #7a3b10; /* Color más oscuro al pasar el mouse */
-    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+    background-color: #7a3b10;
+    transform: scale(1.05); 
 }
 
 

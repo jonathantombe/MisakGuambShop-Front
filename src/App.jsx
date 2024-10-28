@@ -24,6 +24,7 @@ import Contact from './pages/Contact/Contact';
 import FAQ from './pages/CustomerServices/FAQ/FAQ';
 import JoinUs from './pages/CustomerServices/JoinUs/JoinUs';
 import CartPage from '../src/pages/CartPage/CartPage';     
+import History from '../src/pages/History/History'
 
 const App = () => {
   return (
