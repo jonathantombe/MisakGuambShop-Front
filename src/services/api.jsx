@@ -1,5 +1,5 @@
- const baseURL = 'http://localhost:8080';
-// const baseURL = 'misakguambshop-rest-api.up.railway.app'
+//  const baseURL = 'http://localhost:8080';
+const baseURL = 'misakguambshop-rest-api.up.railway.app'
 
 const getAuthToken = () => localStorage.getItem('token');
 
@@ -78,7 +78,6 @@ const api = {
                 ...options.headers,
             };
 
-            // No establecer Content-Type si es FormData
             if (!(data instanceof FormData)) {
                 headers['Content-Type'] = 'application/json';
                 data = JSON.stringify(data);

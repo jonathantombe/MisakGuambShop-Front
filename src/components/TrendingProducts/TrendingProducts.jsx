@@ -43,6 +43,7 @@ const TrendingProducts = () => {
     };
 
     return (
+        <>
         <div className="trending-products-container">
             <h2 className="trending-products-title">Productos de tendencia</h2>
             <div className="trending-products-grid">
@@ -138,6 +139,7 @@ const TrendingProducts = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 

@@ -18,7 +18,11 @@ import ProductSearch from './pages/SellProduct/ProductSearch';
 import CategoryConfirmation from './pages/SellProduct/CategoryConfirmation'
 import ProductDetails from './pages/SellProduct/ProductDetails';
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
-import MyPublication from './pages/MyPublications/MyPublications'
+import MyPublication from './pages/MyPublications/MyPublications';
+import ShipmentForm from './components/Shipment/ShipmentForm/ShipmentForm';
+import PaymentMethodSelector from './components/Payment/PaymentMethodSelector/PaymentMethodSelector';
+import CreditCardForm from './components/Payment/CreditCardForm/CreditCardForm';
+import CashPaymentForm from './components/Payment/CashPaymentForm/CashPaymentForm';
 import NotFound from './pages/NotFound/NotFound';
 import Contact from './pages/Contact/Contact';
 import FAQ from './pages/CustomerServices/FAQ/FAQ';
@@ -46,13 +50,16 @@ const App = () => {
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
             <Route path="/my/publications" element={<MyPublication />} />
+            <Route path="/shipment/form" element={<ShipmentForm />} />
+            <Route path="/payment/method/selector" element={<PaymentMethodSelector />} />
+            <Route path="/payment/credit-card" element={<CreditCardForm />} />
+            <Route path="/payment/cash" element={<CashPaymentForm />} />
             <Route path="*" element={<NotFound />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/FAQ' element={<FAQ/>}/>
             <Route path='/JoinUs' element={<JoinUs/>}></Route>
             <Route path="/cart" element={<CartPage />} />
             <Route path="/history" element={<History />} />
-            
           </Routes>
           <Footer />
         </div>
