@@ -138,6 +138,9 @@
 .custom-link:hover {
     text-decoration: underline;
 }
+.form-input.error {
+    border-color: var(--color-error-message)
+}
 
 @media screen and (max-width: 768px) {
     .login-container {
@@ -257,14 +260,8 @@
         outline: none;
         border-color: #007bff;
     }
-    .input-error {
-      border: 1px solid red;
-   }
-   .error-text {
-    color: red;
-    font-size: 0.8em;
-    margin: 0;
-    text-align: start;
+    .form-input.error {
+    border-color: var(--color-error-message)
    }
 
    .button-olvide-contrasena button{

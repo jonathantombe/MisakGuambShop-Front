@@ -29,29 +29,7 @@ export const registerUser = async (userData) => {
 };
 
 
-export const registerSeller = async (sellerData) => {
-    try {
-        const response = await api.post(`${API_URL}/signup/seller`, sellerData);
 
-        if (response && response.user) {
-            localStorage.setItem('user', JSON.stringify({
-                ...response.user,
-                fullName: sellerData.fullName,
-                email: sellerData.email,
-                phone: sellerData.phone,
-                companyName: sellerData.companyName
-            }));
-            if (response.accessToken) {
-                localStorage.setItem('token', response.accessToken);
-            }
-        }
-
-        return response;
-    } catch (error) {
-        console.error("Error de registro de vendedor:", error);
-        throw error;
-    }
-};
 
 export const loginUser = async (loginData) => {
     try {
@@ -64,8 +42,11 @@ export const loginUser = async (loginData) => {
                 email: loginData.email,
                 username: response.user.username,
                 phone: response.user.phone,
+                isAdmin: response.user.is_admin || response.user.roles?.includes('ADMIN') || false,
+                isSeller: response.user.is_seller || response.user.roles?.includes('SELLER') || false,
                 is_active: response.user.is_active,
                 profileImageUrl: response.user.profileImageUrl,
+                roles: response.user.roles || [],
             };
             localStorage.setItem('user', JSON.stringify(userToStore));
             localStorage.setItem('token', response.accessToken);

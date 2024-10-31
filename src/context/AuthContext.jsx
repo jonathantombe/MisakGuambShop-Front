@@ -22,19 +22,31 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = (userData) => {
+        console.log('Login data received:', userData);
         const userToStore = {
             ...userData,
             username: userData.username,
             email: userData.email,
-            phone: userData.phone
+            phone: userData.phone,
+            roles: userData.roles || [], 
+            isSeller: userData.roles?.includes('SELLER') || false, 
+            isAdmin: userData.roles?.includes('ADMIN') || false 
+            
         };
+        console.log('User data to store:', userToStore);
         setUser(userToStore);
         localStorage.setItem('user', JSON.stringify(userToStore));
     };
 
     const updateUser = (userData) => {
-        setUser(userData);
-        localStorage.setItem('user', JSON.stringify(userData));
+        const updatedUser = {
+            ...userData,
+            roles: userData.roles,
+            isSeller: userData.roles.includes('SELLER'),
+            isAdmin: userData.roles.includes('ADMIN')
+        };
+        setUser(updatedUser);
+        localStorage.setItem('user', JSON.stringify(updatedUser));
     };
 
     const logout = () => {
@@ -44,7 +56,15 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout, updateUser: setUser }}>
+         <AuthContext.Provider value={{
+            user,
+            login,
+            logout,
+            updateUser,
+            setUser,
+            isAdmin: user?.roles.includes('ADMIN') || false,
+            isSeller: user?.roles.includes('SELLER') || false
+        }}>
             {children}
         </AuthContext.Provider>
     );

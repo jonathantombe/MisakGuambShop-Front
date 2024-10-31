@@ -1,0 +1,66 @@
+/* Estilos para JoinUs */
+.join-us {
+  max-width: 900px;
+  margin: 0 auto; /* Centra el contenido horizontalmente */
+  text-align: center; /* Centra el texto */
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  background-color: #F3F4F6;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.join-us h1 {
+  font-size: 2.2em;
+  color: #333;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.join-us p {
+  font-size: 1.1em;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+.join-us img {
+  width: 100%;
+  max-width: 300px; /* Limita el tamaño máximo de las imágenes */
+  margin-bottom: 30px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón "Únete a Nosotros" */
+.join-us h2 {
+  font-size: 1.8em;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+.join-us p:last-child {
+  font-size: 1.1em;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .join-us {
+    padding: 15px;
+  }
+
+  .join-us h1 {
+    font-size: 1.8em;
+  }
+
+  .join-us p {
+    font-size: 1em;
+  }
+
+  .join-us img {
+    max-width: 250px;
+  }
+}
