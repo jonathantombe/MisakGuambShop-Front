@@ -65,7 +65,6 @@ const UserProfileEdit = () => {
                 console.log('Updated user:', updatedUser);
                 if (updatedUser && updatedUser.profileImageUrl) {
                     updateUser(updatedUser);
-                    setSuccessMessage("Imagen de perfil actualizada con éxito.");
                     setImagePreview(updatedUser.profileImageUrl);
                 } else {
                     throw new Error('No se recibió la URL de la imagen actualizada');

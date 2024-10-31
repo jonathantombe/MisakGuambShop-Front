@@ -22,7 +22,6 @@ const Register = () => {
 
     const validateForm = () => {
         let tempErrors = {};
-        // Validación del nombre de usuario
         if (!form.username.trim()) {
             tempErrors.username = "El nombre de usuario es requerido";
         } else if (form.username.length < 3 || form.username.length > 20) {
@@ -31,14 +30,12 @@ const Register = () => {
             tempErrors.username = "El nombre de usuario solo puede contener letras y números";
         }
 
-        // Validación del correo electrónico
         if (!form.email.trim()) {
             tempErrors.email = "El correo electrónico es requerido";
         } else if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(form.email)) {
             tempErrors.email = "El correo electrónico debe estar en minúsculas y tener un formato válido";
         }
 
-        // Validación de la contraseña
         if (!form.password) {
             tempErrors.password = "La contraseña es requerida";
         } else if (form.password.length < 8 || form.password.length > 20) {
@@ -47,12 +44,10 @@ const Register = () => {
             tempErrors.password = "La contraseña debe tener al menos una mayúscula, una minúscula, un número y un carácter especial";
         }
 
-        // Validación de la confirmación de la contraseña
         if (form.password !== form.confirmPassword) {
             tempErrors.confirmPassword = "Las contraseñas no coinciden";
         }
 
-        // Validación del número de teléfono
         if (!form.phone.trim()) {
             tempErrors.phone = "El número de teléfono es requerido";
         } else if (!/^\d{10}$/.test(form.phone)) {
