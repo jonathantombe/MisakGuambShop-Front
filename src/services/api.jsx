@@ -1,5 +1,5 @@
 //  const baseURL = 'http://localhost:8080';
-const baseURL = 'misakguambshop-rest-api.up.railway.app'
+const baseURL = 'https://misakguambshop-rest-api.up.railway.app'
 
 const getAuthToken = () => localStorage.getItem('token');
 
