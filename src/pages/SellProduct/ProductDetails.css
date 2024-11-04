@@ -313,6 +313,98 @@
     text-align: center;
 }
 
+.loading-overlay-background,
+.success-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+
+/* Estilos para el contenedor del spinner */
+.loading-spinner-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilos para el spinner */
+.loading-spinner {
+    width: 7rem;
+    height: 7rem;
+    border-width: 8px;
+    border-color: gray;
+    border-top-color: blue;
+    color: blue;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loading-animation {
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Estilos para el modal de confirmación */
+.success-modal-content {
+    padding: 2rem;
+    background-color: var(--color-contrast-bg);
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.success-modal-icon {
+    width: 60px;
+    height: 60px;
+    color: #22c55e;
+    margin-bottom: 1rem;
+}
+
+.success-modal-message {
+    font-size: 1.125rem;
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.7em;
+    margin: 0;
+    font-weight: var(--font-heading-weight);
+    font-style: var(--font-heading-style);
+    color: #4a3933;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Animaciones */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes ping {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    75%,
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
 @media only screen and (max-width: 575px) {
     .product-details__container {
         padding: 1rem;
