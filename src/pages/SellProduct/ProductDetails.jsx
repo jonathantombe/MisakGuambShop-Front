@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { CheckCircle2 } from 'lucide-react';
 import { categories } from '../../utils/categories';
 import { useAuth } from '../../context/AuthContext';
 import api from '../../services/api';
@@ -9,6 +10,9 @@ const ProductDetails = () => {
     const { user } = useAuth();
     const { id } = useParams();
     const isEditing = !!id;
+    const [isLoading, setIsLoading] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+
     const [productData, setProductData] = useState({
         name: '',
         price: '',
@@ -17,6 +21,7 @@ const ProductDetails = () => {
         category: '',
         images: []
     });
+    
 
     const [errors, setErrors] = useState({});
     const [submissionMessage, setSubmissionMessage] = useState('');
@@ -47,10 +52,13 @@ const ProductDetails = () => {
 
         if (!productData.price) {
             newErrors.price = "El precio es obligatorio";
-        } else if (isNaN(productData.price) || parseFloat(productData.price) <= 0) {
-            newErrors.price = "El precio debe ser un número mayor que cero";
-        } else if (productData.price.toString().split('.')[0].length > 10) {
-            newErrors.price = "El precio no puede tener más de 10 dígitos enteros";
+        } else {
+            const numericPrice = parseFloat(productData.price.replace(/[^\d]/g, ''));
+            if (isNaN(numericPrice) || numericPrice <= 0) {
+                newErrors.price = "El precio debe ser un número mayor que cero";
+            } else if (numericPrice > 999999999) { 
+                newErrors.price = "El precio excede el límite permitido";
+            }
         }
 
         if (!productData.stock) {
@@ -147,36 +155,30 @@ const ProductDetails = () => {
                 }
             });
 
-            // Verificar que la respuesta es válida
-            if (!response || typeof response !== 'object') {
-                throw new Error('Respuesta inválida del servidor');
-            }
+            // Añade estos logs para debugging
+            console.log('Respuesta completa del servidor:', response);
+            console.log('Categoría en la respuesta:', response.categoryId);
 
-            // Mapear directamente los datos recibidos
+            // Mapear los datos recibidos
             const mappedData = {
                 name: response.name,
                 price: response.price.toString(),
                 description: response.description,
                 stock: response.stock.toString(),
-                // Asegurarse de que la categoría se establezca correctamente
-                category: response.categoryId ? response.categoryId.toString() : '',
-                // Mapear las imágenes correctamente
+                // Verifica si la categoría está en otro campo
+                category: response.categoryId?.toString() || response.category?.toString() || '',
                 images: response.images.map(image => ({
                     file: null,
-                    preview: image.imageUrl // Usar la propiedad imageUrl del objeto imagen
+                    preview: image.imageUrl
                 }))
             };
 
-            // Actualizar el estado con los datos mapeados
+            console.log('Datos mapeados:', mappedData);
+
             setProductData(mappedData);
 
-            console.log('Datos del producto cargados:', {
-                original: response,
-                mapped: mappedData
-            });
-
         } catch (error) {
-            console.error('Error fetching product details:', error);
+            console.error('Error al cargar los detalles del producto:', error);
             setErrors(prev => ({
                 ...prev,
                 fetch: 'Error al cargar los detalles del producto: ' + error.message
@@ -187,11 +189,12 @@ const ProductDetails = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (validateForm()) {
+            setIsLoading(true);
             try {
                 const formData = new FormData();
                 formData.append('name', productData.name);
                 formData.append('description', productData.description);
-                formData.append('price', parseFloat(productData.price) || 0);
+                formData.append('price', parseFloat(productData.price.replace(/[^\d]/g, '')) || 0);
                 formData.append('stock', parseInt(productData.stock) || 0);
                 formData.append('categoryId', parseInt(productData.category) || 0);
                 formData.append('userId', user.id);
@@ -206,7 +209,7 @@ const ProductDetails = () => {
 
                 productData.images
                     .filter(image => image.file)
-                    .forEach((image, index) => {
+                    .forEach((image) => {
                         formData.append('image', image.file);
                     });
 
@@ -227,9 +230,9 @@ const ProductDetails = () => {
                     response = await api.post('/api/products', formData);
                 }
 
-                setSubmissionMessage(isEditing ? 'Producto actualizado con éxito' : 'Producto creado con éxito');
-
+                setShowModal(true);
                 setTimeout(() => {
+                    setShowModal(false);
                     navigate('/my/publications', { state: { refresh: true, newProductId: response.id } });
                 }, 2000);
             } catch (error) {
@@ -244,9 +247,12 @@ const ProductDetails = () => {
                     errorMessage = error.message;
                 }
                 setErrors({ ...errors, submit: errorMessage });
+            } finally {
+                setIsLoading(false);
             }
         }
     };
+
 
     const handleBackClick = () => {
         navigate(-1);
@@ -285,14 +291,20 @@ const ProductDetails = () => {
                         <div className={`product-details__input-wrapper ${errors.price ? 'error' : ''}`}>
                             <input
                                 id="price"
-                                type="number"
+                                type="text" // Cambiar de 'number' a 'text'
                                 name="price"
-                                value={productData.price}
-                                onChange={handleInputChange}
+                                value={productData.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                                onChange={(e) => {
+                                    const value = e.target.value.replace(/[^\d]/g, '');
+                                    handleInputChange({
+                                        target: {
+                                            name: 'price',
+                                            value: value
+                                        }
+                                    });
+                                }}
                                 placeholder="Ingresa el precio"
                                 required
-                                step="0.01"
-                                min="0.01"
                                 className="product-details__input"
                             />
                         </div>
@@ -415,6 +427,28 @@ const ProductDetails = () => {
                         {isEditing ? 'Guardar cambios' : 'Publicar producto'}
                     </button>
                 </form>
+                {isLoading && (
+                    <div className="loading-overlay-background">
+                        <div className="loading-spinner-container">
+                            <div className="loading-spinner">
+                                <svg viewBox="0 0 24 24" fill="currentColor" height="1em" width="1em" className="loading-animation">
+                                    <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                )}
+                {showModal && (
+                    <div className="success-modal-overlay">
+                        <div className="success-modal-content">
+                            <CheckCircle2 className="success-modal-icon" />
+                            <p className="success-modal-message">
+                                Su producto se publicó con éxito.<br />
+                                Espere la aprobación del administrador.
+                            </p>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

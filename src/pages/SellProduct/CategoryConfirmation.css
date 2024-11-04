@@ -43,10 +43,9 @@
   color: var(--color-accent);
 }
 .category-confirmation h2 {
-  
-    line-height: 1.7em;
-    margin: 0;
-    font-family: var(--font-heading), sans-serif;
+  line-height: 1.7em;
+  margin: 0;
+  font-family: var(--font-heading), sans-serif;
   font-weight: var(--font-heading-weight);
   font-style: var(--font-heading-style);
   color: #4a3933;

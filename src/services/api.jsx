@@ -12,7 +12,7 @@ const parseResponse = async (response) => {
         try {
             return JSON.parse(text);
         } catch (e) {
-            return text;
+            return text; status
         }
     }
 };
