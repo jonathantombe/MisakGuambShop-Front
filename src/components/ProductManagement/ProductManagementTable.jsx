@@ -1,6 +1,8 @@
 import React from 'react';
 import './ProductManagementTable.css';
 import { categories } from '../../utils/categories';
+import { formatPrice } from '../../utils/Formatters/formatters';
+
 
 const ProductManagementTable = ({
     products,
@@ -122,7 +124,7 @@ const ProductManagementTable = ({
                                         ))}
                                     </div>
                                 </td>
-                                <td>{product.price.toFixed(2)} €</td>
+                                <td>{formatPrice(product.price)}</td>
                                 <td>{categories.find(c => c.id === product.categoryId)?.name || 'N/A'}</td>
                                 {showVendorColumn && <td>{product.userId}</td>}
                                 <td>
