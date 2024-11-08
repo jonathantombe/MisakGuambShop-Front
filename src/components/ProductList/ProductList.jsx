@@ -2,24 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ProductList.css';
 
-const ProductList = ({ title }) => {
+
+const ProductList = ({ title,products}) => {
+    console.log(products)
     const navigate = useNavigate();
-    const [products, setProducts] = useState([]);
-
-    const fetchProducts = async () => {
-        try {
-            const response = await fetch('URL_DE_TU_API'); // Reemplaza con la URL de tu API
-            const data = await response.json();
-            const approvedProducts = data.filter(product => product.approved);
-            setProducts(approvedProducts);
-        } catch (error) {
-            console.error('Error al obtener los productos:', error);
-        }
-    };
-
-    useEffect(() => {
-        fetchProducts();
-    }, []);
 
     const addToCart = (product) => {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -41,7 +27,7 @@ const ProductList = ({ title }) => {
             <div className="product-list">
                 {products.map((product) => (
                     <div key={product.id} className="product-card">
-                        <img src={product.image} alt={product.name} className="product-image" />
+                        <img src={product.imageUrls} alt={product.name} className="product-image" />
                         <h3 className="product-name">{product.name}</h3>
                         <div className="product-rating-container">
                             <div className="product-rating">
@@ -49,7 +35,7 @@ const ProductList = ({ title }) => {
                                     <span key={i} className={i < product.rating ? 'star filled' : 'star'}>★</span>
                                 ))}
                             </div>
-                            <p className="product-rating-value">{product.rating.toFixed(2)}</p>
+                            <p className="product-rating-value">{product?.rating?.toFixed(2)}</p>
                         </div>
                         <div className="product-price-container">
                             <p className="product-price">${product.price.toFixed(2)}</p>
