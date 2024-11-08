@@ -4,6 +4,8 @@ import ProductModal from '../../components/ProductModal/ProductModal';
 import './CartPage.css';
 
 const CartPage = () => {
+    
+    
     const [cartItems, setCartItems] = useState([]);
     const [selectAll, setSelectAll] = useState(false);
     const [modalProduct, setModalProduct] = useState(null);
@@ -58,6 +60,8 @@ const CartPage = () => {
         [cartItems]
     );
 
+    console.log(cartItems);
+
     return (
         <div className="cart-page">
             <div className="cart-container">
@@ -92,7 +96,7 @@ const CartPage = () => {
                                 checked={item.selected} 
                                 onChange={() => toggleSelectItem(item.id)}
                             />
-                            <img src={item.image} alt={item.name} />
+                            <img src={item.imageUrls} alt={item.name} />
                             <div className="item-details">
                                 <p className="item-name">{item.name}</p>
                                 <p className="item-price">COP {item.price.toLocaleString()}</p>
