@@ -1,6 +1,7 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Importamos useNavigate
+import { useNavigate } from 'react-router-dom';
 import './FAQ.css';
+
 const FAQ = () => {
   const navigate = useNavigate();
 
@@ -32,25 +33,26 @@ const FAQ = () => {
   ];
 
   const handleFAQClick = (route) => {
-    navigate(route); // Redirige a la ruta específica cuando se hace clic en la pregunta
+    navigate(route);
   };
 
   return (
-    <div className="faq-container">
-      <h1>Preguntas Frecuentes</h1>
-      <div className="faq-list">
-        {faqs.map((faq, index) => (
-          <div 
-            key={index} 
-            className="faq-item" 
-            onClick={() => handleFAQClick(faq.route)} // Redirige al hacer clic
-          >
-            <div className="faq-question">
-              {faq.question}
+    <div className="faq-container-main">
+      <div className='faq-container-inner'>
+        <h1 className="faq-header-main">Preguntas Frecuentes</h1>
+        <div className="faq-list-container">
+          {faqs.map((faq, index) => (
+            <div
+              key={index}
+              className="faq-item-container"
+              onClick={() => handleFAQClick(faq.route)}
+            >
+              <div className="faq-question-text">
+                {faq.question}
+              </div>
             </div>
-          </div>
-        ))}
-
+          ))}
+        </div>
       </div>
     </div>
   );

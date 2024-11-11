@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import DefaultProfileIcon from '../../assets/icons/no-user-avatar.svg';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import MobileTopBar from '../../components/MobileTopBar/MobileTopBar';
 import api from '../../services/api';
 import mochilas from '../../assets/products/mochilas/03_900x.webp';
 import manillas from '../../assets/products/manillas/manilla.png';
@@ -291,7 +292,7 @@ export const Header = () => {
               <Link to="/login" className="nav-link">Iniciar Sesión</Link>
             </>
             )}
-            <button className='icon-button'>
+            <button className='icon-button corazon'>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.035 2.627a2 2 0 0 1 3.93 0 6.7 6.7 0 0 1 4.56 4.905L21 18.333H3L5.475 7.532a6.7 6.7 0 0 1 4.56-4.905m1.921 1.706a4.694 4.694 0 0 0-4.531 3.645L5.51 16.333h12.98l-1.915-8.355a4.694 4.694 0 0 0-4.531-3.645z"></path><path d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2"></path></svg>
             </button>
           <button className="icon-button corazon">
@@ -300,7 +301,7 @@ export const Header = () => {
               </svg>
           </button>
          
-          <button className="icon-button">
+            <button className="icon-button corazon">
             <Link to="/cart ">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path fill-rule="evenodd" clip-rule="evenodd" d="m5.766 5-.618-3H1v2h2.518l2.17 10.535L6.18 17h14.306l2.4-12H5.767ZM7.82 15l-1.6-8h14.227l-1.6 8H7.82Z"></path>
@@ -310,7 +311,8 @@ export const Header = () => {
           </button>
         </nav>
       </div>
-    </header>
+      </header>
+      <MobileTopBar />
     </>
   );
 };

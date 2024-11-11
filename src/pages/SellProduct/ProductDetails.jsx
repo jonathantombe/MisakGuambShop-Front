@@ -214,6 +214,7 @@ const ProductDetails = () => {
                     });
 
                 let response;
+                let successMessage;
                 if (isEditing) {
                     const token = localStorage.getItem('token');
                     if (!token) {
@@ -225,12 +226,15 @@ const ProductDetails = () => {
                             'Authorization': `Bearer ${token}`
                         }
                     });
+                    successMessage = 'Producto actualizado con éxito.';
                 } else {
                     formData.append('status', 'PENDING');
                     response = await api.post('/api/products', formData);
+                    successMessage = 'Su producto se publicó con éxito.\nEspere la aprobación del administrador.';
                 }
 
                 setShowModal(true);
+                setSubmissionMessage(successMessage);
                 setTimeout(() => {
                     setShowModal(false);
                     navigate('/my/publications', { state: { refresh: true, newProductId: response.id } });
@@ -441,11 +445,8 @@ const ProductDetails = () => {
                 {showModal && (
                     <div className="success-modal-overlay">
                         <div className="success-modal-content">
-                            <CheckCircle2 className="success-modal-icon" />
-                            <p className="success-modal-message">
-                                Su producto se publicó con éxito.<br />
-                                Espere la aprobación del administrador.
-                            </p>
+                            <svg class="success-popup__icon" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><g transform="translate(1 1)" fill="none" fill-rule="evenodd"><circle stroke="#6C0" stroke-width="2" cx="26" cy="26" r="26"></circle><path d="M25.8 35.098l13.563-13.835c.91-.91.836-2.46-.165-3.46-1-1.002-2.55-1.076-3.46-.166L23.77 29.84l-7.51-6.763c-.91-.91-2.46-.836-3.46.165-1 1-1.075 2.55-.165 3.46l9.61 8.657c.91.91 2.46.835 3.46-.166.03-.03.062-.063.092-.096z" fill="#6C0"></path></g></svg>
+                            <p className="success-modal-message">{submissionMessage} </p>
                         </div>
                     </div>
                 )}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import isotipoblack from '../../assets/images/isotipoblack.png';
-import Footer from '../../components/Footer/Footer';
+
 import { loginUser, reactivateAccount, forgotPassword } from '../../services/auth';
 import { useAuth } from '../../context/AuthContext';
 import './Login.css';
@@ -174,7 +174,7 @@ const Login = () => {
                     </div>
                 </div>
             </main>
-            <Footer />
+            
             {showResetPassword && (
                 <div className="modal-overlay">
                     <div className="modal-content">

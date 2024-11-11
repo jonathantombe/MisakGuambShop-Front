@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import './CashPaymentForm.css';
 
 const CashPaymentForm = ({ onBack }) => {
@@ -17,7 +17,6 @@ const CashPaymentForm = ({ onBack }) => {
             ...prev,
             [name]: value
         }));
-        // Clear error when user starts typing
         if (errors[name]) {
             setErrors(prev => ({
                 ...prev,
@@ -45,25 +44,23 @@ const CashPaymentForm = ({ onBack }) => {
         const newErrors = validateForm();
 
         if (Object.keys(newErrors).length === 0) {
-            // Aquí iría la lógica para procesar el pago en efectivo
             console.log('Procesando pago en efectivo...', formData);
-            // Aquí puedes agregar la navegación al siguiente paso
         } else {
             setErrors(newErrors);
         }
     };
 
     return (
-        <div className="cash-payment-form">
-            <div onClick={onBack} className='payment-method-selector-back-link'>
-                <Link to="/payment/method/selector" className="back-link-a">
+        <div className="cash-payment-form-container">
+            <div onClick={onBack} className="cash-payment-back-link">
+                <Link to="/payment/method/selector" className="cash-payment-back-link-a">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.7 11.3L2 12l.7.7 4 4c.4.4 1 .4 1.4 0 .4-.4.4-1 0-1.4L5.8 13H15c.6 0 1-.4 1-1s-.4-1-1-1H5.8l2.3-2.3c.2-.2.3-.4.3-.7 0-.6-.4-1-1-1-.3 0-.5.1-.7.3l-4 4z"></path><path d="M22 19H10v-2h10V7H10V5h12z"></path></svg>
-                    <p className='back-link-p'>Volver</p>
+                    <p className="cash-payment-back-link-p">Volver</p>
                 </Link>
             </div>
             <h2>Información del Comprador</h2>
             <form onSubmit={handleSubmit}>
-                <div className="form-group">
+                <div className="cash-payment-form-group">
                     <label htmlFor="fullName">Nombre completo</label>
                     <input
                         type="text"
@@ -71,12 +68,12 @@ const CashPaymentForm = ({ onBack }) => {
                         name="fullName"
                         value={formData.fullName}
                         onChange={handleChange}
-                        className={errors.fullName ? 'error' : ''}
+                        className={errors.fullName ? 'cash-payment-input-error' : 'cash-payment-input'}
                     />
-                    {errors.fullName && <span className="error-message">{errors.fullName}</span>}
+                    {errors.fullName && <span className="cash-payment-error-message">{errors.fullName}</span>}
                 </div>
 
-                <div className="form-group">
+                <div className="cash-payment-form-group">
                     <label htmlFor="documentId">Documento de identidad</label>
                     <input
                         type="text"
@@ -84,12 +81,12 @@ const CashPaymentForm = ({ onBack }) => {
                         name="documentId"
                         value={formData.documentId}
                         onChange={handleChange}
-                        className={errors.documentId ? 'error' : ''}
+                        className={errors.documentId ? 'cash-payment-input-error' : 'cash-payment-input'}
                     />
-                    {errors.documentId && <span className="error-message">{errors.documentId}</span>}
+                    {errors.documentId && <span className="cash-payment-error-message">{errors.documentId}</span>}
                 </div>
 
-                <div className="form-group">
+                <div className="cash-payment-form-group">
                     <label htmlFor="birthDate">Fecha de nacimiento</label>
                     <input
                         type="date"
@@ -97,12 +94,12 @@ const CashPaymentForm = ({ onBack }) => {
                         name="birthDate"
                         value={formData.birthDate}
                         onChange={handleChange}
-                        className={errors.birthDate ? 'error' : ''}
+                        className={errors.birthDate ? 'cash-payment-input-error' : 'cash-payment-input'}
                     />
-                    {errors.birthDate && <span className="error-message">{errors.birthDate}</span>}
+                    {errors.birthDate && <span className="cash-payment-error-message">{errors.birthDate}</span>}
                 </div>
 
-                <button type="submit" className="submit-button">
+                <button type="submit" className="cash-payment-submit-button">
                     Continuar
                 </button>
             </form>
@@ -111,3 +108,4 @@ const CashPaymentForm = ({ onBack }) => {
 };
 
 export default CashPaymentForm;
+
