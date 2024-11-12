@@ -172,14 +172,19 @@
     color: white;
 }
 
-@media only screen and (min-width: 351px) and (max-width: 575px) {}
+@media (min-width: 351px){}
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {}
+@media (min-width: 576px){}
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {}
+@media (min-width: 768px){}
 
-@media only screen and (min-width: 992px) and (max-width: 1199px) {}
+@media (min-width: 992px){}
 
-@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+@media (min-width: 1200px){
+    .admin-dashboard-main-content {
+    flex-grow: 1;
+    padding: 0 20px 10rem;
+    }
+}
 
-@media only screen and (min-width: 1400px) and (max-width: 1599px) {}
+@media (min-width: 1400px){}
