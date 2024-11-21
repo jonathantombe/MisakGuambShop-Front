@@ -61,7 +61,6 @@ const App = () => {
             <Route path="/payment/credit-card" element={<CreditCardForm />} />
             <Route path="/payment/cash" element={<CashPaymentForm />} />
             <Route path="*" element={<NotFound />} />
-            <Route path='/contact' element={<Contact />} />
             <Route path='/FAQ' element={<FAQ/>}/>
             <Route path='/JoinUs' element={<JoinUs/>}></Route>
             <Route path="/cart" element={<CartPage />} />
