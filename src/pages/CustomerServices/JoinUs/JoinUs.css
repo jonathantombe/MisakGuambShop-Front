@@ -1,5 +1,5 @@
 .join-us {
-  background-color: var(--gray-color);
+  background-color: var(--background-warm);
   padding: 3rem 0;
 }
 
@@ -66,7 +66,7 @@
 }
 
 @media (min-width: 1200px) {
-  .join-us {}
+  
 
   .join-us-v {
     max-width: 1200px;
@@ -142,7 +142,7 @@
 }
 
 @media (min-width: 1820px) {
-  .join-us {}
+  
 
   .join-us-v {
     max-width: 1300px;
