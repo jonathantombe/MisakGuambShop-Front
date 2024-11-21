@@ -10,7 +10,7 @@ const Footer = () => {
                 <div className="footer-section">
                     <h3>Servicio al cliente</h3>
                     <ul>
-                        <li><Link to="/contact">Contacto</Link></li> 
+              
                         <li><Link to="/FAQ">Preguntas Frecuentes</Link></li>
                     </ul>
                 </div>
