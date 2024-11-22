@@ -121,12 +121,12 @@
   object-fit: contain;
 }
 
-@media (min-width: 1200px){
+@media (min-width: 1200px) {
   .category-confirmation {
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: var(--color-bg);
+    display: flex;
+    justify-content: center;
+    padding: 4rem 0;
+    background-color: var(--gray-color);
     border-radius: 8px;
     box-shadow: var(--box-shadow);
   }
@@ -139,21 +139,22 @@
     font-size: var(--font-size-body-small);
   }
 
-    .category-confirmation .back-link svg {
-      fill: currentColor;
-      vertical-align: middle;
-      width: 30px;
-      height: 30px;
-      color: var(--color-accent);
-    }
-        .category-confirmation .back-link p {
-          margin: 5px;
-          letter-spacing: .1299px;
-          font-family: Graphik Webfont, -apple-system, Helvetica Neue, Droid Sans, Arial, "sans-serif";
-          font-size: 14.99px;
-          font-weight: 400;
-          line-height: 1.4;
-        }
+  .category-confirmation .back-link svg {
+    fill: currentColor;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    color: var(--color-accent);
+  }
+
+  .category-confirmation .back-link p {
+    margin: 5px;
+    letter-spacing: .1299px;
+    font-family: Graphik Webfont, -apple-system, Helvetica Neue, Droid Sans, Arial, "sans-serif";
+    font-size: 14.99px;
+    font-weight: 400;
+    line-height: 1.4;
+  }
 
   .category-confirmation h2 {
     font-family: var(--font-heading);
@@ -218,21 +219,20 @@
 @media (min-width: 1820px) {
   .category-confirmation {
     background-color: var(--gray-color);
-    padding: 1px 22rem;
     border-radius: 8px;
     box-shadow: var(--box-shadow);
-
+    width: 100%;
     box-sizing: border-box;
   }
 
   .category-confirmation .category-confirmation-div {
-    max-width: 800px;
-    margin: 5rem auto;
-    padding: 6rem;
+    margin: 2rem auto;
+    padding: 4rem 5rem;
     background-color: var(--color-bg);
     border-radius: 10px;
     box-shadow: var(--box-shadow);
     box-sizing: border-box;
+    max-width: 1200px;
   }
 
   .category-confirmation .back-link {
@@ -271,7 +271,7 @@
     font-style: var(--font-heading-style);
     font-size: 30px;
     color: #4a3933;
-    margin-bottom: 1.5rem;
+    margin-bottom: 4rem;
     text-align: center;
   }
 

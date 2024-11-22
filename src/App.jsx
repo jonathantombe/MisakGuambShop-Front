@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Register from './pages/Register/Register';
 import { AuthProvider } from './context/AuthContext';
@@ -23,14 +19,15 @@ import ProductDetails from './pages/SellProduct/ProductDetails';
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
 import MyPublication from './pages/MyPublications/MyPublications';
 import ShipmentForm from './components/Shipment/ShipmentForm/ShipmentForm';
-import PaymentMethodSelector from './components/Payment/PaymentMethodSelector/PaymentMethodSelector';
-import CreditCardForm from './components/Payment/CreditCardForm/CreditCardForm';
-import CashPaymentForm from './components/Payment/CashPaymentForm/CashPaymentForm';
+import PaymentConfirmation from './components/Payment/PaymentConfirmation/PaymentConfirmation';
+import EpaycoCheckout from './components/Payment/EpaycoCheckout/EpaycoCheckout';
+import Success from './pages/Payment/Success/Success';
+import Cancel from './pages/Payment/Cancel/Cancel';
 import NotFound from './pages/NotFound/NotFound';
 import Contact from './pages/Contact/Contact';
 import FAQ from './pages/CustomerServices/FAQ/FAQ';
 import JoinUs from './pages/CustomerServices/JoinUs/JoinUs';
-import CartPage from '../src/pages/CartPage/CartPage';     
+import BuyNowButton from '../src/components/BuyNowButton/BuyNowButton';     
 import History from '../src/pages/History/History'
 
 const App = () => {
@@ -57,14 +54,15 @@ const App = () => {
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
             <Route path="/my/publications" element={<MyPublication />} />
             <Route path="/shipment/form" element={<ShipmentForm />} />
-            <Route path="/payment/method/selector" element={<PaymentMethodSelector />} />
-            <Route path="/payment/credit-card" element={<CreditCardForm />} />
-            <Route path="/payment/cash" element={<CashPaymentForm />} />
+            <Route path="/payment/confirm" element={<PaymentConfirmation />} />
+            <Route path="/payment/epayco/checkout" element={<EpaycoCheckout />} />
+            <Route path="/payment/success" element={<Success />} />
+            <Route path="/payment/cancel" element={<Cancel />} />
             <Route path="*" element={<NotFound />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/FAQ' element={<FAQ/>}/>
             <Route path='/JoinUs' element={<JoinUs/>}></Route>
-            <Route path="/cart" element={<CartPage />} />
+            <Route path="/buyNow/button" element={<BuyNowButton />} />
             <Route path="/history" element={<History />} />
           </Routes>
           <Footer />

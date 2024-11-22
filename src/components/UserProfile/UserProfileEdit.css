@@ -4,7 +4,6 @@
 }
 
 .edit-profile-container {
-    /* max-width: 800px; */
     background-color: #F3F4F6;
     border-radius: 8px;
     box-shadow: var(--box-shadow);
@@ -165,8 +164,8 @@
     align-items: center;
     margin-bottom: 2rem;
     position: relative;
-    /* Agrega un margen para separar la imagen de los campos de perfil */
 }
+
 .mobile-settings-icon {
     display: none;
     position: absolute;
@@ -396,18 +395,18 @@
 
     }
 
-        .mobile-settings-icon {
-            display: block;
-        }
-    
-        .profile-image-section {
-            width: 100%;
-            background-color: #f0f0f0;
-            padding: 30px 0;
-            order: 1;
-            margin-bottom: 1rem;
-            margin-top: 74px;
-        }
+    .mobile-settings-icon {
+        display: block;
+    }
+
+    .profile-image-section {
+        width: 100%;
+        background-color: #f0f0f0;
+        padding: 30px 0;
+        order: 1;
+        margin-bottom: 1rem;
+        margin-top: 74px;
+    }
 
     .profile-image-container {
         width: 85px;
@@ -462,10 +461,8 @@
 }
 
 @media (max-width: 1024px) {
-    /* Estilos específicos para dispositivos de hasta 1024px */
 }
 
-/* Pantallas medianas (laptops o dispositivos más grandes) */
 @media (min-width: 1200px) {
     .edit-profile-container-fe {
         padding: 5rem 15rem;
@@ -488,6 +485,7 @@
         margin: 0;
         text-transform: capitalize;
         display: block;
+        text-align: center;
     }
 
     .edit-profile-subtitle {
@@ -627,8 +625,6 @@
         opacity: 0.9;
     }
 
-
-
     .profile-image-section {
         display: flex;
         flex-direction: column;
@@ -692,7 +688,7 @@
         cursor: pointer;
         color: white;
         position: absolute;
-        top: 345px;
+        top: 31%;
         left: 73%;
     }
 
@@ -708,17 +704,14 @@
 
 }
 
-/* Pantallas grandes (laptops de pantalla grande o escritorios pequeños) */
 @media (max-width: 1440px) {
-    /* Estilos específicos para pantallas hasta 1440px */
+
 }
 
-/* Pantallas de escritorio grandes */
 @media (max-width: 1600px) {
-    /* Estilos específicos para pantallas hasta 1600px */
+   
 }
 
-/* Pantallas de escritorio extra grandes */
 @media (min-width: 1820px) {
     .edit-profile-container-fe {
         padding: 5rem 15rem;
@@ -743,6 +736,7 @@
         text-transform: capitalize;
         display: block;
         margin-bottom: 60px;
+        
     }
 
     .edit-profile-subtitle {

@@ -1,0 +1,29 @@
+.epayco-checkout {
+    width: 100%;
+}
+
+.epayco-button {
+    width: 100%;
+    background-color: #22c55e;
+    color: white;
+    font-weight: bold;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.epayco-button:hover {
+    background-color: #16a34a;
+    transform: translateY(-2px);
+}
+
+.epayco-button:focus {
+    outline: none;
+}
+
+.epayco-button:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+}

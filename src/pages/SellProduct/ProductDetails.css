@@ -861,22 +861,22 @@
     }
 
     .product-details__container .product-details__back-button svg {
-    fill: currentColor;
-    vertical-align: middle;
-    width: 30px;
-    height: 30px;
-    color: var(--color-accent);
-   }
+        fill: currentColor;
+        vertical-align: middle;
+        width: 30px;
+        height: 30px;
+        color: var(--color-accent);
+    }
 
-   .product-details__container .product-details__back-button p {
-       margin: 5px;
-       color: #595959 !important;
-       letter-spacing: .1299px;
-       font-family: Graphik Webfont, -apple-system, Helvetica Neue, Droid Sans, Arial, "sans-serif";
-       font-size: 14.99px;
-       font-weight: 400;
-       line-height: 1.4;
-   }
+    .product-details__container .product-details__back-button p {
+        margin: 5px;
+        color: #595959 !important;
+        letter-spacing: .1299px;
+        font-family: Graphik Webfont, -apple-system, Helvetica Neue, Droid Sans, Arial, "sans-serif";
+        font-size: 14.99px;
+        font-weight: 400;
+        line-height: 1.4;
+    }
 
     .product-details__form {
         grid-template-columns: repeat(2, 1fr);
@@ -905,22 +905,22 @@
     }
 
     .product-details__submit-button {
-    font-family: var(--font-body);
-    font-size: var(--font-size-body-base);
-    font-weight: var(--font-body-bold-weight);
-    color: var(--color-button-text);
-    background-color: var(--color-accent);
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    grid-column: 1 / -1;
-    justify-self: center;
-    margin: 20px 0 10px;
-}
+        font-family: var(--font-body);
+        font-size: var(--font-size-body-base);
+        font-weight: var(--font-body-bold-weight);
+        color: var(--color-button-text);
+        background-color: var(--color-accent);
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        grid-column: 1 / -1;
+        justify-self: center;
+        margin: 20px 0 10px;
+    }
 }
 
 @media (min-width: 1820px) {
@@ -1004,7 +1004,7 @@
     }
 
     .product-details__introduction {
-        margin-bottom: 2rem;
+        margin-bottom: 5rem;
         text-align: center;
         line-height: 1.6;
         color: #595959 !important;

@@ -81,7 +81,7 @@ const Register = () => {
                     phone: form.phone,
                 });
 
-                setSuccess(registerResponse.message || 'Registro exitoso');
+                setSuccess(registerResponse.message || '');
 
                 try {
                     const loginResponse = await loginUser({

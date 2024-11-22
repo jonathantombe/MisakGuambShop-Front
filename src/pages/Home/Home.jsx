@@ -5,6 +5,7 @@ import TrendingProducts from '../../components/TrendingProducts/TrendingProducts
 import product1 from '../../assets/products/mochilas/04_900x.webp';
 import './Home.css';
 import CategoryCarousel from '../../components/CategoryCarousel/CategoryCarousel';
+import BuyNowButton from '../../components/BuyNowButton/BuyNowButton'
 
 const topOffers = [
   { id: 1, name: 'Mochila | Patrimonio Culinario', image: product1, rating: 1, price: 120000, totalSales: 89 },
@@ -31,6 +32,8 @@ const Home = () => {
           <CategoryCarousel />
         </div>
         <TrendingProducts /> 
+        <BuyNowButton /> 
+        
       </main>
      
     </div>
