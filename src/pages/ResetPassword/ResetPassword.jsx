@@ -70,7 +70,7 @@ const ResetPassword = () => {
                     <p className="success-subtext">Por favor, revisa tu bandeja de entrada y sigue las instrucciones.</p>
                     <button
                         onClick={handleBackToLogin}
-                        className="ok-button"
+                        className="go-back-button"
                     >
                         VOLVER AL INICIO
                     </button>
