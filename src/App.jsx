@@ -59,7 +59,6 @@ const App = () => {
             <Route path="/payment/success" element={<Success />} />
             <Route path="/payment/cancel" element={<Cancel />} />
             <Route path="*" element={<NotFound />} />
-            <Route path='/contact' element={<Contact />} />
             <Route path='/FAQ' element={<FAQ/>}/>
             <Route path='/JoinUs' element={<JoinUs/>}></Route>
             <Route path="/buyNow/button" element={<BuyNowButton />} />

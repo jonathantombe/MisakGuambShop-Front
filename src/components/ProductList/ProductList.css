@@ -8,6 +8,7 @@
 
 .product-list-title {
   text-align: center;
+  padding-top: 50px;
   color: var(--taupe);
   font-family: var(--font-logo);
   font-weight: var(--font-heading-weight);
