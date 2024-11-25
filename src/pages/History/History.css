@@ -1,30 +1,253 @@
+/* Importar fuentes de Google */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lustria&display=swap');
+
+/* Variables y ajustes base */
+:root {
+  /* Colores principales */
+  --primary-dark: #2C1810;
+  --primary-gold: #B7834F;
+  --accent-terracotta: #C17817;
+  --light-cream: #FDF7F1;
+  --deep-bronze: #8B5E3C;
+  --soft-sage: #8A9A5B;
+
+  /* Colores secundarios */
+  --light-gray: #EDEDED;
+  --gainsboro: #DCDCDC;
+  --charcoal: #36454F;
+  --jet: #343434;
+  --khaki: #C3B091;
+  --taupe: #B38B6D;
+
+  /* Efectos y animaciones */
+  --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --box-shadow-light: 0 20px 40px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(183, 131, 79, 0.1);
+  --box-shadow-hover: 0 30px 60px rgba(0, 0, 0, 0.12), 0 0 0 2px var(--accent-terracotta);
+
+  /* Espaciado */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 6rem;
+}
+
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1.6;
+  font-family: 'Lustria', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--primary-dark);
+}
+
+/* Contenedor principal */
 .historias {
-    padding: 2rem 5%;
-    background-color: #f5f5dc; /* Color de fondo suave */
-    color: #4a3933; /* Color de texto oscuro */
+  background: var(--background-warm),
+    url('path-to-texture-background.jpg');
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding: var(--spacing-xl);
 }
 
+/* Títulos */
 .historias h1 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+  letter-spacing: 0.15em;
+  line-height: 1.2;
+  animation: fadeInDown 1s ease-out;
 }
 
+.historias h1::before,
+.historias h1::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(120px, 15vw, 180px);
+  height: 2px;
+  background: var(--primary-gold);
+  transition: var(--transition-smooth);
+}
+
+.historias h1::before {
+  top: -20px;
+}
+
+.historias h1::after {
+  bottom: -20px;
+}
+
+/* Secciones de historia */
 .historia {
-    margin-bottom: 2rem; /* Espaciado entre secciones */
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  margin: var(--spacing-xl) 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 4px;
+  box-shadow: var(--box-shadow-light);
+  transition: var(--transition-smooth);
+  animation: fadeIn 1s ease-out;
 }
 
+.historia:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--box-shadow-hover);
+}
+
+/* Encabezados de sección */
 .historia h2 {
-    font-size: 2rem;
-    margin-bottom: 15px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 500;
+  color: var(--deep-bronze);
+  margin-bottom: var(--spacing-md);
+  position: relative;
+  padding-bottom: var(--spacing-sm);
+  letter-spacing: 0.1em;
 }
 
+.historia h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(to right, var(--primary-gold), transparent);
+  transition: var(--transition-smooth);
+}
+
+.historia:hover h2::after {
+  width: 60px;
+}
+
+/* Imágenes */
+.historia-image {
+  width: 100%;
+  height: clamp(300px, 50vh, 600px);
+  object-fit: cover;
+  border-radius: 4px;
+  margin: var(--spacing-md) 0;
+  filter: brightness(1.02) contrast(1.02);
+  box-shadow: var(--box-shadow-light);
+  transition: var(--transition-smooth);
+}
+
+.historia-image:hover {
+  transform: scale(1.02);
+  filter: brightness(1.05) contrast(1.05);
+  box-shadow: var(--box-shadow-hover);
+}
+
+/* Párrafos */
 .historia p {
-    font-size: 1rem;
-    line-height: 1.5em; /* Espaciado de líneas */
-    font-family: 'Georgia', serif; /* Fuente elegante */
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  line-height: 1.8;
+  color: var(--charcoal);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media Queries */
+@media (min-width: 1400px) {
+  .historias {
+    padding: var(--spacing-xl) 10%;
+  }
+  .historia {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 1200px) {
+  .historias {
+    padding: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 992px) {
+  .historias {
+    padding: var(--spacing-md);
+  }
+}
+
+@media (max-width: 768px) {
+  .historias {
+    padding: var(--spacing-sm);
+  }
+  .historia-image {
+    height: 400px;
+  }
+}
+
+@media (max-width: 576px) {
+  .historias {
+    padding: var(--spacing-xs);
+  }
+  .historia-image {
+    height: 300px;
+  }
+}
+
+@media (max-width: 375px) {
+  .historia {
+    padding: var(--spacing-xs);
+  }
+  .historia-image {
+    height: 250px;
+  }
+}
+
+/* Scroll personalizado */
+::-webkit-scrollbar {
+  width: 12px;
+  background: var(--light-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-gold);
+  border-radius: 6px;
+  border: 3px solid var(--light-cream);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--deep-bronze);
 }

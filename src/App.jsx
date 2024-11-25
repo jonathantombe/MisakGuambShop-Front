@@ -27,7 +27,6 @@ import PaymentMethodSelector from './components/Payment/PaymentMethodSelector/Pa
 import CreditCardForm from './components/Payment/CreditCardForm/CreditCardForm';
 import CashPaymentForm from './components/Payment/CashPaymentForm/CashPaymentForm';
 import NotFound from './pages/NotFound/NotFound';
-import Contact from './pages/Contact/Contact';
 import FAQ from './pages/CustomerServices/FAQ/FAQ';
 import JoinUs from './pages/CustomerServices/JoinUs/JoinUs';
 import CartPage from '../src/pages/CartPage/CartPage';     
