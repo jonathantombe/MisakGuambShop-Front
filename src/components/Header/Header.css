@@ -1129,7 +1129,7 @@ body {
     display: block;
     position: absolute;
     top: 12.3%;
-    left: 79.5%;
+    left: 82.5%;
     transform: translateX(-50%) translateY(10px);
     background-color: #122868;
     padding: 10px 13px;
@@ -1599,8 +1599,8 @@ body {
   .user-info {
     display: block;
     position: absolute;
-    top: 16%;
-    left: 79%;
+    top: 13%;
+    left: 82%;
     transform: translateX(-50%) translateY(10px);
     background-color: #122868;
     padding: 10px 15px;
@@ -1612,9 +1612,9 @@ body {
     z-index: 10;
     color: var(--color-bg);
     border-radius: 6px;
-    padding: 10px;
+    padding: 15px;
     font-family: Graphik Webfont, -apple-system, Helvetica Neue, Droid Sans, Arial, "sans-serif";
-    font-size: 12.99px;
+    font-size: 16.99px;
     font-weight: 400;
     line-height: 1.4;
   }

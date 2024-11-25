@@ -21,6 +21,7 @@ import MyPublication from './pages/MyPublications/MyPublications';
 import ShipmentForm from './components/Shipment/ShipmentForm/ShipmentForm';
 import PaymentConfirmation from './components/Payment/PaymentConfirmation/PaymentConfirmation';
 import EpaycoCheckout from './components/Payment/EpaycoCheckout/EpaycoCheckout';
+import CartPage from './pages/CartPage/CartPage';
 import Success from './pages/Payment/Success/Success';
 import Cancel from './pages/Payment/Cancel/Cancel';
 import NotFound from './pages/NotFound/NotFound';
@@ -51,6 +52,7 @@ const App = () => {
             <Route path="/category" element={<CategoryCarousel />} />
             <Route path="/product-details" element={<ProductDetails />} />
             <Route path="/products/:id" element={<ProductDetails />} />
+            <Route path="/shopping/cart" element={<CartPage />} />
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
             <Route path="/my/publications" element={<MyPublication />} />
             <Route path="/shipment/form" element={<ShipmentForm />} />

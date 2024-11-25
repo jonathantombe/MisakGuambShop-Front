@@ -1,0 +1,117 @@
+.order-review-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.order-review-modal {
+    background-color: white;
+    border-radius: 8px;
+    padding: 24px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.order-review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.order-review-header h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.close-button:hover {
+    background-color: #f3f4f6;
+}
+
+.order-review-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.products-section {
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 20px;
+}
+
+.products-section h3 {
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.product-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+}
+
+.product-info {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.product-info img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.product-name {
+    font-weight: 500;
+}
+
+.product-quantity {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.product-price {
+    font-weight: 500;
+}
+
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 16px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.payment-section {
+    padding-top: 16px;
+}

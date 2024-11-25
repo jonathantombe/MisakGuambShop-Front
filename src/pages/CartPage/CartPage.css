@@ -1,27 +1,38 @@
+.cart-header-container {
+    background-color: var(--gray-color);
+    box-shadow: var(--box-shadow);
+}
+
 .cart-page {
     max-width: 1500px;
     margin: 0 auto;
     padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 .cart-container {
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 24px;
     margin-bottom: 20px;
+    background-color: #f1efeb;
+    box-shadow: 0 0 15px #012e2a1a;
+    transition: all .3s ease-in-out;
 }
 
-.cart-header {
-    margin-bottom: 20px;
+.cart-header {}
+
+.wt-text-title-larger {
+    letter-spacing: .13505px;
+    font-family: Graphik Webfont, -apple-system, Helvetica Neue, Droid Sans, Arial, "sans-serif";
+    font-size: 27.01px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 0;
 }
 
-.cart-header h1 {
-    font-size: 24px;
-    font-weight: 600;
-    display: flex;
-
-}
 input {
     padding: 10px;
     margin-top: 5px;
@@ -29,28 +40,25 @@ input {
     border-radius: 4px;
 }
 
-
 .select-all {
     display: flex;
     align-items: center;
-  
+
 }
 
 .select-all input {
     margin-right: 8px;
 }
 
-/* Estilo del checkbox en forma de círculo y con color azul claro */
 .select-all input[type="checkbox"],
 .cart-item input[type="checkbox"] {
-    /* Ocultar el estilo predeterminado del checkbox */
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     width: 20px;
     height: 20px;
-    border: 2px solid var(--color-accent); /* Color del borde azul claro */
-    border-radius: 50%; /* Hacer el checkbox circular */
+    border: 2px solid var(--color-accent);
+    border-radius: 50%;
     background-color: transparent;
     cursor: pointer;
     position: relative;
@@ -58,26 +66,22 @@ input {
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Estilo cuando el checkbox está marcado */
 .select-all input[type="checkbox"]:checked,
 .cart-item input[type="checkbox"]:checked {
     background-color: var(--color-accent);
-    
+
 }
 
-/* Añadir un ícono de verificación dentro del círculo cuando esté marcado */
 .select-all input[type="checkbox"]:checked::after,
 .cart-item input[type="checkbox"]:checked::after {
-    content: '✔'; /* Ícono de check */
+    content: '✔';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 12px;
-    color: white; /* Color del ícono de verificación */
+    color: white;
 }
-
-
 
 .delete-selected {
     margin-left: 16px;
@@ -101,9 +105,8 @@ input {
 .cart-item {
     display: flex;
     align-items: center;
-    padding: 16px 0;
     border-bottom: 1px solid #e5e7eb;
-    gap: 16px; /* Espacio uniforme entre elementos */
+    gap: 16px;
 }
 
 .cart-item input {
@@ -111,8 +114,6 @@ input {
 }
 
 .cart-item img {
-    width: 80px;
-    height: 80px;
     object-fit: cover;
     margin-right: 16px;
     transition: transform 0.2s ease;
@@ -126,7 +127,7 @@ input {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    gap: 4px; /* Espacio uniforme entre nombre, precio y stock */
+    gap: 4px;
 }
 
 .item-name {
@@ -149,6 +150,54 @@ input {
     cursor: pointer;
 }
 
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    width: 2rem;
+    gap: 8px;
+    border: 1px solid #d6c9a9;
+    border-radius: 4px;
+    padding: 4px 8px;
+    background-color: #fff;
+    width: fit-content;
+}
+
+.quantity-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.quantity-button:disabled {
+    cursor: not-allowed;
+    background-color: #f9f9f9;
+}
+
+.quantity-button:hover:not(:disabled) {
+    background-color: #f0ece4;
+}
+
+.quantity-display {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    width: 24px;
+}
+
+.quantity-control button {
+    margin-bottom: 10px;
+    background-color: transparent;
+    font-size: 20px;
+    color: #595959 !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
 .remove-item {
     margin-left: 16px;
     background: none;
@@ -156,10 +205,6 @@ input {
     cursor: pointer;
     color: #6b7280;
     transition: transform 0.2s ease;
-}
-
-.remove-item:hover {
-    transform: scale(1.1);
 }
 
 .order-summary {
@@ -174,6 +219,23 @@ input {
     font-weight: 600;
     margin-bottom: 16px;
 }
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.summary-label .subtotal {
+    color: #4a3933;
+}
+
+.summary-amount .total-price {
+    color: #4a3933;
+}
+
+.summary-amount .total-price .cop {}
 
 .pay-button {
     width: 100%;
@@ -219,11 +281,31 @@ input {
     color: #6b7280;
 }
 
-.empty-cart svg {
-    margin-bottom: 16px;
+.wt-text-heading {
+    letter-spacing: .46515px;
+    font-family: Guardian-EgypTT, Charter, Charter Bitstream, Cambria, Noto Serif Light, Droid Serif, Georgia, "serif";
+    font-size: 31.01px;
+    font-weight: 300;
+    line-height: 1.1;
+    color: #555;
 }
 
-/* Estilos para el modal */
+.confidence-message {
+    display: flex;
+    align-items: center;
+    font-family: "Graphik Webfont", -apple-system, Helvetica Neue, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #595959 !important;
+    margin-top: 16px;
+    letter-spacing: 0.16px;
+}
+
+.empty-cart svg {
+    margin-bottom: 16px;
+    color: #333;
+}
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -265,18 +347,14 @@ input {
     color: #6b7280;
 }
 
-
-
 .modal-content img {
     width: 50%;
-  
+
     object-fit: cover;
     border-radius: 4px;
     margin-bottom: 16px;
     left: 30px;
 }
-
-
 
 .product-description {
     color: #4b5563;
@@ -329,51 +407,13 @@ input {
     background-color: #0e8579;
 }
 
-/* MEDIA QUERIES */
-
-/* Pantallas pequeñas (tablets y móviles) */
-@media (max-width: 768px) {
-    .cart-header h1 {
-        font-size: 20px;
-    }
-
-    .cart-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-
-    .cart-item img {
-        width: 100%;
-        height: auto;
-    }
-
-    .item-details, .quantity-control, .remove-item {
-        width: 100%;
-        text-align: left;
-    }
-
-    .pay-button {
-        font-size: 14px;
-        padding: 8px;
-    }
-}
-
-/* Pantallas extra pequeñas (móviles pequeños) */
-@media (max-width: 480px) {
-    .cart-page {
-        padding: 10px;
-    }
+@media (min-width: 480px) {
 
     .cart-header {
         flex-direction: column;
         gap: 10px;
     }
 
-    .cart-item img {
-        width: 100%;
-        height: auto;
-    }
 
     .order-summary h2 {
         font-size: 20px;
@@ -381,10 +421,495 @@ input {
 
     .pay-button {
         font-size: 12px;
-        padding: 6px;
     }
 
     .modal-content {
         padding: 16px;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .cart-item {}
+
+
+    .item-details,
+    .quantity-control,
+    .remove-item {
+        width: 100%;
+        text-align: left;
+    }
+
+    .pay-button {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .cart-title-section {
+        padding: 2rem 80px;
+    }
+
+    .cart-container {
+        width: 600px;
+        padding: 40px 60px;
+    }
+
+    .wt-text-title-larger {
+        letter-spacing: .13505px;
+        font-family: Graphik Webfont, -apple-system, Helvetica Neue, Droid Sans, Arial, "sans-serif";
+        font-size: 27.01px;
+        font-weight: 500;
+        line-height: 1.3;
+        color: var(--clg-color-sem-text-primary, #222);
+    }
+
+    .confidence-message {
+        display: flex;
+        align-items: center;
+        font-family: "Graphik Webfont", -apple-system, Helvetica Neue, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.7;
+        margin-top: 16px;
+        letter-spacing: 0.16px;
+    }
+
+    .confidence-message img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .confidence-icon {
+        margin-right: 8px;
+        color: #1a73e8;
+        flex-shrink: 0;
+    }
+
+    .confidence-text {
+        flex: 1;
+        margin: 0 0 0 20px;
+    }
+
+    .wt-text-body {
+        letter-spacing: .16px;
+        font-family: Graphik Webfont, -apple-system, Helvetica Neue, Droid Sans, Arial, "sans-serif";
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.7;
+    }
+
+    .cart-item {
+        gap: 2.5rem;
+        height: 250px;
+    }
+
+    .cart-page {
+        padding: 0 7rem 5rem;
+        gap: 8rem;
+    }
+
+    .select-all .select__products {
+        color: #4a3933;
+        letter-spacing: .48px;
+        font-family: Guardian-EgypTT, Charter, Charter Bitstream, Cambria, Noto Serif Light, Droid Serif, Georgia, "serif";
+        font-size: 17px;
+        font-weight: 300;
+        line-height: 1.15;
+    }
+
+    .delete-selected {
+        margin-left: 10%;
+        padding: 10px;
+        border-radius: 8px;
+        background-color: var(--color-accent);
+        color: white;
+        font-weight: 600;
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.25s ease;
+        background-color: var(--color-accent);
+        color: var(--color-button-text);
+    }
+
+    .order-summary {
+        border-radius: 8px;
+        padding: 24px;
+        background-color: #f1efeb;
+        box-shadow: 0 0 15px #012e2a1a;
+        transition: all .3s ease-in-out;
+    }
+
+    .summary-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 4px;
+        margin-bottom: 15px;
+    }
+
+    .summary-label .subtotal {
+        color: #4a3933;
+        font-weight: 500;
+    }
+
+    .summary-amount .total-price {
+        color: #4a3933;
+        font-weight: 200;
+
+    }
+
+    .wt-text-heading {
+        letter-spacing: .46515px;
+        font-family: Guardian-EgypTT, Charter, Charter Bitstream, Cambria, Noto Serif Light, Droid Serif, Georgia, "serif";
+        font-size: 31.01px;
+        font-weight: 300;
+        line-height: 1.1;
+    }
+
+    .cart-item .cart-item-image-container {
+        width: 300px;
+        height: 180px;
+    }
+
+    .cart-item .cart-item-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .cart-subtotal-row {
+        margin-bottom: 10px;
+        font-size: 14px;
+        text-align: left;
+        font-weight: 600;
+        padding: 0 0 10px;
+        text-transform: uppercase;
+        justify-content: space-between;
+        color: #012e2a;
+    }
+
+    .item-name {
+        color: #4a3933;
+        font-family: var(--ft1);
+        text-transform: uppercase;
+        font-weight: var(--font-body-bold-weight);
+        font-size: 16px;
+        margin-bottom: 15px;
+
+    }
+
+    .item-price {
+        color: #595959 !important;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 1.2;
+        margin: 0;
+    }
+
+    .item-stock {
+        font-size: 18px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+        color: #595959 !important;
+    }
+
+    .quantity-controls {
+        display: flex;
+        align-items: center;
+        width: 2rem;
+        gap: 8px;
+        border: 1px solid #d6c9a9;
+        border-radius: 4px;
+        padding: 4px 8px;
+        background-color: #fff;
+        width: fit-content;
+        margin-bottom: 15px;
+    }
+
+    .quantity-button svg {
+        width: 25px;
+        height: 25px;
+
+    }
+
+    .quantity-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        background-color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .quantity-button:disabled {
+        cursor: not-allowed;
+        background-color: #f9f9f9;
+    }
+
+    .quantity-button:hover:not(:disabled) {
+        background-color: #f0ece4;
+    }
+
+    .quantity-display {
+        font-size: 14px;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+        width: 24px;
+    }
+
+    .quantity-control button {
+        margin-bottom: 10px;
+        background-color: transparent;
+        font-size: 20px;
+        color: #595959 !important;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+    }
+
+    .remove-item {
+        font-size: 12.99px;
+    }
+
+    .remove-item svg {
+        width: 25px;
+        height: 25px;
+        color: var(--color-error-message);
+    }
+
+    .pay-button {
+        font-size: var(--font-size-body-base);
+        padding: 0.75rem 1.5rem;
+    }
+}
+
+@media (min-width: 1820px) {
+    .cart-title-section {
+        padding: 2rem 80px;
+    }
+
+    .cart-container {
+        width: 800px;
+        padding: 40px 60px;
+    }
+
+    .wt-text-title-larger {
+        letter-spacing: .13505px;
+        font-family: Graphik Webfont, -apple-system, Helvetica Neue, Droid Sans, Arial, "sans-serif";
+        font-size: 30.01px;
+        font-weight: 500;
+        line-height: 1.3;
+        color: var(--clg-color-sem-text-primary, #222);
+    }
+
+    .confidence-message {
+        display: flex;
+        align-items: center;
+        font-family: "Graphik Webfont", -apple-system, Helvetica Neue, Arial, sans-serif;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 1.7;
+        margin-top: 16px;
+        letter-spacing: 0.16px;
+    }
+
+    .confidence-message img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .confidence-icon {
+        margin-right: 8px;
+        color: #1a73e8;
+        flex-shrink: 0;
+    }
+
+    .confidence-text {
+        flex: 1;
+        margin: 0 0 0 20px;
+    }
+
+    .wt-text-body {
+        letter-spacing: .16px;
+        font-family: Graphik Webfont, -apple-system, Helvetica Neue, Droid Sans, Arial, "sans-serif";
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.7;
+    }
+
+    .cart-item {
+        gap: 3.5rem;
+    }
+
+    .cart-page {
+        padding: 20px 5rem 8rem;
+        gap: 10rem;
+    }
+
+    .select-all .select__products {
+        color: #4a3933;
+        letter-spacing: .48px;
+        font-family: Guardian-EgypTT, Charter, Charter Bitstream, Cambria, Noto Serif Light, Droid Serif, Georgia, "serif";
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 1.15;
+    }
+
+    .delete-selected {
+        margin-left: 10%;
+        padding: 10px;
+        border-radius: 8px;
+        background-color: var(--color-accent);
+        color: white;
+        font-weight: 600;
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.25s ease;
+        background-color: var(--color-accent);
+        color: var(--color-button-text);
+        font-size: 15px;
+    }
+
+    .order-summary {
+        border-radius: 12px;
+        padding: 50px;
+        background-color: #f1efeb;
+        box-shadow: 0 0 15px #012e2a1a;
+        transition: all .3s ease-in-out;
+        width: 300px;
+        height: 100px;
+    }
+
+    .summary-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 4px;
+        margin-bottom: 15px;
+        font-size: 20px;
+        font-family: 600;
+    }
+
+    .summary-label .subtotal {
+        font-weight: 500;
+    }
+
+    .summary-amount .total-price {
+        font-weight: 200;
+
+    }
+
+    .cart-item .cart-item-image-container {
+        width: 300px;
+        height: 200px;
+    }
+
+    .cart-item .cart-item-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .cart-subtotal-row {
+        margin-bottom: 10px;
+        font-size: 20px;
+        text-align: left;
+        font-weight: 600;
+        padding: 0 0 10px;
+        text-transform: uppercase;
+        justify-content: space-between;
+        color: #012e2a;
+    }
+
+    .item-name {
+        color: #4a3933;
+        font-family: var(--ft1);
+        text-transform: uppercase;
+        font-weight: var(--font-body-bold-weight);
+        font-size: 20px;
+        margin-bottom: 15px;
+
+    }
+
+    .item-price {
+        color: #595959 !important;
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 1.2;
+    }
+
+    .item-stock {
+        font-size: 20px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+        color: #595959 !important;
+    }
+
+    .quantity-controls {
+        display: flex;
+        align-items: center;
+        width: 2rem;
+        gap: 8px;
+        border: 1px solid #d6c9a9;
+        border-radius: 4px;
+        padding: 6px 10px;
+        background-color: #fff;
+        width: fit-content;
+        margin-bottom: 15px;
+    }
+
+    .quantity-button svg {
+        width: 30px;
+        height: 30px;
+
+    }
+
+    .quantity-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        background-color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .quantity-button:disabled {
+        cursor: not-allowed;
+        background-color: #f9f9f9;
+    }
+
+    .quantity-button:hover:not(:disabled) {
+        background-color: #f0ece4;
+    }
+
+    .quantity-display {
+        font-size: 14px;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+        width: 24px;
+    }
+
+    .quantity-control button {
+        margin-bottom: 10px;
+        background-color: transparent;
+        font-size: 20px;
+        color: #595959 !important;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+    }
+
+    .remove-item {
+        font-size: 12.99px;
+    }
+
+    .remove-item svg {
+        width: 30px;
+        height: 30px;
+        color: var(--color-error-message);
+    }
+
+    .pay-button {
+        font-size: 14px;
+        padding: 0.75rem 1.5rem;
     }
 }
