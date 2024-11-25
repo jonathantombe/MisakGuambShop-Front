@@ -20,14 +20,18 @@ const ProductList = ({ title, products = [], onError }) => {
 
     const formatPrice = (price) => {
         try {
-            return typeof price === 'number' 
-                ? price.toFixed(2) 
-                : '0.00';
+            if (typeof price !== 'number') return '0';
+            // Formatea el precio sin decimales y con separador de miles
+            return price.toLocaleString('es-CO', {
+                maximumFractionDigits: 0,
+                minimumFractionDigits: 0
+            });
         } catch (error) {
             console.error('Error al formatear precio:', error);
-            return '0.00';
+            return '0';
         }
     };
+
 
     const addToCart = (product) => {
         try {
@@ -44,15 +48,15 @@ const ProductList = ({ title, products = [], onError }) => {
             }
 
             const existingProductIndex = cart.findIndex(item => item.id === product.id);
-            
+
             if (existingProductIndex !== -1) {
                 cart[existingProductIndex].quantity += 1;
             } else {
                 cart.push({ ...product, quantity: 1 });
             }
-            
+
             localStorage.setItem('cart', JSON.stringify(cart));
-            navigate('/cart');
+            navigate('/shopping/cart');
         } catch (error) {
             console.error('Error al agregar al carrito:', error);
             onError && onError(error);
@@ -105,7 +109,7 @@ const ProductList = ({ title, products = [], onError }) => {
                         </div>
                         <div className="product-price-container">
                             <p className="product-price">
-                                ${formatPrice(product.price)}
+                                COP {formatPrice(product.price)}
                             </p>
                             {product.discount > 0 && (
                                 <p className="product-discount">${formatPrice(product.discount)}</p>

@@ -1,74 +1,58 @@
-.buy-now-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-
-.buy-now-button {
-    background-color: #2563eb;
-    color: white;
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.buy-now-button:hover {
-    background-color: #1d4ed8;
-    transform: translateY(-2px);
-}
-
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 50;
-}
-
-.modal-content {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 28rem;
+.epayco-checkout {
+    position: relative;
     width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
+.epayco-form {
+    width: 100%;
+    min-height: 400px;
+    position: relative;
+    z-index: 10;
+}
+.testmode{
+    display: none;
 }
 
-.modal-title {
-    font-size: 1.25rem;
-    font-weight: bold;
+.epayco-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #00a0df;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
 }
 
-.close-button {
-    color: #6b7280;
+.epayco-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
 }
 
-.close-button:hover {
-    color: #374151;
+.epayco-error {
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ff0000;
+    border-radius: 4px;
+    margin: 20px 0;
 }
 
-.price-container {
-    margin-bottom: 1rem;
+/* Asegurarse que el iframe de ePayco sea visible */
+#epayco-checkout-form {
+    opacity: 1 !important;
+    z-index: 999999 !important;
+    position: relative !important;
 }
 
-.price-label {
-    color: #4b5563;
-    margin-bottom: 0.5rem;
-}
-
-.price-amount {
-    font-size: 1.5rem;
-    font-weight: bold;
+/* Evitar que elementos padres interfieran */
+.epayco-checkout {
+    isolation: isolate;
 }

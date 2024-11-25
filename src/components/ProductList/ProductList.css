@@ -133,7 +133,7 @@
 }
 
 .add-to-cart-button {
-  background-color: var(--wheat);
+  background-color: var(--color-contrast-bg);
   border: none;
   border-radius: 50%;
   width: 35px;
@@ -146,13 +146,16 @@
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
+
 .add-to-cart-button:hover {
   transform: scale(1.1);
-  background-color: var(--secondary-color);
+  background-color: var(--champagne-pink);
+  fill: var(--coffee);
+  
 }
 
 .add-to-cart-button svg {
-  color: var(--color-bg);
+  color: var(--coffee);
   width: 20px;
   height: 20px;
 }
@@ -208,11 +211,10 @@
   }
 
   .add-to-cart-button {
-    width: 30px; /* Ajusta el tamaño si es necesario */
+    width: 30px;
     height: 30px;
   }
 }
-
 
 @media only screen and (min-width: 576px) and (max-width: 767px){
   .product-list-container {
