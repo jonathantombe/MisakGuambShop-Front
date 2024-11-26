@@ -24,7 +24,7 @@ const HeroMisakWelcome = () => {
     };
 
     const handleVerMas = () => {
-        navigate('/history'); // Usar navigate en lugar de history.push
+        navigate('/history'); 
     };
 
     return (

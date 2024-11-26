@@ -25,7 +25,6 @@ import CartPage from './pages/CartPage/CartPage';
 import Success from './pages/Payment/Success/Success';
 import Cancel from './pages/Payment/Cancel/Cancel';
 import NotFound from './pages/NotFound/NotFound';
-import Contact from './pages/Contact/Contact';
 import FAQ from './pages/CustomerServices/FAQ/FAQ';
 import JoinUs from './pages/CustomerServices/JoinUs/JoinUs';
 import BuyNowButton from '../src/components/BuyNowButton/BuyNowButton';     
