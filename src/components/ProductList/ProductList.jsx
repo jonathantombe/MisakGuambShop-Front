@@ -32,7 +32,6 @@ const ProductList = ({ title, products = [], onError }) => {
         }
     };
 
-
     const addToCart = (product) => {
         try {
             if (!validateProduct(product)) {
@@ -86,11 +85,13 @@ const ProductList = ({ title, products = [], onError }) => {
             <div className="product-list">
                 {validProducts.map((product) => (
                     <div key={product.id} className="product-card">
+
                         <img 
                             src={product?.imageUrls[0] || '/placeholder-image.png'} 
                             alt={product.name} 
                             className="product-image" 
                         />
+                        <img src={product.imageUrls} alt={product.name} className="product-image" />
                         <h3 className="product-name">{product.name}</h3>
                         <div className="product-rating-container">
                             <div className="product-rating">
@@ -106,6 +107,7 @@ const ProductList = ({ title, products = [], onError }) => {
                             <p className="product-rating-value">
                                 {product.rating ? product.rating.toFixed(2) : 'Sin calificación'}
                             </p>
+                            <p className="product-rating-value">{product?.rating?.toFixed(2)}</p>
                         </div>
                         <div className="product-price-container">
                             <p className="product-price">

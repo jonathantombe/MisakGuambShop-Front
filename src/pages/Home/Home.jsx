@@ -27,10 +27,10 @@ const Home = () => {
     try {
       setLoading(true);
       setError(null);
-      
+
       const response = await api.get('/api/products/approved');
       console.log('Productos recibidos (raw):', response);
-      
+
       if (!response || !Array.isArray(response)) {
         throw new Error('Respuesta inválida de la API');
       }
@@ -73,9 +73,9 @@ const Home = () => {
         ) : error ? (
           <div className="error-message">{error}</div>
         ) : (
-          <ProductList 
-            products={topProducts} 
-            title="Productos Disponibles" 
+          <ProductList
+            products={topProducts}
+            title="Productos Disponibles"
             onError={handleError}
           />
         )}
