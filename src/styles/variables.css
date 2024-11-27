@@ -22,6 +22,7 @@
     --color-error-message: #b6534c;
     --color-header-text: #363636;
     --color-header-bg: #ffffff;
+    --clg-color-sem-text-primary: var(--clg-color-pal-greyscale-800);
     --color-header-border: #e2e2e2;
     --color-header-icon: #9a9a9a;
     --color-contrast-text: #363636;
@@ -38,6 +39,7 @@
     --color-navigation-feature: #26352f;
     --color-drawer-text: #3a092c;
     --color-drawer-text-meta: #e68630;
+    --clg-color-sem-text-primary: var(--clg-color-pal-greyscale-800);
     --color-drawer-bg: #f1d9b7;
     --color-drawer-border: #3a092c;
     --color-drawer-bg-hover: rgba(58, 9, 44, 0.05);
@@ -136,6 +138,7 @@
     --font-quicksand: 'Quicksand', sans-serif;
     --font-amatic-sc: 'Amatic SC', cursive;
     --font-caveat: 'Caveat', cursive;
+    --ft1: "Hope Sans", sans-serif;
     
         /* Variables para uso general */
     --font-heading: var(--font-playfair-display);

@@ -152,6 +152,9 @@
   .carousel-items-container {
     grid-template-columns: repeat(4, 1fr);
   }
+  .carousel-item{
+    width: 200px;
+  }
 }
 
 @media (max-width: 1100px) {
@@ -182,7 +185,7 @@
 
 @media (max-width: 768px) {
   .carousel-items-container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px 20px;
   }
 
@@ -191,7 +194,12 @@
   }
 
   .carousel-wrapper {
-    padding: 0 30px;
+    padding: 0;
+  }
+
+  .carousel-image-wrapper {
+    width: 100px;
+    height: 100px;
   }
 }
 
@@ -201,7 +209,7 @@
   }
 
   .carousel-title {
-    font-size: 1.8rem;
+    font-size: 20px;
     margin-bottom: 30px;
   }
 
@@ -210,17 +218,13 @@
     height: 3px;
   }
 
-  .carousel-wrapper {
-    padding: 0 20px;
+  .carousel-image-wrapper {
+    width: 80px;
+    height: 80px;
   }
 
   .carousel-items-container {
     gap: 20px 15px;
-  }
-
-  .carousel-image-wrapper {
-    width: 110px;
-    height: 110px;
   }
 
   .carousel-item-text {
@@ -238,8 +242,8 @@
   }
 
   .carousel-image-wrapper {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
   }
 
   .carousel-item-text {

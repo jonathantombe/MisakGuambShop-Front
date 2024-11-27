@@ -19,7 +19,7 @@ const UserProfile = () => {
     <div className="profile-container">
       <div className="profile-header">
         <div className="user-profile-iconss">
-          <img src={getProfileImage()} alt={`Perfil de ${user ? user.name : 'Usuario'}`} className="profile-icon" />
+          <img src={getProfileImage()} alt={`Perfil de ${user ? user.name : 'Usuario'}`} className="profile-icons" />
           <span className="user-name">{user ? user.name : 'Usuario'}</span>
           <span><Link to="/user/profile/edit" className="editar-perfil">Editar perfil</Link></span>
         </div>

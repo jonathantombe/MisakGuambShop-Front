@@ -94,7 +94,7 @@ const ProductManagementTable = ({
                             <th>Imágenes</th>
                             <th>Precio</th>
                             <th>Categoría</th>
-                            {showVendorColumn && <th>Vendedor</th>}
+                            {/* {showVendorColumn && <th>Vendedor</th>} */}
                             <th>Estado</th>
                             <th>Opciones</th>
                         </tr>
@@ -111,7 +111,7 @@ const ProductManagementTable = ({
                                     />
                                 </td>
                                 <td>{product.id}</td>
-                                <td>{product.name}</td>
+                                <td className="product-name">{product.name}</td>
                                 <td>
                                     <div className="product-images">
                                         {product.imageUrls.map((url, index) => (
@@ -126,7 +126,7 @@ const ProductManagementTable = ({
                                 </td>
                                 <td>{formatPrice(product.price)}</td>
                                 <td>{categories.find(c => c.id === product.categoryId)?.name || 'N/A'}</td>
-                                {showVendorColumn && <td>{product.userId}</td>}
+                                {/* {showVendorColumn && <td>{product.userId}</td>} */}
                                 <td>
                                     <div className={`status-text ${product.status.toLowerCase()}`}>
                                         {translateStatus(product.status)}

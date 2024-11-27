@@ -1,0 +1,58 @@
+.epayco-checkout {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.epayco-form {
+    width: 100%;
+    min-height: 400px;
+    position: relative;
+    z-index: 10;
+}
+.testmode{
+    display: none;
+}
+
+.epayco-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #00a0df;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.epayco-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.epayco-error {
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ff0000;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+/* Asegurarse que el iframe de ePayco sea visible */
+#epayco-checkout-form {
+    opacity: 1 !important;
+    z-index: 999999 !important;
+    position: relative !important;
+}
+
+/* Evitar que elementos padres interfieran */
+.epayco-checkout {
+    isolation: isolate;
+}

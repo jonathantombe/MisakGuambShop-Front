@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import isotipoblack from '../../assets/images/isotipoblack.png';
 import { registerUser, loginUser } from '../../services/auth';
-import Footer from '../../components/Footer/Footer'
 import './Register.css';
 import { useAuth } from '../../context/AuthContext';
 
@@ -82,7 +81,7 @@ const Register = () => {
                     phone: form.phone,
                 });
 
-                setSuccess(registerResponse.message || 'Registro exitoso');
+                setSuccess(registerResponse.message || '');
 
                 try {
                     const loginResponse = await loginUser({
@@ -120,7 +119,7 @@ const Register = () => {
         <>
         <div className="register-container">
             <div className="welcome-container">
-                <h2 className='welcome-h2'>¡Bienvenido a MisakGuambShop!</h2>
+                    <h2 className='welcome__h2'>¡Bienvenido a MisakGuambShop!</h2>
                 <p className='welcome-p'>Regístrate con tus datos personales para usar todas las funciones del sitio.</p>
                 <img src={isotipoblack} alt="Isotipo Black" />
             </div>
@@ -209,7 +208,6 @@ const Register = () => {
                 </p>
             </div>
             </div>
-            <Footer />
         </>
     );
 };

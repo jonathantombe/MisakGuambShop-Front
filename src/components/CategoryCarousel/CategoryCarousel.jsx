@@ -41,7 +41,7 @@ const CategoryCarousel = () => {
 
   return (
     <div className="carousel-categories">
-      <h2 className="carousel-title">Compra por categorías</h2>
+      <h2 className="carousel-title">Descubre Artesanías por Categoría</h2>
       <div className="carousel-wrapper">
         
         

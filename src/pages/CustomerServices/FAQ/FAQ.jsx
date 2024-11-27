@@ -40,12 +40,12 @@ const FAQ = () => {
       <h1>Preguntas Frecuentes</h1>
       <div className="faq-list">
         {faqs.map((faq, index) => (
-          <div 
-            key={index} 
+          <div
+            key={index}
             className="faq-item"
           >
-            <div 
-              className="faq-question" 
+            <div
+              className="faq-question"
               onClick={() => toggleFAQ(index)} // Cambia el estado al hacer clic
             >
               {faq.question}

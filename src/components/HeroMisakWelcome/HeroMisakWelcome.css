@@ -6,7 +6,7 @@
     background: linear-gradient(135deg, #e2e2e2 0%, #e6d5b8 100%);
     margin-bottom: -50px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    position: relative; 
+    position: relative;
 }
 
 .hero-misak::after {
@@ -33,6 +33,7 @@
     font-weight: var(--font-heading-weight);
     font-style: var(--font-heading-style);
     color: #4a3933;
+  
 }
 
 .hero-misak-content h2 {
@@ -71,19 +72,19 @@
     align-items: center;
     justify-content: center;
     line-height: 1.5em;
-    border-radius: 8px; 
+    border-radius: 8px;
     background-color: var(--color-accent);
     color: var(--color-button-text);
     border: none;
     opacity: 1;
     transition: background-color 0.25s ease, transform 0.2s ease;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .hero-misak-features span:hover {
     background-color: rgba(58, 9, 44, 0.85);
     color: var(--color-button-text);
-    transform: scale(1.05); 
+    transform: scale(1.05);
 }
 
 .hero-misak-image {
@@ -100,22 +101,34 @@
 
 
 .hero-misak-content button {
-    margin-top: 20px; 
-    padding: 10px 20px; 
-    border: none; 
-    border-radius: 8px; 
-    background-color: #8b4513; 
-    color: white; 
-    font-size: 1rem; 
-    cursor: pointer; 
-    transition: background-color 0.3s ease, transform 0.2s ease; 
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #8b4513;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .hero-misak-content button:hover {
     background-color: #7a3b10;
-    transform: scale(1.05); 
+    transform: scale(1.05);
 }
 
+@media (max-width: 1200px) {
+    .hero-misak {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 3rem 7% 5rem;
+        background: linear-gradient(135deg, #e2e2e2 0%, #e6d5b8 100%);
+        margin-bottom: -50px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+}
 
 @media (max-width: 1024px) {
     .hero-misak {
@@ -199,7 +212,7 @@
     }
 
     .hero-misak-features span {
-        padding: 6px 15px;
+        padding: 0 5px;
         font-size: 0.8em;
     }
 }
