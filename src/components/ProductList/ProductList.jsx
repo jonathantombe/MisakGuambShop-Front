@@ -110,7 +110,7 @@ const ProductList = ({ title, products = [], onError }) => {
                         </div>
                         <div className="product-price-container">
                             <p className="product-price">
-                                $ {formatPrice(product.price)}
+                                COP {formatPrice(product.price)}
                             </p>
                             {product.discount > 0 && (
                                 <p className="product-discount">${formatPrice(product.discount)}</p>
