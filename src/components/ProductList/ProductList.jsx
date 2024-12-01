@@ -13,6 +13,7 @@ const ProductList = ({ title, products = [], onError }) => {
             product.id &&
             product.name &&
             product.imageUrls &&
+            product.imageUrls.length > 0 &&
             typeof product.price === 'number' &&
             product.price >= 0
         );
@@ -21,7 +22,6 @@ const ProductList = ({ title, products = [], onError }) => {
     const formatPrice = (price) => {
         try {
             if (typeof price !== 'number') return '0';
-            // Formatea el precio sin decimales y con separador de miles
             return price.toLocaleString('es-CO', {
                 maximumFractionDigits: 0,
                 minimumFractionDigits: 0
@@ -62,10 +62,14 @@ const ProductList = ({ title, products = [], onError }) => {
         }
     };
 
-    // Filtrar productos válidos
+    // Filtrar productos válidos y eliminar duplicados
     const validProducts = products.filter(validateProduct);
+    const uniqueProducts = validProducts.filter(
+        (product, index, self) =>
+            index === self.findIndex((p) => p.id === product.id)
+    );
 
-    if (!validProducts || validProducts.length === 0) {
+    if (!uniqueProducts || uniqueProducts.length === 0) {
         return (
             <div className="product-list-container">
                 <h2 className="product-list-title">{title}</h2>
@@ -76,28 +80,24 @@ const ProductList = ({ title, products = [], onError }) => {
         );
     }
 
-    console.log(validProducts);
-    
-
     return (
         <div className="product-list-container">
             <h2 className="product-list-title">{title}</h2>
             <div className="product-list">
-                {validProducts.map((product) => (
+                {uniqueProducts.map((product) => (
                     <div key={product.id} className="product-card">
-
-                        <img 
-                            src={product?.imageUrls[0] || '/placeholder-image.png'} 
-                            alt={product.name} 
-                            className="product-image" 
+                        <img
+                            src={product.imageUrls[0] || '/placeholder-image.png'}
+                            alt={product.name}
+                            className="product-image"
                         />
-                        <img src={product.imageUrls} alt={product.name} className="product-image" />
+
                         <h3 className="product-name">{product.name}</h3>
                         <div className="product-rating-container">
                             <div className="product-rating">
                                 {[...Array(5)].map((_, i) => (
-                                    <span 
-                                        key={i} 
+                                    <span
+                                        key={i}
                                         className={i < (product.rating || 0) ? 'star filled' : 'star'}
                                     >
                                         ★
@@ -107,7 +107,6 @@ const ProductList = ({ title, products = [], onError }) => {
                             <p className="product-rating-value">
                                 {product.rating ? product.rating.toFixed(2) : 'Sin calificación'}
                             </p>
-                            <p className="product-rating-value">{product?.rating?.toFixed(2)}</p>
                         </div>
                         <div className="product-price-container">
                             <p className="product-price">
@@ -122,15 +121,15 @@ const ProductList = ({ title, products = [], onError }) => {
                             <p className="product-sold">{product.totalSales || 0}</p>
                         </div>
                         <div className="product-actions">
-                            <button 
+                            <button
                                 className="add-to-cart-button cart"
                                 aria-label="Agregar al carrito"
                                 onClick={() => addToCart(product)}
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <circle cx="9" cy="21" r="1"/>
-                                    <circle cx="20" cy="21" r="1"/>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                                    <circle cx="9" cy="21" r="1" />
+                                    <circle cx="20" cy="21" r="1" />
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
                                 </svg>
                             </button>
                         </div>
