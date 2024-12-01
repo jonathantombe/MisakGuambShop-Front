@@ -109,7 +109,7 @@ export const Header = () => {
 };
 
   const categories = [
-    { name: 'Bolsos', image: mochilas },
+    { name: 'Mochilas', image: mochilas },
     { name: 'Manillas', image: manillas },
     { name: 'Aretes', image: aretes },
     { name: 'Collar', image: collar },

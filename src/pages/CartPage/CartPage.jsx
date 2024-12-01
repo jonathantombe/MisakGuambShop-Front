@@ -165,7 +165,6 @@ const CartPage = () => {
                                     )}
                                 </div>
                             </div>
-
                             {cartItems.map(item => (
                                 <div key={item.id} className="cart-item">
                                     <div className='cart-item-container'>
@@ -182,7 +181,6 @@ const CartPage = () => {
                                             />
                                         </div>
                                     </div>
-
                                     <div className='cart-item-container'>
                                         <div className="item-details">
                                             <p className="item-name">{item.name}</p>
@@ -231,7 +229,6 @@ const CartPage = () => {
                                 </div>
                             ))}
                         </div>
-
                         <div className="order-summary">
                             <div className="summary-row">
                                 <div className="summary-label">
@@ -255,5 +252,6 @@ const CartPage = () => {
         </div>
     );
 };
+
 
 export default CartPage;

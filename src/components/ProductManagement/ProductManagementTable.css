@@ -68,18 +68,6 @@
     border-collapse: collapse;
 }
 
-.product-table th {
-    color: #5a4a42;
-    letter-spacing: .16px;
-    font-family: Graphik Webfont, -apple-system, Helvetica Neue, Droid Sans, Arial, "sans-serif";
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.7;
-    max-width: 600px;
-    border-bottom: 1px solid var(--color-border);
-
-}
-
 .product-table td {
     color: #5a4a42;
     letter-spacing: .16px;
@@ -89,6 +77,8 @@
     line-height: 1.7;
     max-width: 600px;
     border-bottom: 1px solid var(--color-border);
+    text-align: center;
+
 }
 
 .product-table th {
@@ -98,6 +88,7 @@
     font-family: var(--font-body);
     font-size: var(--font-size-body-small);
     color: var(--color-text-meta);
+    text-align: center;
 }
 
 .product-table th:hover {
@@ -338,7 +329,6 @@
         line-height: 1.7;
         max-width: 600px;
         border-bottom: 1px solid var(--color-border);
-
     }
 
     .product-table td {
@@ -383,7 +373,6 @@
         object-fit: cover;
         border-radius: 5px;
     }
-
 
     .bulk-actions {
         margin-bottom: 20px;
@@ -518,7 +507,7 @@
         background-color: var(--color-error-message);
         color: white;
     }
-
+    
 }
 
 @media (min-width: 1820px) {
