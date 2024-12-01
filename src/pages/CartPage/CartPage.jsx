@@ -238,7 +238,7 @@ const CartPage = () => {
                                     <span className='subtotal'>SUBTOTAL:</span>
                                 </div>
                                 <div className="summary-amount">
-                                        <span className='total-price'><span className='cop'>$</span> {totalPrice.toLocaleString()}</span>
+                                    <span className='total-price'><span className='cop'>$</span> {totalPrice.toLocaleString()}</span>
                                 </div>
                             </div>
                             <button
@@ -246,7 +246,7 @@ const CartPage = () => {
                                 disabled={isProcessingPayment}
                                 onClick={handlePayment}
                             >
-                                    {isProcessingPayment ? 'Procesando...' : 'Realizar pedido'}
+                                {isProcessingPayment ? 'Procesando...' : 'Realizar pedido'}
                             </button>
                         </div>
                     </>
