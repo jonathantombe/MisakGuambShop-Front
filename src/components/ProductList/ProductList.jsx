@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './ProductList.css';
+import { Link } from "react-router-dom";
+
 
 const ProductList = ({ title, products = [], onError }) => {
     const navigate = useNavigate();
@@ -78,25 +80,25 @@ const ProductList = ({ title, products = [], onError }) => {
     }
 
     console.log(validProducts);
-    
+
 
     return (
         <div className="product-list-container">
             <h2 className="product-list-title">{title}</h2>
             <div className="product-list">
                 {validProducts.map((product) => (
-                    <div key={product.id} className="product-card">
-                        <img 
-                            src={product?.imageUrls[0] || '/placeholder-image.png'} 
-                            alt={product.name} 
-                            className="product-image" 
+                    <Link to={"/product-description/"+ product.id}><div key={product.id} className="product-card">
+                        <img
+                            src={product?.imageUrls[0] || '/placeholder-image.png'}
+                            alt={product.name}
+                            className="product-image"
                         />
                         <h3 className="product-name">{product.name}</h3>
                         <div className="product-rating-container">
                             <div className="product-rating">
                                 {[...Array(5)].map((_, i) => (
-                                    <span 
-                                        key={i} 
+                                    <span
+                                        key={i}
                                         className={i < (product.rating || 0) ? 'star filled' : 'star'}
                                     >
                                         ★
@@ -120,7 +122,7 @@ const ProductList = ({ title, products = [], onError }) => {
                             <p className="product-sold">{product.totalSales || 0}</p>
                         </div>
                         <div className="product-actions">
-                            <button 
+                            <button
                                 className="add-to-cart-button cart"
                                 aria-label="Agregar al carrito"
                                 onClick={() => addToCart(product)}
@@ -132,7 +134,7 @@ const ProductList = ({ title, products = [], onError }) => {
                                 </svg>
                             </button>
                         </div>
-                    </div>
+                    </div></Link>
                 ))}
             </div>
         </div>

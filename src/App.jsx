@@ -75,7 +75,7 @@ const App = () => {
             <Route path="/buyNow/button" element={<BuyNowButton />} />
             <Route path="/history" element={<History />} />
             <Route
-              path="/product-description"
+              path="/product-description/:id"
               element={<ProductDescription />}
             />
           </Routes>

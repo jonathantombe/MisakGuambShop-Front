@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./ProductDescription.css";
+import { useParams } from "react-router"
+import api from '../../services/api';
+
 
 // Componente para los productos similares
 function SimilarProductCard({ image, name, price, rating }) {
@@ -14,7 +17,15 @@ function SimilarProductCard({ image, name, price, rating }) {
 }
 
 export default function ProductDescription() {
-  // Datos de productos similares (pueden venir de una API)
+  let params = useParams()
+  let id = params.id
+  const [product,setProduct] = useState()
+
+  console.log(product)
+
+  console.log(id);
+
+
   const similarProducts = [
     { image: "/imagenes/ancestral.png", name: "Producto 1", price: "COP 170,000", rating: "⭐⭐⭐⭐⭐" },
     { image: "/imagenes/ancestral.png", name: "Producto 2", price: "COP 160,000", rating: "⭐⭐⭐⭐" },
@@ -47,18 +58,41 @@ export default function ProductDescription() {
           id: comments.length + 1,
           text: newComment,
           user: "Usuario Anónimo",
-          profilePicture: "/imagenes/persona.png", // Foto por defecto
+          profilePicture: "/imagenes/persona.png",
         },
       ]);
       setNewComment("");
     }
   };
 
+
+  const fetchProduct = async () => {
+    try {
+
+      const response = await api.get('/api/products/detail/' + id );
+
+      setProduct(response);
+    } catch (err) {
+      console.error('Error al cargar productos:', err);
+      setProduct(null);
+    } finally {
+    }
+  };
+
+  useEffect(() => {
+    fetchProduct();
+  }, []);
+
+  if(!product){
+    return null
+
+  }
+
   return (
     <div className="product-description-container">
       {/* Sección de imágenes */}
       <section className="top-side">
-        <div className="images-section">
+        <div className="images-section" >
           <div className="thumbnails">
             <img src="/imagenes/ancestral.png" alt="Miniatura 1" />
             <img src="/imagenes/ancestral.png" alt="Miniatura 2" />
@@ -71,10 +105,10 @@ export default function ProductDescription() {
 
         {/* Sección de detalles */}
         <div className="details-section">
-          <h1 className="product-title">Maxi Bolso Guambiano Brillante Beige/Negro</h1>
-          <p className="product-prices">COP 170,000</p>
+          <h1 className="product-title">{product.name}</h1>
+          <p className="product-prices">{product.price}</p>
           <p className="product-ratings">⭐⭐⭐⭐⭐ 5.0 (12 reseñas)</p>
-          <p className="product-stocks">1000 disponibles</p>
+          <p className="product-stocks">{product.stock} disponibles</p>
           <button className="btn-buys" aria-label="Comprar ahora">Comprar Ahora</button>
           <button className="btn-carts" aria-label="Añadir al carrito">Añadir al carrito</button>
         </div>
@@ -82,7 +116,7 @@ export default function ProductDescription() {
         {/* Descripción */}
         <div className="product-description">
           <p>
-            El Maxi Bolso Beige/Negro Brillante luce preciosos patrones diseñados por el pueblo indígena Guambiano. Cada bolso lleva un atractivo único, artesanal y exclusivo, ¡es perfecto para los días de verano!
+           {product.description}
           </p>
         </div>
       </section>
