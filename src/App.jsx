@@ -16,6 +16,7 @@ import ProductSearch from './pages/SellProduct/ProductSearch';
 import CategoryConfirmation from './pages/SellProduct/CategoryConfirmation';
 import CategoryCarousel from './components/CategoryCarousel/CategoryCarousel'
 import ProductDetails from './pages/SellProduct/ProductDetails';
+import Category from './pages/Category/Category';
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
 import MyPublication from './pages/MyPublications/MyPublications';
 import ShipmentForm from './components/Shipment/ShipmentForm/ShipmentForm';
@@ -48,6 +49,7 @@ const App = () => {
             <Route path="/reset-password" element={<ResetPasswordForm />} />
             <Route path="/product/search" element={<ProductSearch />} />
             <Route path="/confirm-category/:categoryId" element={<CategoryConfirmation />} />
+            <Route path="/category/:categoryId" element={<Category />} />
             <Route path="/category" element={<CategoryCarousel />} />
             <Route path="/product-details" element={<ProductDetails />} />
             <Route path="/products/:id" element={<ProductDetails />} />

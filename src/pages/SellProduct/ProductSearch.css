@@ -93,6 +93,7 @@
   color: var(--color-input-text);
   background-color: var(--color-input);
   margin: 0;
+  width: 100%;
 }
 
 .product-search-container-c .search-box .product-search-buttonn[type="submit"] {
@@ -135,7 +136,6 @@
 }
 
 @media (min-width: 1200px){
-
   .product-search-container {
     flex: 1;
     background-color: var(--gray-color);
