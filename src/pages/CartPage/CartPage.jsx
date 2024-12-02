@@ -134,7 +134,7 @@ const CartPage = () => {
                 <div className="confidence-message">
                     <img src={Collaboration} alt="" />
                     <span className="confidence-text">
-                        <strong>Compra con confianza en MisakGuambShop</strong> con el programa de protección al comprador, aseguramos que recibirás un reembolso completo si tu pedido no llega, llega dañado o no coincide con la descripción.
+                        <strong>Compra con confianza en Misak</strong> con el programa de protección al comprador, aseguramos que recibirás un reembolso completo si tu pedido no llega, llega dañado o no coincide con la descripción.
                     </span>
                 </div>
             </div>

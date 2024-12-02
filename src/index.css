@@ -1,44 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500&family=New+York:wght@400;700&display=swap');
-body{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scrollbar-width: thin; /* Firefox */
-    scrollbar-color: var(--primary-gold) var(--light-cream); /* Firefox */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--primary-gold) var(--light-cream); /* Firefox */
 }
 /* Estilos para el scrollbar global */
 html {
-    scrollbar-width: thin; /* Firefox */
-    scrollbar-color: var(--primary-gold) var(--light-cream); /* Firefox */
-  }
-  
-  /* Estilo personalizado para el scrollbar en Webkit (Chrome, Safari) */
-  ::-webkit-scrollbar {
-    width: 12px;
-    height: 12px; /* Para los scrollbars horizontales */
-    background: var(--light-cream);
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: var(--primary-gold);
-    border-radius: 6px;
-    border: 3px solid var(--light-cream);
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--deep-bronze);
-  }
-  
-  /* Estilo para el scrollbar cuando está en una página con fondo claro */
-  html, body {
-    min-height: 100%;
-    overflow-x: hidden;
-  }
-  
-  /* Asegurando que el contenido del body se pueda desplazar de forma natural */
-  body {
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-gold) var(--light-cream);
-  }
-  
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--primary-gold) var(--light-cream); /* Firefox */
+}
+
+/* Estilo personalizado para el scrollbar en Webkit (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px; /* Para los scrollbars horizontales */
+  background: var(--light-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-gold);
+  border-radius: 6px;
+  border: 3px solid var(--light-cream);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--deep-bronze);
+}
+
+/* Estilo para el scrollbar cuando está en una página con fondo claro */
+html,
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+/* Asegurando que el contenido del body se pueda desplazar de forma natural */
+body {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-gold) var(--light-cream);
+}
