@@ -1,168 +1,165 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import DefaultProfileIcon from "../../assets/icons/no-user-avatar.svg";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
-import MobileTopBar from "../../components/MobileTopBar/MobileTopBar";
-import api from "../../services/api";
-import mochilas from "../../assets/products/mochilas/03_900x.webp";
-import manillas from "../../assets/products/manillas/manilla.png";
-import aretes from "../../assets/products/aretes/aretemisak.png";
-import collar from "../../assets/products/collar/collar.png";
-import instrumentos from "../../assets/products/instrumentos/capador.png";
-import camisas from "../../assets/products/camisas/camisa.png";
-import pantalones from "../../assets/products/pantalones/pantalones.png";
-import zapatos from "../../assets/products/zapatos/zapatos.png";
-import joyas from "../../assets/products/joyas/joya.png";
-import decoracion from "../../assets/products/decoracion/manteles.png";
-import lamparas from "../../assets/products/lamparas/lamparas.png";
-import juegos from "../../assets/products/juegos/trompo.png";
-import vajilla from "../../assets/products/vajilla/vajilla.png";
-import "./Header.css";
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import DefaultProfileIcon from '../../assets/icons/no-user-avatar.svg'
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../context/AuthContext'
+import MobileTopBar from '../../components/MobileTopBar/MobileTopBar'
+import api from '../../services/api'
+import mochilas from '../../assets/products/mochilas/03_900x.webp'
+import manillas from '../../assets/products/manillas/manilla.png'
+import aretes from '../../assets/products/aretes/aretemisak.png'
+import collar from '../../assets/products/collar/collar.png'
+import instrumentos from '../../assets/products/instrumentos/capador.png'
+import camisas from '../../assets/products/camisas/camisa.png'
+import pantalones from '../../assets/products/pantalones/pantalones.png'
+import zapatos from '../../assets/products/zapatos/zapatos.png'
+import joyas from '../../assets/products/joyas/joya.png'
+import decoracion from '../../assets/products/decoracion/manteles.png'
+import lamparas from '../../assets/products/lamparas/lamparas.png'
+import juegos from '../../assets/products/juegos/trompo.png'
+import vajilla from '../../assets/products/vajilla/vajilla.png'
+import './Header.css'
 
 export const Header = () => {
-  const { user, logout, updateUser } = useAuth();
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false);
+  const { user, logout, updateUser } = useAuth()
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false)
 
-  const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-  const [isSearchResultsOpen, setIsSearchResultsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('')
+  const [searchResults, setSearchResults] = useState([])
+  const [isSearchResultsOpen, setIsSearchResultsOpen] = useState(false)
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+    setIsDropdownOpen(!isDropdownOpen)
+  }
 
   const toggleCategoryMenu = () => {
-    setIsCategoryMenuOpen(!isCategoryMenuOpen);
-  };
+    setIsCategoryMenuOpen(!isCategoryMenuOpen)
+  }
 
   const handleSearchChange = async (e) => {
-    const query = e.target.value;
-    setSearchQuery(query);
+    const query = e.target.value
+    setSearchQuery(query)
 
-    if (query.trim() === "") {
-      setSearchResults([]);
-      setIsSearchResultsOpen(false);
-      return;
+    if (query.trim() === '') {
+      setSearchResults([])
+      setIsSearchResultsOpen(false)
+      return
     }
-  };
+  }
 
   const handleSearchSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (searchQuery.trim()) {
-      navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
-      setIsSearchResultsOpen(false);
+      navigate(`/search?query=${encodeURIComponent(searchQuery)}`)
+      setIsSearchResultsOpen(false)
     }
-  };
+  }
 
   const handleSearchResultClick = (productId) => {
-    navigate(`/product/${productId}`);
-    setIsSearchResultsOpen(false);
-  };
+    navigate(`/product/${productId}`)
+    setIsSearchResultsOpen(false)
+  }
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (!event.target.closest(".user-profile")) {
-        setIsDropdownOpen(false);
+      if (!event.target.closest('.user-profile')) {
+        setIsDropdownOpen(false)
       }
       if (
-        !event.target.closest(".menu-categories") &&
-        !event.target.closest(".category-menu")
+        !event.target.closest('.menu-categories') &&
+        !event.target.closest('.category-menu')
       ) {
-        setIsCategoryMenuOpen(false);
+        setIsCategoryMenuOpen(false)
       }
-      if (!event.target.closest(".search-container")) {
-        setIsSearchResultsOpen(false);
+      if (!event.target.closest('.search-container')) {
+        setIsSearchResultsOpen(false)
       }
-    };
-    document.addEventListener("click", handleClickOutside);
+    }
+    document.addEventListener('click', handleClickOutside)
     return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
+      document.removeEventListener('click', handleClickOutside)
+    }
+  }, [])
 
   const handleProfileClick = () => {
-    navigate("/user-profile");
-    setIsDropdownOpen(false);
-  };
+    navigate('/user-profile')
+    setIsDropdownOpen(false)
+  }
 
   const getProfileImage = () => {
     if (user && user.profileImageUrl) {
-      return user.profileImageUrl;
+      return user.profileImageUrl
     }
-    return DefaultProfileIcon;
-  };
+    return DefaultProfileIcon
+  }
 
   const cartPageClick = () => {
-    navigate("/cart");
-    setIsDropdownOpen(false);
-  };
+    navigate('/cart')
+    setIsDropdownOpen(false)
+  }
 
   useEffect(() => {
-    console.log("useEffect ejecutado");
-    console.log("Estado del usuario:", user);
-  }, [user]);
+    console.log('useEffect ejecutado')
+    console.log('Estado del usuario:', user)
+  }, [user])
   const handleLogout = () => {
-    logout();
+    logout()
     setTimeout(() => {
-      navigate("/");
-    }, 1000);
-  };
+      navigate('/')
+    }, 1000)
+  }
 
   const handleAdminModeration = () => {
-    navigate("/admin/dashboard");
-  };
+    navigate('/admin/dashboard')
+  }
 
   const handleSellerClick = async () => {
     if (user) {
-      if (user.roles.includes("SELLER")) {
-        navigate("/product/search");
+      if (user.roles.includes('SELLER')) {
+        navigate('/product/search')
       } else {
         try {
           const response = await api.patch(
             `/api/users/${user.id}/become-seller`
-          );
+          )
           if (response.success) {
             const updatedUser = {
               ...user,
               roles: response.user.roles,
-              isSeller: response.user.roles.includes("SELLER"),
-            };
-            updateUser(updatedUser);
-            navigate("/product/search");
+              isSeller: response.user.roles.includes('SELLER'),
+            }
+            updateUser(updatedUser)
+            navigate('/product/search')
           } else {
-            console.error(
-              "Error al convertirse en vendedor:",
-              response.message
-            );
+            console.error('Error al convertirse en vendedor:', response.message)
           }
         } catch (error) {
-          console.error("Error al convertirse en vendedor:", error.message);
+          console.error('Error al convertirse en vendedor:', error.message)
         }
       }
     } else {
-      navigate("/login");
+      navigate('/login')
     }
-  };
+  }
 
   const categories = [
-    { name: "Mochilas", image: mochilas },
-    { name: "Manillas", image: manillas },
-    { name: "Aretes", image: aretes },
-    { name: "Collar", image: collar },
-    { name: "Instrumentos", image: instrumentos },
-    { name: "Camisas", image: camisas },
-    { name: "Pantalones", image: pantalones },
-    { name: "Zapatos", image: zapatos },
-    { name: "Joyas", image: joyas },
-    { name: "Decoración", image: decoracion },
-    { name: "Lámparas", image: lamparas },
-    { name: "Juegos", image: juegos },
-    { name: "Vajilla", image: vajilla },
-  ];
+    { name: 'Mochilas', image: mochilas },
+    { name: 'Manillas', image: manillas },
+    { name: 'Aretes', image: aretes },
+    { name: 'Collar', image: collar },
+    { name: 'Instrumentos', image: instrumentos },
+    { name: 'Camisas', image: camisas },
+    { name: 'Pantalones', image: pantalones },
+    { name: 'Zapatos', image: zapatos },
+    { name: 'Joyas', image: joyas },
+    { name: 'Decoración', image: decoracion },
+    { name: 'Lámparas', image: lamparas },
+    { name: 'Juegos', image: juegos },
+    { name: 'Vajilla', image: vajilla },
+  ]
 
   return (
     <>
@@ -209,9 +206,7 @@ export const Header = () => {
           <div className="logo">
             <Link to="/">
               <span className="logo-text">
-                <span className="logo-m">M</span>isak
-                <span className="logo-g">G</span>uamb
-                <span className="logo-s">S</span>hop
+                <span className="logo-misak">Misak</span>
               </span>
             </Link>
           </div>
@@ -266,7 +261,7 @@ export const Header = () => {
             {user ? (
               <div className="user-profile-wrapper">
                 <div
-                  className={`user-profile ${isDropdownOpen ? "open" : ""}`}
+                  className={`user-profile ${isDropdownOpen ? 'open' : ''}`}
                   onClick={toggleDropdown}
                 >
                   <img
@@ -299,7 +294,7 @@ export const Header = () => {
                       />
                       <div>
                         <span className="user-name">
-                          {user.username || "Usuario"}
+                          {user.username || 'Usuario'}
                         </span>
                         <button
                           onClick={handleProfileClick}
@@ -311,7 +306,7 @@ export const Header = () => {
                     </div>
                     <ul>
                       {user &&
-                      (user.isAdmin || user.roles?.includes("ADMIN")) ? (
+                      (user.isAdmin || user.roles?.includes('ADMIN')) ? (
                         <>
                           <li>
                             <button onClick={handleAdminModeration}>
@@ -462,8 +457,38 @@ export const Header = () => {
                 </Link>
               </>
             )}
+            <button className="icon-button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M10.035 2.627a2 2 0 0 1 3.93 0 6.7 6.7 0 0 1 4.56 4.905L21 18.333H3L5.475 7.532a6.7 6.7 0 0 1 4.56-4.905m1.921 1.706a4.694 4.694 0 0 0-4.531 3.645L5.51 16.333h12.98l-1.915-8.355a4.694 4.694 0 0 0-4.531-3.645z"
+                ></path>
+                <path d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2"></path>
+              </svg>
+            </button>
             <button className="icon-button corazon">
-              <Link to="/shopping/cart ">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M20.877 12.52c.054-.076.103-.157.147-.239A6 6 0 0 0 12 4.528a6 6 0 0 0-9.024 7.753c.044.082.093.162.147.24l.673.961a6 6 0 0 0 .789.915L12 21.422l7.415-7.025c.293-.278.557-.584.789-.915l.673-.961Zm-14.916.425L12 18.667l6.04-5.722c.195-.185.371-.39.525-.61l.673-.961a.335.335 0 0 0 .044-.087 4 4 0 1 0-7.268-2.619v.003L12 8.667l-.013.004v-.002a3.975 3.975 0 0 0-1.237-2.574 4 4 0 0 0-6.031 5.193c.009.03.023.058.043.086l.673.961a4 4 0 0 0 .526.61Z"
+                ></path>
+              </svg>
+            </button>
+
+            <button className="icon-button">
+              <Link to="/cart ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -471,8 +496,8 @@ export const Header = () => {
                   focusable="false"
                 >
                   <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
                     d="m5.766 5-.618-3H1v2h2.518l2.17 10.535L6.18 17h14.306l2.4-12H5.767ZM7.82 15l-1.6-8h14.227l-1.6 8H7.82Z"
                   ></path>
                   <path d="M10.666 20.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm8.334 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"></path>
@@ -482,9 +507,8 @@ export const Header = () => {
           </nav>
         </div>
       </header>
-      <MobileTopBar />
     </>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
