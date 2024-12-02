@@ -28,7 +28,8 @@ import Cancel from './pages/Payment/Cancel/Cancel';
 import NotFound from './pages/NotFound/NotFound';
 import FAQ from './pages/CustomerServices/FAQ/FAQ';
 import JoinUs from './pages/CustomerServices/JoinUs/JoinUs';
-import BuyNowButton from '../src/components/BuyNowButton/BuyNowButton';     
+import BuyNowButton from '../src/components/BuyNowButton/BuyNowButton';    
+import Search from './pages/Search/Search/' 
 import History from '../src/pages/History/History'
 
 const App = () => {
@@ -53,6 +54,7 @@ const App = () => {
             <Route path="/category" element={<CategoryCarousel />} />
             <Route path="/product-details" element={<ProductDetails />} />
             <Route path="/products/:id" element={<ProductDetails />} />
+             <Route path="/search" element={<Search />} />
             <Route path="/shopping/cart" element={<CartPage />} />
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
             <Route path="/my/publications" element={<MyPublication />} />
