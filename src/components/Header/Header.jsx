@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import DefaultProfileIcon from '../../assets/icons/no-user-avatar.svg'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
+import MobileTopBar from '../../components/MobileTopBar/MobileTopBar'
 import api from '../../services/api'
 import mochilas from '../../assets/products/mochilas/03_900x.webp'
 import manillas from '../../assets/products/manillas/manilla.png'
@@ -24,6 +25,10 @@ export const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false)
 
+  const [searchQuery, setSearchQuery] = useState('')
+  const [searchResults, setSearchResults] = useState([])
+  const [isSearchResultsOpen, setIsSearchResultsOpen] = useState(false)
+
   const navigate = useNavigate()
 
   const toggleDropdown = () => {
@@ -32,6 +37,30 @@ export const Header = () => {
 
   const toggleCategoryMenu = () => {
     setIsCategoryMenuOpen(!isCategoryMenuOpen)
+  }
+
+  const handleSearchChange = async (e) => {
+    const query = e.target.value
+    setSearchQuery(query)
+
+    if (query.trim() === '') {
+      setSearchResults([])
+      setIsSearchResultsOpen(false)
+      return
+    }
+  }
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault()
+    if (searchQuery.trim()) {
+      navigate(`/search?query=${encodeURIComponent(searchQuery)}`)
+      setIsSearchResultsOpen(false)
+    }
+  }
+
+  const handleSearchResultClick = (productId) => {
+    navigate(`/product/${productId}`)
+    setIsSearchResultsOpen(false)
   }
 
   useEffect(() => {
@@ -178,22 +207,50 @@ export const Header = () => {
               </span>
             </Link>
           </div>
-
-          <div className="search-bar">
-            <input
-              type="text"
-              placeholder="Buscar artesanías tradicionales..."
-            />
-            <button type="submit">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path>
-              </svg>
-            </button>
+          <div className="search-container">
+            <form onSubmit={handleSearchSubmit}>
+              <div className="search-bar">
+                <input
+                  type="text"
+                  placeholder="Buscar artesanías tradicionales..."
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                />
+                <button type="submit">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path>
+                  </svg>
+                </button>
+              </div>
+            </form>
+            {isSearchResultsOpen && searchResults.length > 0 && (
+              <div className="search-results">
+                {searchResults.map((product) => (
+                  <div
+                    key={product.id}
+                    className="search-result-item"
+                    onClick={() => handleSearchResultClick(product.id)}
+                  >
+                    <img
+                      src={product.imageUrls[0]}
+                      alt={product.name}
+                      className="search-result-image"
+                    />
+                    <div className="search-result-details">
+                      <span className="search-result-name">{product.name}</span>
+                      <span className="search-result-price">
+                        COP {product.price.toLocaleString()}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           <nav className="nav-links">

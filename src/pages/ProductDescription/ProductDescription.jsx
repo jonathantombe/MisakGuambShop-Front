@@ -1,10 +1,8 @@
-import React, { useState,useEffect } from "react";
-import "./ProductDescription.css";
-import { useParams } from "react-router"
-import api from '../../services/api';
+import React, { useState, useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+import api from '../../services/api'
+import './ProductDescription.css'
 
-
-// Componente para los productos similares
 function SimilarProductCard({ image, name, price, rating }) {
   return (
     <div className="similar-product-card">
@@ -13,115 +11,216 @@ function SimilarProductCard({ image, name, price, rating }) {
       <p>{price}</p>
       <p>{rating}</p>
     </div>
-  );
+  )
 }
 
 export default function ProductDescription() {
-  let params = useParams()
-  let id = params.id
-  const [product,setProduct] = useState()
+  const params = useParams()
+  const navigate = useNavigate()
+  const id = params.id
 
-  console.log(product)
+  const [product, setProduct] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const [addingToCart, setAddingToCart] = useState(false)
 
-  console.log(id);
-
-
-  const similarProducts = [
-    { image: "/imagenes/ancestral.png", name: "Producto 1", price: "COP 170,000", rating: "⭐⭐⭐⭐⭐" },
-    { image: "/imagenes/ancestral.png", name: "Producto 2", price: "COP 160,000", rating: "⭐⭐⭐⭐" },
-  ];
-
-  // Estado para comentarios
   const [comments, setComments] = useState([
     {
       id: 1,
-      text: "Hermoso diseño y excelente calidad. ¡Me encantó!",
-      user: "María López",
-      profilePicture: "/imagenes/persona.png",
+      text: 'Hermoso diseño y excelente calidad. ¡Me encantó!',
+      user: 'María López',
+      profilePicture: '/imagenes/persona.png',
     },
     {
       id: 2,
-      text: "Muy práctico y único. ¡Perfecto para regalar!",
-      user: "Carlos Martínez",
-      profilePicture: "/imagenes/persona.png",
+      text: 'Muy práctico y único. ¡Perfecto para regalar!',
+      user: 'Carlos Martínez',
+      profilePicture: '/imagenes/persona.png',
     },
-  ]);
-  const [newComment, setNewComment] = useState("");
+  ])
+  const [newComment, setNewComment] = useState('')
+
+  const similarProducts = [
+    {
+      image: '/imagenes/ancestral.png',
+      name: 'Producto 1',
+      price: 'COP 170,000',
+      rating: '⭐⭐⭐⭐⭐',
+    },
+    {
+      image: '/imagenes/ancestral.png',
+      name: 'Producto 2',
+      price: 'COP 160,000',
+      rating: '⭐⭐⭐⭐',
+    },
+  ]
+
+  const fetchProduct = async () => {
+    try {
+      setLoading(true)
+      const response = await api.get('/api/products/detail/' + id)
+      setProduct(response)
+      setError(null)
+    } catch (err) {
+      console.error('Error al cargar producto:', err)
+      setError('Error al cargar el producto. Por favor, intente nuevamente.')
+      setProduct(null)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+
+  const getCart = () => {
+    try {
+      return JSON.parse(localStorage.getItem('cart')) || []
+    } catch (error) {
+      console.error('Error al obtener el carrito:', error)
+      return []
+    }
+  }
+
+
+  const saveCart = (cart) => {
+    try {
+      localStorage.setItem('cart', JSON.stringify(cart))
+    } catch (error) {
+      console.error('Error al guardar el carrito:', error)
+    }
+  }
+
+  const handleAddToCart = async () => {
+    if (!product || addingToCart) return
+
+    try {
+      setAddingToCart(true)
+
+      const currentCart = getCart()
+
+      const existingItemIndex = currentCart.findIndex(
+        (item) => item.id === product.id
+      )
+
+      if (existingItemIndex >= 0) {
+        currentCart[existingItemIndex].quantity += 1
+      } else {
+        currentCart.push({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          imageUrls: product.imageUrls,
+          quantity: 1,
+        })
+      }
+
+      saveCart(currentCart)
+
+      navigate('/shopping/cart')
+    } catch (error) {
+      console.error('Error al agregar al carrito:', error)
+      alert('Error al agregar al carrito. Por favor, intente nuevamente.')
+    } finally {
+      setAddingToCart(false)
+    }
+  }
+
+  const handleBuyNow = () => {
+    if (!product) return
+
+    try {
+      const buyNowItem = [
+        {
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          image: product.imageUrls[0],
+          quantity: 1,
+        },
+      ]
+
+      saveCart(buyNowItem)
+
+      navigate('/checkout')
+    } catch (error) {
+      console.error('Error al procesar la compra:', error)
+      alert('Error al procesar la compra. Por favor, intente nuevamente.')
+    }
+  }
 
   // Manejar el envío de comentarios
   const handleCommentSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (newComment.trim()) {
       setComments([
         ...comments,
         {
           id: comments.length + 1,
           text: newComment,
-          user: "Usuario Anónimo",
-          profilePicture: "/imagenes/persona.png",
+          user: 'Usuario Anónimo',
+          profilePicture: '/imagenes/persona.png',
         },
-      ]);
-      setNewComment("");
+      ])
+      setNewComment('')
     }
-  };
+  }
 
-
-  const fetchProduct = async () => {
-    try {
-
-      const response = await api.get('/api/products/detail/' + id );
-
-      setProduct(response);
-    } catch (err) {
-      console.error('Error al cargar productos:', err);
-      setProduct(null);
-    } finally {
-    }
-  };
-
+  // Efecto para cargar el producto
   useEffect(() => {
-    fetchProduct();
-  }, []);
+    fetchProduct()
+  }, [id])
 
-  if(!product){
-    return null
+  if (loading) {
+    return <div className="loading">Cargando producto...</div>
+  }
 
+  if (error) {
+    return <div className="error">{error}</div>
+  }
+
+  if (!product) {
+    return <div className="error">Producto no encontrado</div>
   }
 
   return (
     <div className="product-description-container">
-      {/* Sección de imágenes */}
       <section className="top-side">
-        <div className="images-section" >
-          <div className="thumbnails">
-            <img src="/imagenes/ancestral.png" alt="Miniatura 1" />
-            <img src="/imagenes/ancestral.png" alt="Miniatura 2" />
-            <img src="/imagenes/ancestral.png" alt="Miniatura 3" />
-          </div>
+        <div className="images-section">
           <div className="main-image">
-            <img src="/imagenes/ancestral.png" alt="Producto principal" />
+            <img
+              src={product.imageUrls[0] || '/placeholder-image.png'}
+              alt={product.name}
+            />
           </div>
         </div>
 
-        {/* Sección de detalles */}
         <div className="details-section">
           <h1 className="product-title">{product.name}</h1>
           <p className="product-prices">{product.price}</p>
           <p className="product-ratings">⭐⭐⭐⭐⭐ 5.0 (12 reseñas)</p>
           <p className="product-stocks">{product.stock} disponibles</p>
-          <button className="btn-buys" aria-label="Comprar ahora">Comprar Ahora</button>
-          <button className="btn-carts" aria-label="Añadir al carrito">Añadir al carrito</button>
+          <button
+            className="btn-buys"
+            aria-label="Comprar ahora"
+            onClick={handleBuyNow}
+            disabled={addingToCart || !product.stock}
+          >
+            Comprar Ahora
+          </button>
+          <button
+            className="btn-carts"
+            aria-label="Añadir al carrito"
+            onClick={handleAddToCart}
+            disabled={addingToCart || !product.stock}
+          >
+            {addingToCart ? 'Agregando...' : 'Añadir al carrito'}
+          </button>
         </div>
 
-        {/* Descripción */}
         <div className="product-description">
-          <p>
-           {product.description}
-          </p>
+          <p>{product.description}</p>
         </div>
       </section>
 
-      {/* Sección de comentarios */}
       <div className="comments-section">
         <h2>Comentarios:</h2>
         <ul className="comments-list">
@@ -144,11 +243,12 @@ export default function ProductDescription() {
             rows="3"
             className="comment-input"
           ></textarea>
-          <button type="submit" className="btn-submit-comment">Enviar comentario</button>
+          <button type="submit" className="btn-submit-comment">
+            Enviar comentario
+          </button>
         </form>
       </div>
 
-      {/* Sección de productos similares */}
       <div className="similar-products">
         <h2>Artículos similares:</h2>
         <div className="similar-products-grid">
@@ -164,5 +264,5 @@ export default function ProductDescription() {
         </div>
       </div>
     </div>
-  );
+  )
 }
