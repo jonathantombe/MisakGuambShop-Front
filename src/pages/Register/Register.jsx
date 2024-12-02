@@ -119,7 +119,7 @@ const Register = () => {
         <>
         <div className="register-container">
             <div className="welcome-container">
-                    <h2 className='welcome__h2'>¡Bienvenido a MisakGuambShop!</h2>
+                    <h2 className='welcome__h2'>¡Bienvenido a Misak!</h2>
                 <p className='welcome-p'>Regístrate con tus datos personales para usar todas las funciones del sitio.</p>
                 <img src={isotipoblack} alt="Isotipo Black" />
             </div>

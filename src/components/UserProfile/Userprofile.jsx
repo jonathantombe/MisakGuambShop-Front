@@ -106,12 +106,8 @@ const UserProfile = () => {
             </svg>
           </span>
           <p className="no-orders-p">Aún no hay nada por aquí</p>
-          <p className="no-orders-ps">
-            Descubre artesanías únicas y textiles tradicionales en
-            MisakGuambShop, creados por manos indígenas. Marca tus favoritos,
-            compáralos y apoya a nuestras comunidades con cada compra. Empieza a
-            explorar y contribuye a la preservación cultural.
-          </p>
+
+          <p className="no-orders-ps">Descubre artesanías únicas y textiles tradicionales en Misak, creados por manos indígenas. Marca tus favoritos, compáralos y apoya a nuestras comunidades con cada compra. Empieza a explorar y contribuye a la preservación cultural.</p>
         </div>
       </section>
     </div>

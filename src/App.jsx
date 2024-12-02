@@ -7,13 +7,9 @@ import Login from './pages/Login/Login'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import UserProfile from './components/UserProfile/Userprofile'
-
 import UserProfileEdit from './components/UserProfile/UserProfileEdit'
-
 import ResetPassword from './pages/ResetPassword/ResetPassword'
 import ResetPasswordForm from './pages/ResetPassword/ResetPasswordForm'
-import ProductSearch from './pages/SellProduct/ProductSearch'
-import CategoryConfirmation from './pages/SellProduct/CategoryConfirmation'
 import CategoryCarousel from './components/CategoryCarousel/CategoryCarousel'
 import ProductDetails from './pages/SellProduct/ProductDetails'
 import Category from './pages/Category/Category'

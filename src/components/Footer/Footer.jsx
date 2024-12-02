@@ -1,7 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router-dom' // Importa Link para navegación
-import FAQ from '../../pages/CustomerServices/FAQ/FAQ'
-import './Footer.css'
+
+import { Link } from 'react-router-dom'; // Importa Link para navegación
+import FAQ from '../../pages/CustomerServices/FAQ/FAQ';
+import './Footer.css';
 
 const Footer = () => {
   return (
@@ -25,6 +25,9 @@ const Footer = () => {
               <a href="#">Categoría 2</a>
             </li>
           </ul>
+           <div className="rights-reserved">
+                    <p>© 2024 Misak. Todos los derechos reservados.</p>
+              </div>
         </div>
         <div className="footer-section">
           <h3>Consulta nuestras redes</h3>
@@ -75,3 +78,4 @@ const Footer = () => {
 }
 
 export default Footer
+
