@@ -16,8 +16,6 @@ import Category from './pages/Category/Category'
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard'
 import MyPublication from './pages/MyPublications/MyPublications'
 import ShipmentForm from './components/Shipment/ShipmentForm/ShipmentForm'
-import PaymentConfirmation from './components/Payment/PaymentConfirmation/PaymentConfirmation'
-import EpaycoCheckout from './components/Payment/EpaycoCheckout/EpaycoCheckout'
 import CartPage from './pages/CartPage/CartPage'
 import Success from './pages/Payment/Success/Success'
 import Cancel from './pages/Payment/Cancel/Cancel'
@@ -42,14 +40,8 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/user-profile" element={<UserProfile />} />
               <Route path="/user/profile/edit" element={<UserProfileEdit />} />
-
               <Route path="/forgot-password" element={<ResetPassword />} />
               <Route path="/reset-password" element={<ResetPasswordForm />} />
-              <Route path="/product/search" element={<ProductSearch />} />
-              <Route
-                path="/confirm-category/:categoryId"
-                element={<CategoryConfirmation />}
-              />
               <Route path="/category/:categoryId" element={<Category />} />
               <Route path="/category" element={<CategoryCarousel />} />
               <Route path="/product-details" element={<ProductDetails />} />
@@ -60,14 +52,6 @@ const App = () => {
               <Route path="/admin/dashboard" element={<AdminDashboard />} />
               <Route path="/my/publications" element={<MyPublication />} />
               <Route path="/shipment/form" element={<ShipmentForm />} />
-              <Route
-                path="/payment/confirm"
-                element={<PaymentConfirmation />}
-              />
-              <Route
-                path="/payment/epayco/checkout"
-                element={<EpaycoCheckout />}
-              />
               <Route path="/payment/success" element={<Success />} />
               <Route path="/payment/cancel" element={<Cancel />} />
               <Route path="*" element={<NotFound />} />

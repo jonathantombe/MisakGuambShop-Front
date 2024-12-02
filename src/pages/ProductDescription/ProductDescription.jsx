@@ -140,14 +140,13 @@ export default function ProductDescription() {
 
       saveCart(buyNowItem)
 
-      navigate('/checkout')
+      navigate('/shopping/cart')
     } catch (error) {
       console.error('Error al procesar la compra:', error)
       alert('Error al procesar la compra. Por favor, intente nuevamente.')
     }
   }
 
-  // Manejar el envío de comentarios
   const handleCommentSubmit = (e) => {
     e.preventDefault()
     if (newComment.trim()) {

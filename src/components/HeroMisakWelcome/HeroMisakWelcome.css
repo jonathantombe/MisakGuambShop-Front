@@ -57,6 +57,7 @@
 .hero-misak-features {
     display: flex;
     gap: 1.5rem;
+    margin: 20px 0 0 0;
 }
 
 .hero-misak-features span {

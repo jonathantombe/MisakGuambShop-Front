@@ -88,7 +88,7 @@ const ProductList = ({ title, products = [], onError }) => {
           <div key={product.id} className="product-card">
             <Link key={product.id} to={'/product-description/' + product.id}>
               <img
-                src={product.imageUrls[0] || '/placeholder-image.png'}
+                src={product?.imageUrls[0] || '/placeholder-image.png'}
                 alt={product.name}
                 className="product-image"
               />

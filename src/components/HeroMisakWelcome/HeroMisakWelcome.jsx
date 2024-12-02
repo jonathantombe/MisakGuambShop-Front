@@ -67,12 +67,11 @@ const HeroMisakWelcome = () => {
           </Transition>
           <Transition show={showThirdTab}>
             <div className={clsx(animationClass)}>
-              El arte ancestral de los Misak no solo es un medio de expresión,
-              sino también una forma de preservar nuestra historia y
-              tradiciones. A través de técnicas como el tejido y la cerámica,
-              los artesanos cuentan historias que han sido compartidas a lo
-              largo de los años. Cada pieza es una obra de arte que refleja la
-              espiritualidad y la belleza de nuestra comunidad.
+              El arte ancestral Misak no es solo expresión, sino también una
+              forma de preservar la historia y tradiciones. Con técnicas como
+              tejido y cerámica, los artesanos cuentan historias compartidas a
+              lo largo de los años. Cada pieza es arte que refleja
+              espiritualidad y belleza de nuestra comunidad.
             </div>
           </Transition>
         </div>
