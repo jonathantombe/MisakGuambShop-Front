@@ -6,9 +6,9 @@ import Login from './pages/Login/Login'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import UserProfile from './components/UserProfile/Userprofile'
-import UserProfileAccess from './components/UserProfile/UserProfileAccess/UserProfileAccess'
+import UserProfileAccess from './components/UserProfile/UserProfileAccess/UserProfileAccessF'
 import UserProfileEdit from './components/UserProfile/UserProfileEdit'
-import Logo from './components/Logo/Logo'
+
 import ResetPassword from './pages/ResetPassword/ResetPassword'
 import ResetPasswordForm from './pages/ResetPassword/ResetPasswordForm'
 import ProductSearch from './pages/SellProduct/ProductSearch'
@@ -47,7 +47,6 @@ const App = () => {
               path="/user/profile/access"
               element={<UserProfileAccess />}
             />
-            <Route path="/logo" element={<Logo />} />
             <Route path="/forgot-password" element={<ResetPassword />} />
             <Route path="/reset-password" element={<ResetPasswordForm />} />
             <Route path="/product/search" element={<ProductSearch />} />
