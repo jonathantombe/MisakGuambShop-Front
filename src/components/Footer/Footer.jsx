@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Importa Link para navegación
 import FAQ from '../../pages/CustomerServices/FAQ/FAQ';
-import './Footer.css'; 
+import './Footer.css';
 
 const Footer = () => {
     return (
@@ -10,7 +10,7 @@ const Footer = () => {
                 <div className="footer-section">
                     <h3>Servicio al cliente</h3>
                     <ul>
-              
+
                         <li><Link to="/FAQ">Preguntas Frecuentes</Link></li>
                     </ul>
                 </div>
@@ -40,7 +40,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div className="footer-section">
-                    <h3>Únete a MisakGuambShop</h3>
+                    <h3>Únete a Misak</h3>
                 <ul>
                     <li><Link to="/JoinUs">Conoce mas sobre nosotros!</Link> </li>
                     </ul>

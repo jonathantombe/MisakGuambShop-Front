@@ -161,9 +161,8 @@ export const Header = () => {
         <div className="logo">
           <Link to="/">
             <span className="logo-text">
-              <span className="logo-m">M</span>isak
-              <span className="logo-g">G</span>uamb
-              <span className="logo-s">S</span>hop
+              <span className="logo-misak">Misak</span>
+
             </span>
           </Link>
         </div>

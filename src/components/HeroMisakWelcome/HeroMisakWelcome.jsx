@@ -24,13 +24,13 @@ const HeroMisakWelcome = () => {
     };
 
     const handleVerMas = () => {
-        navigate('/history'); 
+        navigate('/history');
     };
 
     return (
         <div className="hero-misak">
             <div className="hero-misak-content">
-                <h1>Bienvenidos a MisakGuambShop</h1>
+                <h1>Bienvenidos a tienda Misak</h1>
                 <h2>El corazón de la artesanía Misak</h2>
                 <p>{description}</p>
                 <div className="hero-misak-features">
