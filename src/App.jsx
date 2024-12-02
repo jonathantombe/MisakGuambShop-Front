@@ -6,7 +6,7 @@ import Login from './pages/Login/Login'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import UserProfile from './components/UserProfile/Userprofile'
-import UserProfileAccess from './components/UserProfile/UserProfileAccess/UserProfileAccessF'
+
 import UserProfileEdit from './components/UserProfile/UserProfileEdit'
 
 import ResetPassword from './pages/ResetPassword/ResetPassword'
@@ -43,10 +43,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/user-profile" element={<UserProfile />} />
             <Route path="/user/profile/edit" element={<UserProfileEdit />} />
-            <Route
-              path="/user/profile/access"
-              element={<UserProfileAccess />}
-            />
+            
             <Route path="/forgot-password" element={<ResetPassword />} />
             <Route path="/reset-password" element={<ResetPasswordForm />} />
             <Route path="/product/search" element={<ProductSearch />} />
