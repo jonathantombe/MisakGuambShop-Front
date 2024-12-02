@@ -63,7 +63,6 @@ const ProductList = ({ title, products = [], onError }) => {
     }
   }
 
-  // Filtrar productos válidos y eliminar duplicados
   const validProducts = products.filter(validateProduct)
   const uniqueProducts = validProducts.filter(
     (product, index, self) =>

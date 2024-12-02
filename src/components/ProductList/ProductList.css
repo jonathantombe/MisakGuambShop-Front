@@ -57,6 +57,7 @@
   font-family: var(--font-open-sans);
   font-weight: var(--font-body-bold-weight);
   line-height: 1.4;
+  text-decoration: none;
 }
 
 .product-rating-container {
@@ -69,6 +70,8 @@
 
 .star {
   font-size: 18px;
+  font-size: 20px;
+    color: var(--yellow-star);
 }
 
 .star.filled {
