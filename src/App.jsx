@@ -6,13 +6,9 @@ import Login from './pages/Login/Login'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import UserProfile from './components/UserProfile/Userprofile'
-
 import UserProfileEdit from './components/UserProfile/UserProfileEdit'
-
 import ResetPassword from './pages/ResetPassword/ResetPassword'
 import ResetPasswordForm from './pages/ResetPassword/ResetPasswordForm'
-import ProductSearch from './pages/SellProduct/ProductSearch'
-import CategoryConfirmation from './pages/SellProduct/CategoryConfirmation'
 import CategoryCarousel from './components/CategoryCarousel/CategoryCarousel'
 import ProductDetails from './pages/SellProduct/ProductDetails'
 import Category from './pages/Category/Category'
@@ -43,14 +39,8 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/user-profile" element={<UserProfile />} />
             <Route path="/user/profile/edit" element={<UserProfileEdit />} />
-            
             <Route path="/forgot-password" element={<ResetPassword />} />
             <Route path="/reset-password" element={<ResetPasswordForm />} />
-            <Route path="/product/search" element={<ProductSearch />} />
-            <Route
-              path="/confirm-category/:categoryId"
-              element={<CategoryConfirmation />}
-            />
             <Route path="/category/:categoryId" element={<Category />} />
             <Route path="/category" element={<CategoryCarousel />} />
             <Route path="/product-details" element={<ProductDetails />} />
@@ -60,10 +50,7 @@ const App = () => {
             <Route path="/my/publications" element={<MyPublication />} />
             <Route path="/shipment/form" element={<ShipmentForm />} />
             <Route path="/payment/confirm" element={<PaymentConfirmation />} />
-            <Route
-              path="/payment/epayco/checkout"
-              element={<EpaycoCheckout />}
-            />
+            <Route path="/payment/epayco/checkout" element={<EpaycoCheckout />} />
             <Route path="/payment/success" element={<Success />} />
             <Route path="/payment/cancel" element={<Cancel />} />
             <Route path="*" element={<NotFound />} />

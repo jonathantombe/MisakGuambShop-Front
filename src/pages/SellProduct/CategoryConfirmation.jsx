@@ -26,7 +26,7 @@ const CategoryConfirmation = () => {
                     )}
                     <h3>{category.name}</h3>
                 </div>
-                <p>La categoría debe estar relacionada con el título y la foto para que tus compradores encuentren tu producto. Si la categoría no es correcta, anularemos tu publicación en MisakGuambShop y te pediremos que vuelvas a publicar seleccionando otra categoría.</p>
+                <p>La categoría debe estar relacionada con el título y la foto para que tus compradores encuentren tu producto. Si la categoría no es correcta, anularemos tu publicación en Misak y te pediremos que vuelvas a publicar seleccionando otra categoría.</p>
                 <div className='confirm-button-div'>
                     <button onClick={handleConfirm} className="confirm-button">Confirmar</button>
                 </div>

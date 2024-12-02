@@ -19,6 +19,14 @@
 
 }
 
+.rights-reserved {
+  text-align: center; /* Centra el texto */
+  font-size: var(--font-size-body-small);
+  color: var(--color-footer-text-meta); /* Color más sutil */
+  padding-top: 10px;
+  border-top: 1px solid var(--color-footer-border); /* Línea separadora opcional */
+}
+
 .footer-section:last-child {
     display: flex;
     flex-direction: column;

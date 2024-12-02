@@ -21,14 +21,14 @@ const ProductDetails = () => {
         category: '',
         images: []
     });
-    
+
 
     const [errors, setErrors] = useState({});
     const [submissionMessage, setSubmissionMessage] = useState('');
     const navigate = useNavigate();
     const fileInputRef = useRef(null);
 
-    
+
     const containsProfanity = (text) => {
         const profanityList = ['palabra1', 'palabra2', 'palabra3']; // Añade tu lista de palabras prohibidas
         return profanityList.some(word => text.toLowerCase().includes(word));
@@ -56,7 +56,7 @@ const ProductDetails = () => {
             const numericPrice = parseFloat(productData.price.replace(/[^\d]/g, ''));
             if (isNaN(numericPrice) || numericPrice <= 0) {
                 newErrors.price = "El precio debe ser un número mayor que cero";
-            } else if (numericPrice > 999999999) { 
+            } else if (numericPrice > 999999999) {
                 newErrors.price = "El precio excede el límite permitido";
             }
         }
@@ -271,7 +271,7 @@ const ProductDetails = () => {
                 </button>
                 <h1 className="product-details__title">{isEditing ? 'Editar Producto' : 'Añadir Nuevo Producto'}</h1>
                 <p className="product-details__introduction">
-                    Completa los detalles del producto para añadirlo a <strong>nuestra tienda MisakGuambShop</strong>. Proporciona información precisa para ayudar a los clientes a tomar decisiones informadas y valorar el trabajo artesanal único de la comunidad Misak.
+                    Completa los detalles del producto para añadirlo a <strong>nuestra tienda Misak</strong>. Proporciona información precisa para ayudar a los clientes a tomar decisiones informadas y valorar el trabajo artesanal único de la comunidad Misak.
                 </p>
                 <form onSubmit={handleSubmit} className="product-details__form" noValidate>
                     <div className="product-details__form-group">
