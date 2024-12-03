@@ -181,15 +181,19 @@ const CartPage = () => {
                     </button>
                   )}
                 </div>
+                <hr className="separator" />
               </div>
               {cartItems.map((item) => (
                 <div key={item.id} className="cart-item">
-                  <div className="cart-item-container">
+                  <div>
                     <input
                       type="checkbox"
                       checked={item.selected}
                       onChange={() => toggleSelectItem(item.id)}
                     />
+                  </div>
+
+                  <div className="cart-item-container">
                     <div className="cart-item-image-container">
                       <img
                         src={item.image || '/placeholder-image.png'}
