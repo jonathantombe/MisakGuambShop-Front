@@ -12,7 +12,7 @@ import ResetPassword from './pages/ResetPassword/ResetPassword'
 import ResetPasswordForm from './pages/ResetPassword/ResetPasswordForm'
 import CategoryCarousel from './components/CategoryCarousel/CategoryCarousel'
 import ProductDetails from './pages/SellProduct/ProductDetails'
-import Category from './pages/Category/Category'
+import FilteredProductList from './pages/FilteredProductList/FilteredProductList'
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard'
 import MyPublication from './pages/MyPublications/MyPublications'
 import ShipmentForm from './components/Shipment/ShipmentForm/ShipmentForm'
@@ -42,7 +42,7 @@ const App = () => {
               <Route path="/user/profile/edit" element={<UserProfileEdit />} />
               <Route path="/forgot-password" element={<ResetPassword />} />
               <Route path="/reset-password" element={<ResetPasswordForm />} />
-              <Route path="/category/:categoryId" element={<Category />} />
+              <Route path="/category/:categoryId/products" element={<FilteredProductList />} />
               <Route path="/category" element={<CategoryCarousel />} />
               <Route path="/product-details" element={<ProductDetails />} />
               <Route path="/products/:id" element={<ProductDetails />} />

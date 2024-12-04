@@ -1,52 +1,80 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { validateResetToken, resetPassword } from "../../services/auth";
-import "./ResetPasswordForm.css";
+import React, { useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { validateResetToken, resetPassword } from '../../services/auth'
+import './ResetPasswordForm.css'
 
 const ResetPasswordForm = () => {
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [token, setToken] = useState("");
-  const location = useLocation();
-  const navigate = useNavigate();
+
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [error, setError] = useState('')
+  const [fieldErrors, setFieldErrors] = useState({
+    password: '',
+    confirmPassword: '',
+  })
+  const [isSuccess, setIsSuccess] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [token, setToken] = useState('')
+  const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    const urlToken = searchParams.get("token");
+    const searchParams = new URLSearchParams(location.search)
+    const urlToken = searchParams.get('token')
     if (!urlToken) {
-      setError("Token no válido");
-      setIsLoading(false);
-      return;
+      setError('Token no válido')
+      setIsLoading(false)
+      return
     }
-    setToken(urlToken);
+    setToken(urlToken)
 
     const checkToken = async () => {
       try {
-        await validateResetToken(urlToken);
-        setIsLoading(false);
+        await validateResetToken(urlToken)
+        setIsLoading(false)
       } catch (error) {
-        setError("El enlace de restablecimiento es inválido o ha expirado.");
-        setIsLoading(false);
+        setError('El enlace de restablecimiento es inválido o ha expirado.')
+        setIsLoading(false)
       }
-    };
-    checkToken();
-  }, [location]);
+    }
+    checkToken()
+  }, [location])
+
+  const validateFields = () => {
+    const newFieldErrors = {
+      password: '',
+      confirmPassword: '',
+    }
+    let isValid = true
+
+    if (!password.trim()) {
+      newFieldErrors.password = 'La nueva contraseña es requerida'
+      isValid = false
+    }
+
+    if (!confirmPassword.trim()) {
+      newFieldErrors.confirmPassword =
+        'La confirmación de contraseña es requerida'
+      isValid = false
+    }
+
+    setFieldErrors(newFieldErrors)
+    return isValid
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
+    e.preventDefault()
+    e.stopPropagation()
+    setError('')
+    setFieldErrors({ password: '', confirmPassword: '' })
 
-    // Validate password
-    if (!password.trim()) {
-      setError("La contraseña es requerida");
-      return;
+    if (!validateFields()) {
+      return
     }
+
     if (password.length < 8 || password.length > 20) {
-      setError("La contraseña debe tener entre 8 y 20 caracteres");
-      return;
+      setError('La contraseña debe tener entre 8 y 20 caracteres')
+      return
     }
     if (
       !/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
@@ -54,31 +82,30 @@ const ResetPasswordForm = () => {
       )
     ) {
       setError(
-        "La contraseña debe tener al menos una mayúscula, una minúscula, un número y un carácter especial"
-      );
-      return;
+        'La contraseña debe tener al menos una mayúscula, una minúscula, un número y un carácter especial'
+      )
+      return
     }
 
-    // Validate confirm password
     if (password !== confirmPassword) {
-      setError("Las contraseñas no coinciden");
-      return;
+      setError('Las contraseñas no coinciden')
+      return
     }
 
     try {
-      await resetPassword(token, password);
-      setIsSuccess(true);
+      await resetPassword(token, password)
+      setIsSuccess(true)
       setTimeout(() => {
-        navigate("/login");
-      }, 2000);
+        navigate('/login')
+      }, 2000)
     } catch (error) {
-      console.error("Error al restablecer la contraseña:", error);
+      console.error('Error al restablecer la contraseña:', error)
       setError(
         error.message ||
-          "Error al restablecer la contraseña. Por favor, inténtalo de nuevo."
-      );
+          'Error al restablecer la contraseña. Por favor, inténtalo de nuevo.'
+      )
     }
-  };
+  }
 
   if (isSuccess) {
     return (
@@ -97,7 +124,7 @@ const ResetPasswordForm = () => {
             <g transform="translate(1 1)" fill="none" fillRule="evenodd">
               <circle
                 stroke="#6C0"
-                stroke-width="2"
+                strokeWidth="2"
                 cx="26"
                 cy="26"
                 r="26"
@@ -110,7 +137,7 @@ const ResetPasswordForm = () => {
           </svg>
           <div className="container-button">
             <button
-              onClick={() => navigate("/login")}
+              onClick={() => navigate('/login')}
               className="proceed-button"
             >
               IR AL INICIO DE SESIÓN
@@ -118,7 +145,7 @@ const ResetPasswordForm = () => {
           </div>
         </div>
       </div>
-    );
+    )
   }
 
   return (
@@ -127,7 +154,11 @@ const ResetPasswordForm = () => {
         <h2 className="title-set-your-new-password">
           Establece tu nueva contraseña
         </h2>
-        <form onSubmit={handleSubmit} className="reset-password-form">
+        <form
+          onSubmit={handleSubmit}
+          className="reset-password-form"
+          noValidate
+        >
           <div className="form-group">
             <label htmlFor="password" className="form-label">
               Nueva contraseña
@@ -136,14 +167,24 @@ const ResetPasswordForm = () => {
               type="password"
               id="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setPassword(e.target.value)
+                if (fieldErrors.password) {
+                  setFieldErrors((prev) => ({ ...prev, password: '' }))
+                }
+              }}
               className={`form-input ${
-                error && error.includes("contraseña") ? "is-invalid" : ""
+                (error && error.includes('contraseña')) || fieldErrors.password
+                  ? 'is-invalid'
+                  : ''
               }`}
-              required
               placeholder="Ingresa tu nueva contraseña"
+              autoComplete="new-password"
             />
-            {error && error.includes("contraseña") && (
+            {fieldErrors.password && (
+              <div className="error-message">{fieldErrors.password}</div>
+            )}
+            {error && error.includes('contraseña') && !fieldErrors.password && (
               <div className="error-message">{error}</div>
             )}
           </div>
@@ -155,15 +196,29 @@ const ResetPasswordForm = () => {
               type="password"
               id="confirmPassword"
               value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              onChange={(e) => {
+                setConfirmPassword(e.target.value)
+                if (fieldErrors.confirmPassword) {
+                  setFieldErrors((prev) => ({ ...prev, confirmPassword: '' }))
+                }
+              }}
               className={`form-input ${
-                error && error.includes("coinciden") ? "is-invalid" : ""
+                (error && error.includes('coinciden')) ||
+                fieldErrors.confirmPassword
+                  ? 'is-invalid'
+                  : ''
               }`}
               placeholder="Confirma tu nueva contraseña"
+              autoComplete="new-password"
             />
-            {error && error.includes("coinciden") && (
-              <div className="error-message">{error}</div>
+            {fieldErrors.confirmPassword && (
+              <div className="error-message">{fieldErrors.confirmPassword}</div>
             )}
+            {error &&
+              error.includes('coinciden') &&
+              !fieldErrors.confirmPassword && (
+                <div className="error-message">{error}</div>
+              )}
           </div>
 
           <button type="submit" className="submit-button">
@@ -172,7 +227,7 @@ const ResetPasswordForm = () => {
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ResetPasswordForm;
+export default ResetPasswordForm
