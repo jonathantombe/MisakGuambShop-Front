@@ -183,11 +183,11 @@ const MyPublications = () => {
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                     />
-                                 </svg>  
+                                 </svg>
                                 </div>
                                 <h3 className='no-orders-p'>Aún no hay publicaciones</h3>
                                 <p className='no-products-message-p'>
-                                    Es el momento de mostrar el arte y tradición de nuestra comunidad. Comparte tus productos artesanales y textiles únicos en MisakGuambShop. Sube tus creaciones, personaliza cada detalle y gestiona tu catálogo de manera sencilla.
+                                    Es el momento de mostrar el arte y tradición de nuestra comunidad. Comparte tus productos artesanales y textiles únicos en Misak. Sube tus creaciones, personaliza cada detalle y gestiona tu catálogo de manera sencilla.
                                     Tu trabajo merece ser visto: conecta con compradores interesados en preservar la riqueza cultural y disfruta de una plataforma diseñada para hacer crecer tu negocio.
                                     ¡Empieza a publicar hoy y marca la diferencia!
                                 </p>

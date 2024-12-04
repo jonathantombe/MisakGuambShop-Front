@@ -112,9 +112,9 @@ const Login = () => {
             <main>
                 <div className="login-container">
                     <div className="welcome-container">
-                        <h2 className='welcome-h2'>¡Bienvenido a MisakGuambShop!</h2>
+                        <h2 className='welcome-h2'>¡Bienvenido a Misak!</h2>
                         <p className='welcome-p'>Inicia sesión para acceder a todas las funciones del sitio.</p>
-                        <img src={isotipoblack} alt="Logo MisakGuambShop" />
+                        <img src={isotipoblack} alt="Logo Misak" />
                     </div>
 
                     <div className="login-box">
@@ -174,7 +174,7 @@ const Login = () => {
                     </div>
                 </div>
             </main>
-            
+
             {showResetPassword && (
                 <div className="modal-overlay">
                     <div className="modal-content">

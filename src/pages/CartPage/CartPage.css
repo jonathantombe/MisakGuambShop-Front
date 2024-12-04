@@ -22,7 +22,7 @@
     transition: all .3s ease-in-out;
 }
 
-.cart-header {}
+
 
 .wt-text-title-larger {
     letter-spacing: .13505px;
@@ -46,6 +46,11 @@ input {
 
 }
 
+.separator{
+  border: 1px solid black;
+  margin: 20px 0px;
+}
+
 .select-all input {
     margin-right: 8px;
 }
@@ -64,6 +69,7 @@ input {
     position: relative;
     outline: none;
     transition: background-color 0.3s ease, border-color 0.3s ease;
+
 }
 
 .select-all input[type="checkbox"]:checked,
@@ -81,7 +87,15 @@ input {
     transform: translate(-50%, -50%);
     font-size: 12px;
     color: white;
+
 }
+
+.cart-item-container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 
 .delete-selected {
     margin-left: 16px;
@@ -451,7 +465,7 @@ input {
     }
 
     .cart-container {
-        width: 600px;
+        width: 730px;
         padding: 40px 60px;
     }
 
@@ -532,6 +546,8 @@ input {
         background-color: var(--color-accent);
         color: var(--color-button-text);
     }
+
+
 
     .order-summary {
         border-radius: 8px;

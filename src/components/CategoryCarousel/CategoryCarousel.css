@@ -161,7 +161,7 @@
   .carousel-items-container {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   .carousel-title {
     font-size: 2.5rem;
   }
@@ -205,6 +205,7 @@
 
 @media (max-width: 480px) {
   .carousel-categories {
+
     padding: 40px 0;
   }
 
@@ -224,7 +225,8 @@
   }
 
   .carousel-items-container {
-    gap: 20px 15px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px 10px;
   }
 
   .carousel-item-text {
@@ -237,6 +239,7 @@
 }
 
 @media (max-width: 360px) {
+
   .carousel-title {
     font-size: 1.6rem;
   }
@@ -251,6 +254,7 @@
   }
 
   .carousel-items-container {
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px 10px;
   }
 

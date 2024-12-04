@@ -1,6 +1,6 @@
 :root {
     --background-light: #F3F4F6;
-    --primary-color: #0000FF;
+    --primary-color: #e7936c;
     --secondary-color: #000000;
     --background-color: #FFFFFF;
     --accent-color: #FF0000;
@@ -65,7 +65,7 @@
     --text-light: #999999;
     --text-darker: #222222;
     --element-dark: #3E3E3E;
-    
+
     /* Grises opacos */
     --llm: #666;
     --davy-grey: #555555;
@@ -73,23 +73,23 @@
     --granite-gray: #676767;
     --spanish-gray: #989898;
     --lights-gray: #e6e6e6;
-    
+
     /* Blancos opacos */
     --platinum: #E5E4E2;
     --gainsboro: #DCDCDC;
     --light-gray: #D3D3D3;
     --cultured: #F5F5F5;
     --light-gray: #E0E0E0;
-    
+
     /* Colores complementarios opacos */
     --faded-blue: #6699CC;
     --pastel-blue: #A7C7E7;
     --sage: #B2AC88;
-    
+
     --khaki: #C3B091;
     --pale-silver: #C9C0BB;
     --champagne-pink: #F1E0D6;
-    
+
     /* Marrones opacos */
     --taupe: #483C32;
     --coffee: #6F4E37;
@@ -112,7 +112,7 @@
     --font-cormorant: 'Cormorant', serif;
     --font-playfair-display: 'Playfair Display', serif;
     --font-crimson-text: 'Crimson Text', serif;
-    
+
     /* Fuentes sans-serif */
     --font-open-sans: 'Open Sans', sans-serif;
     --font-lato: 'Lato', sans-serif;
@@ -131,7 +131,7 @@
     --font-body-weight: 400;
     --font-body-style: normal;
     --font-body-bold-weight: 500;
-    
+
         /* Fuentes display */
     --font-bebas-neue: 'Bebas Neue', cursive;
     --font-pacifico: 'Pacifico', cursive;
@@ -139,13 +139,13 @@
     --font-amatic-sc: 'Amatic SC', cursive;
     --font-caveat: 'Caveat', cursive;
     --ft1: "Hope Sans", sans-serif;
-    
+
         /* Variables para uso general */
     --font-heading: var(--font-playfair-display);
     --font-subheading: var(--font-montserrat);
     --font-body: var(--font-open-sans);
     --font-accent: var(--font-caveat);
-    
+
     --font-size-base: 16px;
     --font-size-accent: 1.2em;
     --font-size-product-title: 24px;
@@ -164,4 +164,3 @@
     --font-size-heading-2: 26px;
     --font-size-heading-3: 23px;
 }
-

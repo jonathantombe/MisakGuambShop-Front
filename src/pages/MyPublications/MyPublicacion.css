@@ -329,7 +329,7 @@
         background-color: var(--color-bg);
         box-sizing: border-box;
         width: 100%;
-        padding: 0 2.5rem;
+        padding: 0 2.5rem 9rem;
     }
 
     .admin-dashboard-profile-header {
@@ -620,7 +620,7 @@
         background-color: var(--color-bg);
         box-sizing: border-box;
         width: 100%;
-        padding: 0 2.5rem;
+        padding: 0 2.5rem 11rem;
     }
 
     .admin-dashboard-profile-header {
