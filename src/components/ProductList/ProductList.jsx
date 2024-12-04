@@ -13,6 +13,7 @@ const ProductList = ({ title, products = [], onError }) => {
       product.id &&
       product.name &&
       product.imageUrls &&
+      product.imageUrls.length > 0 &&
       typeof product.price === 'number' &&
       product.price >= 0
     )
@@ -160,7 +161,7 @@ ProductList.propTypes = {
     PropTypes.shape({
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       name: PropTypes.string.isRequired,
-      imageUrls: PropTypes.string.isRequired,
+      imageUrls: PropTypes.arrayOf(PropTypes.string).isRequired, // Correcto
       price: PropTypes.number.isRequired,
       rating: PropTypes.number,
       discount: PropTypes.number,
