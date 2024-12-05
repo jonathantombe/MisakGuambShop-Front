@@ -6,7 +6,7 @@ import './Register.css';
 import { useAuth } from '../../context/AuthContext';
 
 const Register = () => {
-    const { login } = useAuth();
+    const { login } = useAuth ();
     const navigate = useNavigate();
     const [form, setForm] = useState({
         username: '',
@@ -119,7 +119,7 @@ const Register = () => {
         <>
         <div className="register-container">
             <div className="welcome-container">
-                    <h2 className='welcome__h2'>¡Bienvenido a Misak!</h2>
+                  
                 <p className='welcome-p'>Regístrate con tus datos personales para usar todas las funciones del sitio.</p>
                 <img src={isotipoblack} alt="Isotipo Black" />
             </div>
@@ -189,9 +189,7 @@ const Register = () => {
                         Regístrate
                     </button>
 
-                    <p className="register-footer">
-                        Al registrarte, aceptas nuestras <Link to="/terms" className="custom-link">Condiciones de uso</Link> y <Link to="/privacy" className="custom-link">Política de privacidad</Link>.
-                    </p>
+                    
                 </form>
 
                 {errors.submit && errors.submit.includes('ya está en uso') && (

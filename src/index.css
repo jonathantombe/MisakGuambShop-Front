@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500&family=New+York:wght@400;700&display=swap');
+@import './styles/variables.css';
+@font-face{
+  font-family:'Railey';
+  src: url('/fonts/railey.woff') format('woff');
+  src: url('/fonts/railey.ttf') format('truetype'); 
+}
+
 
 @tailwind base;
 @tailwind components;
@@ -6,33 +13,29 @@
 
 body {
   margin: 0;
+  font-family:'Cabin', sans-serif;
   padding: 0;
   box-sizing: border-box;
   scrollbar-width: thin; /* Firefox */
-  scrollbar-color: var(--primary-gold) var(--light-cream); /* Firefox */
+  scrollbar-color: var(--color-acento-1) var(--color-secundario);
 }
+
+h1{
+  color: var(--color-acento-1);
+}
+
+
 /* Estilos para el scrollbar global */
 html {
   scrollbar-width: thin; /* Firefox */
-  scrollbar-color: var(--primary-gold) var(--light-cream); /* Firefox */
+  scrollbar-color: var(--color-acento-1) var(--color-secundario);
 }
 
 /* Estilo personalizado para el scrollbar en Webkit (Chrome, Safari) */
-::-webkit-scrollbar {
-  width: 12px;
-  height: 12px; /* Para los scrollbars horizontales */
-  background: var(--light-cream);
-}
 
-::-webkit-scrollbar-thumb {
-  background: var(--primary-gold);
-  border-radius: 6px;
-  border: 3px solid var(--light-cream);
-}
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--deep-bronze);
-}
+
+
 
 /* Estilo para el scrollbar cuando está en una página con fondo claro */
 html,
@@ -45,5 +48,5 @@ body {
 body {
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--primary-gold) var(--light-cream);
+  scrollbar-color: var(--color-acento-1) var(--color-secundario);
 }
