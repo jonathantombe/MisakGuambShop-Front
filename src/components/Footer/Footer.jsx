@@ -60,7 +60,7 @@ const Footer = () => {
   <a href="#">
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="40" // Tamaño inicial
+      width="40" 
       height="40"
       fill="currentColor"
       className="social-icon social-icon-twitter-x"
@@ -75,7 +75,7 @@ const Footer = () => {
   <a href="#">
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="40" // Tamaño inicial
+      width="40" 
       height="40"
       fill="currentColor"
       className="social-icon social-icon-youtube"
