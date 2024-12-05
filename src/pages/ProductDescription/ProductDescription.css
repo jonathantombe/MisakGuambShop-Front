@@ -133,7 +133,7 @@ body {
 
 
 .btn-carts {
-  background-color: #8b4513;
+  background-color: var(--color-acento-2);
   color: white;
   font-size: 1rem;
   cursor: pointer;
@@ -438,7 +438,7 @@ body {
   
   
     .btn-carts {
-      background-color: #8b4513;
+      background-color: var(--color-acento-2);
       color: white;
       font-size: 1rem;
       cursor: pointer;

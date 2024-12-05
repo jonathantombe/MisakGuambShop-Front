@@ -1,5 +1,8 @@
+
+@import '../../../styles/variables.css';
+
 .join-us {
-  background-color: var(--background-warm);
+  background-color: var(--color-primario);
   padding: 3rem 0;
 }
 
@@ -7,13 +10,11 @@
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
-  font-family: 'Arial', sans-serif;
   border-radius: 10px;
 }
 
 .join-us h1 {
   font-size: 2.2em;
-  color: #333;
   margin-bottom: 20px;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -21,7 +22,7 @@
 
 .join-us p {
   font-size: 1.1em;
-  color: #555;
+  color: #000000;
   line-height: 1.6;
   margin-bottom: 20px;
   padding: 0 10px;
@@ -72,7 +73,6 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    font-family: 'Arial', sans-serif;
     border-radius: 10px;
   }
 
@@ -91,11 +91,9 @@
 
   .join-us h1 {
     font-size: 1.5em;
-    color: #4a3933;
     text-transform: uppercase;
     letter-spacing: 2px;
     line-height: 1.3em;
-    font-family: var(--font-heading), sans-serif;
     font-weight: var(--font-heading-weight);
     font-style: var(--font-heading-style);
     text-align: left;
@@ -133,7 +131,6 @@
     font-size: 15px;
     color: #595959 !important;
     letter-spacing: .16px;
-    font-family: Graphik Webfont, -apple-system, Helvetica Neue, Droid Sans, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.7;
     max-width: 680px;
@@ -148,7 +145,7 @@
     max-width: 1300px;
     margin: 0 auto;
     padding: 20px;
-    font-family: 'Arial', sans-serif;
+
     border-radius: 10px;
   }
 
@@ -167,11 +164,9 @@
 
   .join-us h1 {
     font-size: 2.2em;
-    color: #4a3933;
     text-transform: uppercase;
     letter-spacing: 2px;
     line-height: 1.3em;
-    font-family: var(--font-heading), sans-serif;
     font-weight: var(--font-heading-weight);
     font-style: var(--font-heading-style);
     text-align: left;
@@ -207,9 +202,7 @@
   .join-us p:last-child {
     margin-top: 10px;
     font-size: 1.1em;
-    color: #595959 !important;
     letter-spacing: .16px;
-    font-family: Graphik Webfont, -apple-system, Helvetica Neue, Droid Sans, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.7;
     max-width: 680px;

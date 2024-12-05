@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { forgotPassword } from '../../services/auth';
-import Footer from '../../components/Footer/Footer'
 import "./ResetPassword.css";
 
 const ResetPassword = () => {
@@ -78,7 +77,6 @@ const ResetPassword = () => {
                 )}
             </div>
             </div>
-            <Footer/>
         </>
     );
 };
