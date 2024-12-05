@@ -203,7 +203,7 @@ export const Header = () => {
           <div className="logo">
             <Link to="/">
               <span className="logo-text">
-                <span className="logo-misak">Misak</span>
+                <img src='/imagenes/logologo.png' className="logo-misak"></img>
               </span>
             </Link>
           </div>

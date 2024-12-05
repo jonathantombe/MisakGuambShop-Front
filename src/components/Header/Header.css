@@ -53,38 +53,11 @@ body {
   font-weight: var(--font-logo-weight);
 }
 
-
 .logo-misak {
-  font-size: 2.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #e7936c;
-  position: relative;
-  display: inline-block;
-  padding: 10px;
-}
+  height: 90px;
 
-.logo-misak::before,
-.logo-misak::after {
-  content: '❧';
-  position: absolute;
-  color: #e7936c;
-  font-size: 1.5rem;
-}
 
-.logo-misak::before {
-  left: -30px;
-  top: 50%;
-  transform: translateY(-50%);
 }
-
-.logo-misak::after {
-  right: -30px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 
 
 
@@ -117,7 +90,7 @@ body {
 
 .search-bar:hover,
 .search-bar:focus-within {
-  border-color: #e67e22;
+  border-color: var(--color-acento-1);
 }
 
 .search-bar button {
@@ -235,7 +208,7 @@ body {
   display: flex;
   align-items: center;
   padding: 10px;
-  background-color: var(--color-accent);
+  background-color: var(--color-acento-3);
   border-radius: 4px 4px 0 0;
 }
 
@@ -248,10 +221,8 @@ body {
 .dropdown-header .view-profile-btn {
   border: none;
   background-color: transparent;
-  color: var(--color-button-text);
+  color: black;
   letter-spacing: 0.1299px;
-  font-family: Graphik Webfont, -apple-system, Helvetica Neue, Droid Sans, Arial,
-    'sans-serif';
   font-size: 12.99px;
   font-weight: 400;
   line-height: 1.4;
@@ -492,7 +463,7 @@ body {
   }
 
   .search-bar:hover {
-    border: 3px solid #e67e22;
+    border: 3px solid var(--color-acento-1);
   }
 
   .search-bar button {
@@ -658,7 +629,7 @@ body {
   }
 
   .search-bar:hover {
-    border: 3px solid #e67e22;
+    border: 3px solid var(--color-acento-1);
   }
 
   .search-bar button {
@@ -801,7 +772,7 @@ body {
   }
 
   .search-bar:hover {
-    border: 3px solid #e67e22;
+    border: 3px solid var(--color-acento-1);
   }
 
   .search-bar button {
@@ -867,7 +838,6 @@ body {
   }
 
   .header-content {
-
     margin: 0;
   }
 
@@ -919,7 +889,7 @@ body {
   }
 
   .search-bar:hover {
-    border: 3px solid #e67e22;
+    border: 3px solid var(--color-acento-1);
   }
 
   .search-bar button {
@@ -987,9 +957,9 @@ body {
 /* Pantallas de escritorio medianas (1200px - 1399px) */
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .header {
-      background-color: #191919;
-      padding: 0;
-    }
+    background-color: #191919;
+    padding: 0;
+  }
   .header-content {
     max-width: 1180px;
   }
@@ -1105,7 +1075,7 @@ body {
   }
 
   .search-bar:hover {
-    border: 3px solid #e67e22;
+    border: 3px solid var(--color-acento-1);
   }
 
   .search-bar button {
@@ -1300,7 +1270,7 @@ body {
   }
 
   .search-bar:hover {
-    border: 3px solid #e67e22;
+    border: 3px solid var(--color-acento-1);
   }
 
   .search-bar button {
@@ -1469,7 +1439,7 @@ body {
   }
 
   .search-bar:hover {
-    border: 3px solid #e67e22;
+    border: 3px solid var(--color-acento-1);
   }
 
   .search-bar button {
@@ -1812,7 +1782,7 @@ body {
   }
 
   .search-bar:hover {
-    border: 3px solid #e67e22;
+    border: 3px solid var(--color-acento-1);
   }
 
   .search-bar button {
