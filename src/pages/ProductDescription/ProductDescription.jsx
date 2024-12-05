@@ -70,7 +70,6 @@ export default function ProductDescription() {
     }
   }
 
-
   const getCart = () => {
     try {
       return JSON.parse(localStorage.getItem('cart')) || []
@@ -79,7 +78,6 @@ export default function ProductDescription() {
       return []
     }
   }
-
 
   const saveCart = (cart) => {
     try {

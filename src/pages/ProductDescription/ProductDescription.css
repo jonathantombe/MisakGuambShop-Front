@@ -11,14 +11,10 @@ body {
 }
 
 .product-description-container {
-  display: grid;
-  gap: 2rem;
-  max-width: 1400px;
-  margin: 3rem auto;
-  padding: 2rem;
-  background-color: #ffffff;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background-color: #f1efeb;
+  box-shadow: 0 0 15px #012e2a1a;
+  transition: all .3s ease-in-out;
   overflow: hidden;
 }
 
@@ -27,12 +23,10 @@ body {
     grid-template-columns: 3fr 3fr;
 }
 
-/* Images Section */
 .images-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap:1.5rem;
   flex-direction: row;
 }
 
@@ -69,9 +63,6 @@ body {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-
-
-/* Details Section */
 .details-section {
   display: flex;
   flex-direction: column;
@@ -145,7 +136,6 @@ body {
   color: #ffffff;
 }
 
-/* Product Description */
 .product-description {
   grid-column: 1 / -1;
   margin-top: 2rem;
@@ -158,10 +148,8 @@ body {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Similar Products */
 .similar-products {
   grid-column: 1 / -1;
-  margin-top: 3rem;
 }
 
 .similar-products h2 {
@@ -222,11 +210,10 @@ body {
 .comments-section {
   font-family: 'Lato', sans-serif;
   max-width: 900px;
-  margin: 4rem auto;
   padding: 4rem;
-  background-color: #eee4d5;
+  position: relative;
+  left: 60%;
   border-radius: 20px; /* Aumentar el radio de la esquina */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Aumentar el tamaño de la sombra */
 }
 
 /* Título de la sección de comentarios */
@@ -305,27 +292,20 @@ body {
 
 @media (min-width: 1200px) {
   .product-description-container {
-      display: grid;
-      gap: 2rem;
-      max-width: 1400px;
-      margin: 3rem auto;
-      padding: 2rem;
-      background-color: #ffffff;
       border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       overflow: hidden;
     }
   
     .top-side {
       display: grid;
       grid-template-columns: 3fr 3fr;
+      padding: 3rem 6rem;
     }
 
     .images-section {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
       flex-direction: row;
     }
   
@@ -365,6 +345,7 @@ body {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      margin: 0 0 0 6rem;
     }
   
     .product-title {
@@ -388,7 +369,49 @@ body {
       font-size: 1.2rem;
       color: #000000;
       margin-bottom: 1rem;
+      display: flex;
     }
+
+    .star-filled svg {
+  fill: #FFD700 !important; /* Color dorado */
+}
+
+/* Estilo para las estrellas vacías */
+.star-empty svg {
+  fill: #ccc !important; /* Color gris */
+}
+
+/* Efecto hover para las estrellas */
+.star-rating button:hover svg {
+  fill: #FFD700 !important;
+  transform: scale(1.1);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Estilo para las estrellas en product-ratings */
+.product-ratings svg {
+  fill: #FFD700 !important; /* Para las estrellas en la sección principal del producto */
+}
+
+/* Estilo para las estrellas inactivas en product-ratings */
+.product-ratings svg.inactive {
+  fill: #ccc !important;
+}
+
+/* Opcional: Añadir un poco de espacio entre las estrellas */
+.product-ratings svg,
+.star-rating svg {
+  margin-right: 2px;
+}
+
+/* Opcional: Hacer las estrellas un poco más grandes */
+.product-ratings svg,
+.star-rating svg {
+  width: 20px;
+  height: 20px;
+}
+
+
     .product-ratings .resenas{
       font-family: var(--font-body);
       font-size: 17px;
@@ -464,7 +487,7 @@ body {
   
     .similar-products {
       grid-column: 1 / -1;
-      margin-top: 3rem;
+      margin: 0 6rem;
     }
   
     .similar-products h2 {
@@ -519,12 +542,9 @@ body {
   
     .comments-section {
       font-family: 'Lato', sans-serif;
-      max-width: 900px;
-      margin: 4rem auto;
+      max-width: 600px;
       padding: 4rem;
-      background-color: #eee4d5;
       border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
   
     .comments-section h2 {
@@ -568,14 +588,16 @@ body {
   
     .comment-input {
       width: 100%;
-      max-width: 800px;
-      padding: 1.5rem;
-      border-radius: 16px;
-      border: 2px solid #ccc;
-      font-size: 1.1rem;
-      line-height: 1.6;
-      resize: none;
-      transition: border-color 0.3s ease;
+      height: 3.5rem;
+      padding: 0.70rem 1rem;
+      border: 2px solid #e67e22;
+        border-radius: 8px;
+        font-family: var(--font-body);
+        font-size: var(--font-size-body-base);
+        color: var(--color-input-text);
+        background-color: var(--color-input);
+        margin: 0;
+        outline: none;
     }
   
     .btn-submit-comment {
