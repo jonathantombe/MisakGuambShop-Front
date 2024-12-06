@@ -133,7 +133,7 @@ body {
 
 .user-profile:hover,
 .user-profile-wrapper.active .user-profile {
-  background-color: #ccebff;
+  background-color: var(--color-primario);
 }
 
 .user-info {
@@ -142,7 +142,7 @@ body {
   top: 12%;
   left: 83%;
   transform: translateX(-50%) translateY(10px);
-  background-color: #122868;
+  background-color: var(--color-acento-2);
   padding: 10px 15px;
   border-radius: 8px;
   box-shadow: var(
@@ -270,8 +270,6 @@ body {
 .message-text {
   margin: 5px;
   letter-spacing: 0.1299px;
-  font-family: Graphik Webfont, -apple-system, Helvetica Neue, Droid Sans, Arial,
-    'sans-serif';
   font-size: 12.99px;
   font-weight: 400;
   line-height: 1.4;
@@ -471,7 +469,6 @@ body {
     border: none;
     padding: 10px 15px;
     cursor: pointer;
-    background-color: var(--lights-gray);
   }
 
   .search-bar button svg {
@@ -637,7 +634,7 @@ body {
     border: none;
     padding: 10px 15px;
     cursor: pointer;
-    background-color: var(--lights-gray);
+
   }
 
   .search-bar button svg {
@@ -780,7 +777,7 @@ body {
     border: none;
     padding: 10px 15px;
     cursor: pointer;
-    background-color: var(--lights-gray);
+ 
   }
 
   .search-bar button svg {
@@ -897,7 +894,7 @@ body {
     border: none;
     padding: 10px 15px;
     cursor: pointer;
-    background-color: var(--lights-gray);
+   
   }
 
   .search-bar button svg {
@@ -938,7 +935,7 @@ body {
   }
 
   .icon-button:hover {
-    background-color: #ccebff;
+    background-color: var(--color-acento-3);
     fill: #3498db;
   }
 
@@ -1083,7 +1080,7 @@ body {
     border: none;
     padding: 7px 15px;
     cursor: pointer;
-    background-color: var(--lights-gray);
+    
   }
 
   .search-bar button svg {
@@ -1114,17 +1111,8 @@ body {
     fill: var(--color-bg);
   }
 
-  .user-profile {
-    display: flex;
-    cursor: pointer;
-    padding: 4px 10px;
-    border-radius: 30px;
-  }
+ 
 
-  .user-profile:hover,
-  .user-profile-wrapper.active .user-profile {
-    background-color: #ccebff;
-  }
 
   .user-info {
     display: block;
@@ -1165,13 +1153,7 @@ body {
     z-index: 2;
   }
 
-  .user-profile:hover .user-info {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%) translateY(8px);
-    transition-delay: 0s;
-    color: #e0e0e0;
-  }
+  
 
   .icon-button {
     width: 2.6rem;
@@ -1278,7 +1260,7 @@ body {
     border: none;
     padding: 10px 15px;
     cursor: pointer;
-    background-color: var(--lights-gray);
+  
   }
 
   .search-bar button svg {
@@ -1447,7 +1429,6 @@ body {
     border: none;
     padding: 9px 15px;
     cursor: pointer;
-    background-color: var(--lights-gray);
   }
 
   .search-bar button svg {
@@ -1495,8 +1476,6 @@ body {
     background-color: transparent;
     color: var(--color-button-text);
     letter-spacing: 0.1299px;
-    font-family: Graphik Webfont, -apple-system, Helvetica Neue, Droid Sans,
-      Arial, 'sans-serif';
     font-size: 12.99px;
     font-weight: 400;
     line-height: 1.4;
@@ -1581,13 +1560,6 @@ body {
     font-weight: bold;
     margin-right: 12px;
     margin-bottom: 6px;
-  }
-
-  .user-profile {
-    display: flex;
-    cursor: pointer;
-    padding: 7px 8px;
-    border-radius: 30px;
   }
 
   .profile-icon {
@@ -1790,7 +1762,7 @@ body {
     border: none;
     padding: 10px 15px;
     cursor: pointer;
-    background-color: var(--lights-gray);
+  
   }
 
   .search-bar button svg {
@@ -1815,12 +1787,12 @@ body {
   }
 
   .icon-button:hover {
-    background-color: #ccebff;
-    fill: #3498db;
+    background-color: var(--color-primario);
+    fill: var(--color-secundario);
   }
 
   .icon-button:hover svg {
-    fill: #3498db;
+    fill: var(--color-secundario);
   }
 
   .nav-link {

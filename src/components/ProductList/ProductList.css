@@ -2,18 +2,17 @@
 
 .product-list-container {
   padding: 30px 9rem;
-  background-color: var(--color-contrast-bg);
+  background-color: var(--color-primario);
   border: 1px solid transparent;
 }
 
 .product-list-title {
   text-align: center;
-  padding-top: 50px;
-  color: var(--taupe);
-  font-family: var(--font-logo);
-  font-weight: var(--font-heading-weight);
+  padding-top: 100px;
   margin: 10px 0 40px;
-  font-size: 28px;
+  font-size:  3rem;
+  color: var(--color-acento-1);
+ 
 }
 
 .product-list {
@@ -74,9 +73,6 @@
     color: var(--yellow-star);
 }
 
-.star.filled {
-  color: gold;
-}
 
 .product-rating-value {
   font-weight: 400;

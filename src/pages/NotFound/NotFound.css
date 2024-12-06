@@ -1,81 +1,68 @@
 @import url(/src/styles/variables.css);
 
-:root {
-    --point-size: 10px;
-    --point-opacity: 1;
-    --point-color: #000000;
-}
-
-main {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
 .container-all {
-    background-color: var(--background-warm);
-    width: 100%;
-    height: 80vh;
-    overflow: hidden;
-    position: relative;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+  background-color: var(--color-primario);
+  height: 90vh;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .not-found-404 {
-    font-size: 8rem;
-    font-weight: bold;
-    color: #5a4636; /* Marrón oscuro similar al título */
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4); /* Más intenso y difuso */
-    margin: 20px 0;
-    font-family: 'Playfair Display', serif; /* Fuente más artística */
+  font-size: 8rem;
+  font-weight: bold;
+  color: var(color-secundario); /* Marrón oscuro similar al título */
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4); /* Más intenso y difuso */
+  margin: 20px 0;
+  font-family: 'Playfair Display', serif; /* Fuente más artística */
 }
 
 .not-found p {
-    font-size: 1.8rem;
-    font-weight: 400;
-    color: #a45c40; /* Marrón cálido, coherente con el diseño */
-    margin-bottom: 30px;
-    font-family: 'Open Sans', sans-serif; /* Fuente limpia y legible */
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--color-acento-3); /* Marrón cálido, coherente con el diseño */
+  margin-bottom: 30px;
+  font-family: 'Open Sans', sans-serif; /* Fuente limpia y legible */
 }
 
 /* Estilos para el botón */
 .back-home-btn {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #ffffff;
-    background: #a45c40; /* Marrón cálido */
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    text-transform: uppercase;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background: var(--color-acento-1); /* Marrón cálido */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .back-home-btn:hover {
-    background-color: #7a412e; /* Marrón más oscuro para hover */
-    transform: scale(1.05);
+  background-color: var(
+    --color-acento-1-hover
+  ); /* Marrón más oscuro para hover */
+  transform: scale(1.05);
 }
 
 .back-home-btn:active {
-    background-color: #623327; /* Marrón aún más oscuro para active */
-    transform: scale(0.95);
+  background-color: #623327; /* Marrón aún más oscuro para active */
+  transform: scale(0.95);
 }
 
 /* Media Query para dispositivos pequeños */
 @media (max-width: 768px) {
-    .not-found-404 {
-        font-size: 5rem; /* Reducir tamaño del 404 */
-    }
-    .not-found p {
-        font-size: 1.5rem; /* Reducir tamaño del párrafo */
-    }
-    .back-home-btn {
-        font-size: 0.9rem; /* Ajustar tamaño del botón */
-    }
+  .not-found-404 {
+    font-size: 5rem; /* Reducir tamaño del 404 */
+  }
+  .not-found p {
+    font-size: 1.5rem; /* Reducir tamaño del párrafo */
+  }
+  .back-home-btn {
+    font-size: 0.9rem; /* Ajustar tamaño del botón */
+  }
 }

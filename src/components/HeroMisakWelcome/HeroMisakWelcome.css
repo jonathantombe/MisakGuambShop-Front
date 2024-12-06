@@ -50,9 +50,7 @@
   font-size: 3.1rem;
   line-height: 1.3em;
   margin: 50px 0 30px;
- 
-  font-weight: var(--font-heading-weight);
-  font-style: var(--font-heading-style);
+  display: flex;
   color: var(--color-secundario);
 }
 
@@ -93,6 +91,11 @@
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.see-more:hover{
+ background-color: var(--color-acento-1-hover);
+ transform: scale(1.05);
 }
 
 @media (max-width: 1200px) {
