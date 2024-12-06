@@ -110,7 +110,7 @@ const CartPage = () => {
       })
 
       const data = {
-        name: 'Compra en MisakGuamboShop',
+        name: 'Compra en Misak',
         description: `Orden #${orderId}`,
         invoice: orderId,
         currency: 'cop',

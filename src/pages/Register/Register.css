@@ -3,7 +3,7 @@
 .register-container {
   display: flex;
   justify-content: center;
-  min-height: 90vh;
+  min-height: 90vh;  
   gap: 100px;
   padding: 5rem 5rem;
   background-color: var(--color-primario); 

@@ -1,8 +1,10 @@
 :root {
     --color-primario: #ffffff; /* Blanco */
     --color-secundario: #000000; /* Negro */
-    --color-acento-1: #e02059; /* Rosa intenso */
-    --color-acento-2: #354e9e; /* Azul oscuro */
+    --color-acento-1: #e02059;
+    --color-acento-1-hover:#b31343;
+    --color-acento-2: #354e9e;
+    --color-acento-2-hover: #173185;
     --color-acento-3: #a9b0b3; /* Gris claro */
     --color-text: #3d3d3d;
     --color-text-meta: #757575;
