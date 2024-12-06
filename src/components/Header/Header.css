@@ -53,38 +53,11 @@ body {
   font-weight: var(--font-logo-weight);
 }
 
-
 .logo-misak {
-  font-size: 2.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #e7936c;
-  position: relative;
-  display: inline-block;
-  padding: 10px;
-}
+  height: 90px;
 
-.logo-misak::before,
-.logo-misak::after {
-  content: '❧';
-  position: absolute;
-  color: #e7936c;
-  font-size: 1.5rem;
-}
 
-.logo-misak::before {
-  left: -30px;
-  top: 50%;
-  transform: translateY(-50%);
 }
-
-.logo-misak::after {
-  right: -30px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 
 
 
@@ -117,7 +90,7 @@ body {
 
 .search-bar:hover,
 .search-bar:focus-within {
-  border-color: #e67e22;
+  border-color: var(--color-acento-1);
 }
 
 .search-bar button {
@@ -160,7 +133,7 @@ body {
 
 .user-profile:hover,
 .user-profile-wrapper.active .user-profile {
-  background-color: #ccebff;
+  background-color: var(--color-primario);
 }
 
 .user-info {
@@ -169,7 +142,7 @@ body {
   top: 12%;
   left: 83%;
   transform: translateX(-50%) translateY(10px);
-  background-color: #122868;
+  background-color: var(--color-acento-2);
   padding: 10px 15px;
   border-radius: 8px;
   box-shadow: var(
@@ -235,7 +208,7 @@ body {
   display: flex;
   align-items: center;
   padding: 10px;
-  background-color: var(--color-accent);
+  background-color: var(--color-acento-3);
   border-radius: 4px 4px 0 0;
 }
 
@@ -248,10 +221,8 @@ body {
 .dropdown-header .view-profile-btn {
   border: none;
   background-color: transparent;
-  color: var(--color-button-text);
+  color: black;
   letter-spacing: 0.1299px;
-  font-family: Graphik Webfont, -apple-system, Helvetica Neue, Droid Sans, Arial,
-    'sans-serif';
   font-size: 12.99px;
   font-weight: 400;
   line-height: 1.4;
@@ -299,8 +270,6 @@ body {
 .message-text {
   margin: 5px;
   letter-spacing: 0.1299px;
-  font-family: Graphik Webfont, -apple-system, Helvetica Neue, Droid Sans, Arial,
-    'sans-serif';
   font-size: 12.99px;
   font-weight: 400;
   line-height: 1.4;
@@ -492,7 +461,7 @@ body {
   }
 
   .search-bar:hover {
-    border: 3px solid #e67e22;
+    border: 3px solid var(--color-acento-1);
   }
 
   .search-bar button {
@@ -500,7 +469,6 @@ body {
     border: none;
     padding: 10px 15px;
     cursor: pointer;
-    background-color: var(--lights-gray);
   }
 
   .search-bar button svg {
@@ -658,7 +626,7 @@ body {
   }
 
   .search-bar:hover {
-    border: 3px solid #e67e22;
+    border: 3px solid var(--color-acento-1);
   }
 
   .search-bar button {
@@ -666,7 +634,7 @@ body {
     border: none;
     padding: 10px 15px;
     cursor: pointer;
-    background-color: var(--lights-gray);
+
   }
 
   .search-bar button svg {
@@ -801,7 +769,7 @@ body {
   }
 
   .search-bar:hover {
-    border: 3px solid #e67e22;
+    border: 3px solid var(--color-acento-1);
   }
 
   .search-bar button {
@@ -809,7 +777,7 @@ body {
     border: none;
     padding: 10px 15px;
     cursor: pointer;
-    background-color: var(--lights-gray);
+ 
   }
 
   .search-bar button svg {
@@ -867,7 +835,6 @@ body {
   }
 
   .header-content {
-
     margin: 0;
   }
 
@@ -919,7 +886,7 @@ body {
   }
 
   .search-bar:hover {
-    border: 3px solid #e67e22;
+    border: 3px solid var(--color-acento-1);
   }
 
   .search-bar button {
@@ -927,7 +894,7 @@ body {
     border: none;
     padding: 10px 15px;
     cursor: pointer;
-    background-color: var(--lights-gray);
+   
   }
 
   .search-bar button svg {
@@ -968,7 +935,7 @@ body {
   }
 
   .icon-button:hover {
-    background-color: #ccebff;
+    background-color: var(--color-acento-3);
     fill: #3498db;
   }
 
@@ -987,9 +954,9 @@ body {
 /* Pantallas de escritorio medianas (1200px - 1399px) */
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .header {
-      background-color: #191919;
-      padding: 0;
-    }
+    background-color: #191919;
+    padding: 0;
+  }
   .header-content {
     max-width: 1180px;
   }
@@ -1105,7 +1072,7 @@ body {
   }
 
   .search-bar:hover {
-    border: 3px solid #e67e22;
+    border: 3px solid var(--color-acento-1);
   }
 
   .search-bar button {
@@ -1113,7 +1080,7 @@ body {
     border: none;
     padding: 7px 15px;
     cursor: pointer;
-    background-color: var(--lights-gray);
+    
   }
 
   .search-bar button svg {
@@ -1144,17 +1111,8 @@ body {
     fill: var(--color-bg);
   }
 
-  .user-profile {
-    display: flex;
-    cursor: pointer;
-    padding: 4px 10px;
-    border-radius: 30px;
-  }
+ 
 
-  .user-profile:hover,
-  .user-profile-wrapper.active .user-profile {
-    background-color: #ccebff;
-  }
 
   .user-info {
     display: block;
@@ -1195,13 +1153,7 @@ body {
     z-index: 2;
   }
 
-  .user-profile:hover .user-info {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%) translateY(8px);
-    transition-delay: 0s;
-    color: #e0e0e0;
-  }
+  
 
   .icon-button {
     width: 2.6rem;
@@ -1300,7 +1252,7 @@ body {
   }
 
   .search-bar:hover {
-    border: 3px solid #e67e22;
+    border: 3px solid var(--color-acento-1);
   }
 
   .search-bar button {
@@ -1308,7 +1260,7 @@ body {
     border: none;
     padding: 10px 15px;
     cursor: pointer;
-    background-color: var(--lights-gray);
+  
   }
 
   .search-bar button svg {
@@ -1469,7 +1421,7 @@ body {
   }
 
   .search-bar:hover {
-    border: 3px solid #e67e22;
+    border: 3px solid var(--color-acento-1);
   }
 
   .search-bar button {
@@ -1477,7 +1429,6 @@ body {
     border: none;
     padding: 9px 15px;
     cursor: pointer;
-    background-color: var(--lights-gray);
   }
 
   .search-bar button svg {
@@ -1525,8 +1476,6 @@ body {
     background-color: transparent;
     color: var(--color-button-text);
     letter-spacing: 0.1299px;
-    font-family: Graphik Webfont, -apple-system, Helvetica Neue, Droid Sans,
-      Arial, 'sans-serif';
     font-size: 12.99px;
     font-weight: 400;
     line-height: 1.4;
@@ -1611,13 +1560,6 @@ body {
     font-weight: bold;
     margin-right: 12px;
     margin-bottom: 6px;
-  }
-
-  .user-profile {
-    display: flex;
-    cursor: pointer;
-    padding: 7px 8px;
-    border-radius: 30px;
   }
 
   .profile-icon {
@@ -1812,7 +1754,7 @@ body {
   }
 
   .search-bar:hover {
-    border: 3px solid #e67e22;
+    border: 3px solid var(--color-acento-1);
   }
 
   .search-bar button {
@@ -1820,7 +1762,7 @@ body {
     border: none;
     padding: 10px 15px;
     cursor: pointer;
-    background-color: var(--lights-gray);
+  
   }
 
   .search-bar button svg {
@@ -1845,12 +1787,12 @@ body {
   }
 
   .icon-button:hover {
-    background-color: #ccebff;
-    fill: #3498db;
+    background-color: var(--color-primario);
+    fill: var(--color-secundario);
   }
 
   .icon-button:hover svg {
-    fill: #3498db;
+    fill: var(--color-secundario);
   }
 
   .nav-link {

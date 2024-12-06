@@ -296,7 +296,7 @@ const ProductDetails = () => {
         </h1>
         <p className="product-details__introduction">
           Completa los detalles del producto para añadirlo a{" "}
-          <strong>nuestra tienda MisakGuambShop</strong>. Proporciona
+          nuestra tienda Misak. Proporciona
           información precisa para ayudar a los clientes a tomar decisiones
           informadas y valorar el trabajo artesanal único de la comunidad Misak.
         </p>

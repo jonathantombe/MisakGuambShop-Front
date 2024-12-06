@@ -13,7 +13,6 @@ const ProductList = ({ title, products = [], onError }) => {
       product.id &&
       product.name &&
       product.imageUrls &&
-      product.imageUrls.length > 0 &&
       typeof product.price === 'number' &&
       product.price >= 0
     )
@@ -96,25 +95,6 @@ const ProductList = ({ title, products = [], onError }) => {
 
               <h3 className="product-name">{product.name}</h3>
             </Link>
-            <div className="product-rating-container">
-              <div className="product-rating">
-                {[...Array(5)].map((_, i) => (
-                  <span
-                    key={i}
-                    className={
-                      i < (product.rating || 0) ? 'star filled' : 'star'
-                    }
-                  >
-                    ★
-                  </span>
-                ))}
-              </div>
-              <p className="product-rating-value">
-                {product.rating
-                  ? product.rating.toFixed(2)
-                  : 'Sin calificación'}
-              </p>
-            </div>
             <div className="product-price-container">
               <p className="product-price">COP {formatPrice(product.price)}</p>
               {product.discount > 0 && (
@@ -122,10 +102,6 @@ const ProductList = ({ title, products = [], onError }) => {
                   ${formatPrice(product.discount)}
                 </p>
               )}
-            </div>
-            <div className="product-sold-container">
-              <p className="title-ventas">Ventas</p>
-              <p className="product-sold">{product.totalSales || 0}</p>
             </div>
             <div className="product-actions">
               <button
@@ -161,11 +137,9 @@ ProductList.propTypes = {
     PropTypes.shape({
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       name: PropTypes.string.isRequired,
-      imageUrls: PropTypes.arrayOf(PropTypes.string).isRequired, // Correcto
+      imageUrls: PropTypes.arrayOf(PropTypes.string).isRequired,
       price: PropTypes.number.isRequired,
-      rating: PropTypes.number,
       discount: PropTypes.number,
-      totalSales: PropTypes.number,
     })
   ),
   onError: PropTypes.func,

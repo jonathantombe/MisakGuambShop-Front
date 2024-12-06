@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom' // Importa Link para navegación
+import { Link } from 'react-router-dom'
 import FAQ from '../../pages/CustomerServices/FAQ/FAQ'
 import './Footer.css'
 
@@ -14,25 +14,16 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="footer-section">
-          <h3>Explora por categorías</h3>
-          <ul>
-            <li>
-              <a href="#">Categoría 1</a>
-            </li>
-            <li>
-              <a href="#">Categoría 2</a>
-            </li>
-          </ul>
-          <div className="rights-reserved">
-            <p>© 2024 Misak. Todos los derechos reservados.</p>
-          </div>
-        </div>
+
         <div className="footer-section">
           <h3>Consulta nuestras redes</h3>
           <ul>
             <li className="redes-sociales-footer">
-              <a href="#">
+              <a
+                href="https://www.facebook.com/tu_usuario"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -46,7 +37,11 @@ const Footer = () => {
               <p>Facebook</p>
             </li>
             <li className="redes-sociales-footer">
-              <a href="#">
+              <a
+                href="https://www.instagram.com/tu_usuario"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -64,13 +59,55 @@ const Footer = () => {
           </ul>
         </div>
         <div className="footer-section">
-          <h3>Únete a Misak</h3>
+          <h3>Mas de nosotros</h3>
           <ul>
-            <li>
-              <Link to="/JoinUs">Conoce mas sobre nosotros!</Link>{' '}
+            <li className="redes-sociales-footer">
+              <a
+                href="https://www.tiktok.com/@tu_usuario"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  fill="currentColor"
+                  className="social-icon social-icon-tiktok"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z" />
+                </svg>
+              </a>
+              <p>TikTok</p>
+            </li>
+            <li className="redes-sociales-footer">
+              <a href="" target="" rel="noopener noreferrer">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  fill="currentColor"
+                  className="social-icon social-icon-gmail"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
+                </svg>
+              </a>
+              <p>misakguambshop.oficial@gmail.com</p>
             </li>
           </ul>
         </div>
+        <div className="footer-section">
+          <h3>Únete a Misak</h3>
+          <ul>
+            <li>
+              <Link to="/JoinUs">Conoce más sobre nosotros!</Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="footer-rights">
+        <p>© 2024 Misak. Todos los derechos reservados.</p>
       </div>
     </footer>
   )

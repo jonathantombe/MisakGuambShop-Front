@@ -1,16 +1,16 @@
 :root {
-    --background-light: #F3F4F6;
-    --primary-color: #e7936c;
-    --secondary-color: #000000;
-    --background-color: #FFFFFF;
-    --accent-color: #FF0000;
-    --gray-color: #F0F0F0;
-    --yellow-star: #FFD700;
-    --color-accent: #3a092c;
+    --color-primario: #ffffff; /* Blanco */
+    --color-secundario: #000000; /* Negro */
+    --color-acento-1: #e02059;
+    --color-acento-1-hover:#b31343;
+    --color-acento-2: #354e9e;
+    --color-acento-2-hover: #173185;
+    --color-acento-3: #a9b0b3; /* Gris claro */
     --color-text: #3d3d3d;
     --color-text-meta: #757575;
-    --color-button-text: #f1d9b7;
-    --color-bg: #ffffff;
+    --color-accent: #e02059;
+    --color-button-text: #ffffff;
+    --color-bg:#ffffff ;
     --color-border: #ffffff;
     --color-input: #ffffff;
     --color-input-text: #363636;
@@ -106,24 +106,24 @@
     --font-accent: 'Caveat', cursive;
 
     /* Fuentes serif */
-    --font-merriweather: 'Merriweather', serif;
-    --clibre: 'Libre Baskerville', serif;
-    --font-lora: 'Lora', serif;
-    --font-cormorant: 'Cormorant', serif;
-    --font-playfair-display: 'Playfair Display', serif;
-    --font-crimson-text: 'Crimson Text', serif;
+    --font-merriweather: 'Cabin', serif;
+    --clibre: 'Cabin', serif;
+    --font-lora: 'Cabin', serif;
+    --font-cormorant: 'Cabin', serif;
+    --font-playfair-display: 'Cabin', serif;
+    --font-crimson-text: 'Cabin', serif;
 
     /* Fuentes sans-serif */
-    --font-open-sans: 'Open Sans', sans-serif;
-    --font-lato: 'Lato', sans-serif;
-    --font-roboto: 'Roboto', sans-serif;
-    --font-montserrat: 'Montserrat', sans-serif;
-    --font-poppins: 'Poppins', sans-serif;
-    --font-nunito: 'Nunito', sans-serif;
-    --font-logo: Agmena, serif;
+    --font-open-sans: 'Cabin', sans-serif;
+    --font-lato: 'Cabin', sans-serif;
+    --font-roboto: 'Cabin', sans-serif;
+    --font-montserrat: 'Cabin', sans-serif;
+    --font-poppins: 'Cabin', sans-serif;
+    --font-nunito: 'Cabin', sans-serif;
+    --font-logo: 'Cabin', serif;
     --font-logo-weight: 700;
     --font-logo-style: normal;
-    --font-heading: "New York", Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    --font-heading: "Cabin", Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
     --font-heading-weight: 400;
     --font-heading-style: normal;
     --font-heading-bold-weight: bold;

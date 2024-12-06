@@ -1,25 +1,30 @@
 @import url(../../styles/variables.css);
 
-
 .hero-misak {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5rem 7% 7rem;
-  background: linear-gradient(135deg, #e2e2e2 0%, #e6d5b8 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-primario) 0%,
+    var(--color-acento-3) 100%
+  );
   margin-bottom: -50px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   position: relative;
 }
 
-.slick-dots button:hover{
-  background-color: var(--primary-color);
-  transform: scale(.90);
+.slick-dots button:hover {
+  background-color: var(--color-acento-1);
+  transform: scale(0.9);
   border-radius: 22px;
 }
 
-
-
+.slick-initialized .slick-slide img {
+  border-radius: 22px;
+  overflow: hidden;
+}
 
 .hero-misak::after {
   content: '';
@@ -31,7 +36,7 @@
   background: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 1) 100%
+    var(--color-primario) 100%
   );
   z-index: -1;
 }
@@ -45,33 +50,24 @@
   font-size: 3.1rem;
   line-height: 1.3em;
   margin: 50px 0 30px;
-  font-family: var(--font-heading), sans-serif;
-  font-weight: var(--font-heading-weight);
-  font-style: var(--font-heading-style);
-  color: #4a3933;
+  display: flex;
+  color: var(--color-secundario);
 }
 
 .hero-misak-content h2 {
   font-size: 2rem;
-  color: #8b4513;
+  color: var(--color-acento-1);
   line-height: 1.7em;
   margin: 0;
-  font-family: var(--font-heading), sans-serif;
   font-weight: var(--font-heading-weight);
   font-style: var(--font-heading-style);
 }
-
-
 
 .hero-misak-features {
   display: flex;
   gap: 1.5rem;
   margin: 50px 0 0 0;
 }
-
-
-
-
 
 .hero-misak-image {
   flex: 1;
@@ -80,9 +76,9 @@
 
 .hero-misak-image img {
   width: 100%;
-  height: auto;
+  height: 410px;
   border-radius: 25px;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 25px rgba(0, 0, 0, 0.15);
 }
 
 .see-more {
@@ -90,15 +86,17 @@
   padding: 10px 20px;
   border: none;
   border-radius: 8px;
-  background-color: #8b4513;
-  color: white;
+  background-color: var(--color-acento-1);
+  color: var(--color-primario);
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-
-
+.see-more:hover{
+ background-color: var(--color-acento-1-hover);
+ transform: scale(1.05);
+}
 
 @media (max-width: 1200px) {
   .hero-misak {
@@ -106,7 +104,11 @@
     justify-content: space-between;
     align-items: center;
     padding: 3rem 7% 5rem;
-    background: linear-gradient(135deg, #e2e2e2 0%, #e6d5b8 100%);
+    background: linear-gradient(
+      135deg,
+      var(--color-primario) 0%,
+      var(--color-acento-3) 100%
+    );
     margin-bottom: -50px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -115,7 +117,7 @@
 
 @media (max-width: 1024px) {
   .hero-misak {
-    flex-direction: column;
+    flex-direction: column-reverse;
     text-align: center;
     padding: 4rem 5%;
   }

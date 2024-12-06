@@ -1,5 +1,5 @@
 .my-publications-container {
-    padding: 10px 70px 30px 70px;
+    min-height: 70vh;  
 
 }
 
@@ -39,7 +39,7 @@
 
 .admin-dashboard-container {
     display: flex;
-    font-family: var(--font-body);
+
     color: var(--text-dark);
     background-color: var(--color-bg);
     box-sizing: border-box;
@@ -246,7 +246,9 @@
 }
 
 .no-products-message .no-products-message-icons {
-    margin-top: 8rem;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
 }
 
 .no-products-message .no-products-message-icons svg {
@@ -255,7 +257,7 @@
     height: 96px;
     background-color: var(--clg-color-app-brand-icon-empty-background, #eaeaea) !important;
     fill: var(--clg-color-app-brand-icon-empty-foreground, #222) !important;
-}
+}   
 
 .no-products-message-p {
     color: #595959 !important;

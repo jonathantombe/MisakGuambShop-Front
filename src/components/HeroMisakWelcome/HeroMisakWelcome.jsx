@@ -1,32 +1,45 @@
 import './HeroMisakWelcome.css'
-import MisakGuambShop from '../../assets/products/WELCOME_26_c4f0b7d4-d30e-43a5-bb78-76d4cb1fff67_1512x.webp'
+
 import Slider from 'react-slick'
 import { useNavigate } from 'react-router'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import { useEffect, useRef, useState } from 'react'
+import AutenticidadImage from '../../assets/backgrounds/autenticidad.png'
+import TradicionImage from '../../assets/backgrounds/tradiciones.png'
+import ArteAncestralImage from '../../assets/backgrounds/ancestral.png'
 
 const HeroMisakWelcome = () => {
+  const [nav1, setNav1] = useState(null)
+  const [nav2, setNav2] = useState(null)
+  let sliderRef1 = useRef(null)
+  let sliderRef2 = useRef(null)
   const navigate = useNavigate()
   const handleVerMas = () => {
     navigate('/history')
   }
-  const settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    pauseOnHover: true,
-    arrows: false,
-  }
+
+  useEffect(() => {
+    setNav1(sliderRef1)
+    setNav2(sliderRef2)
+  }, [])
 
   return (
     <div className="hero-misak">
       <div className="hero-misak-content">
         <h1>Bienvenidos a tienda Misak</h1>
         <div className="slider-container">
-          <Slider {...settings}>
+          <Slider
+            dots={true}
+            asNavFor={nav2}
+            arrows={false}
+            autoplay={true}
+            infinite={true}
+            speed={500}
+            autoplaySpeed={22000}
+            pauseOnHover={true}
+            ref={(slider) => (sliderRef1 = slider)}
+          >
             <div>
               <h2>Autenticidad</h2>
               La autenticidad de nuestra artesanía radica en el uso de técnicas
@@ -36,6 +49,7 @@ const HeroMisakWelcome = () => {
               palpable, lo que garantiza un producto genuino y lleno de
               historia.
             </div>
+
             <div>
               <h2>Tradición</h2>
               La tradición de la cultura Misak se remonta a siglos atrás.
@@ -56,10 +70,29 @@ const HeroMisakWelcome = () => {
           </Slider>
         </div>
         <div className="hero-misak-features"></div>
-        <button className="see-more" onClick={handleVerMas}>Ver más</button>
+        <button className="see-more" onClick={handleVerMas}>
+          Ver más
+        </button>
       </div>
       <div className="hero-misak-image">
-        <img src={MisakGuambShop} alt="Artesanía Misak" />
+        <Slider
+          asNavFor={nav1}
+          arrows={false}
+          autoplay={true}
+          infinite={true}
+          ref={(slider) => (sliderRef2 = slider)}
+          slidesToShow={1}
+          swipeToSlide={true}
+          pauseOnHover={true}
+          autoplaySpeed={7000}
+          focusOnSelect={true}
+        >
+          <img src={AutenticidadImage} alt="AutenticidadImage" />
+
+          <img src={TradicionImage} alt="TradicionImage" />
+
+          <img src={ArteAncestralImage} alt="ArteAncestralImage" />
+        </Slider>
       </div>
     </div>
   )

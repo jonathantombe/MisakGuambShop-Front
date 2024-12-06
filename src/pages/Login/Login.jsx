@@ -112,7 +112,6 @@ const Login = () => {
             <main>
                 <div className="login-container">
                     <div className="welcome-container">
-                        <h2 className='welcome-h2'>¡Bienvenido a Misak!</h2>
                         <p className='welcome-p'>Inicia sesión para acceder a todas las funciones del sitio.</p>
                         <img src={isotipoblack} alt="Logo Misak" />
                     </div>
@@ -163,9 +162,6 @@ const Login = () => {
                                 </button>
                             )}
 
-                            <p className="login-footer">
-                                Al iniciar sesión, aceptas nuestras <Link to="/terms" className="custom-link">Condiciones de uso</Link> y <Link to="/privacy" className="custom-link">Política de privacidad</Link>.
-                            </p>
                         </form>
 
                         <p className="login-footer">

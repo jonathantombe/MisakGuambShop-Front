@@ -2,19 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import api from '../../services/api'
 import './ProductDescription.css'
-
-function SimilarProductCard({ image, name, price, rating }) {
-  return (
-    <div className="similar-product-card">
-      <img src={image} alt={`Imagen de ${name}`} />
-      <h3>{name}</h3>
-      <p>{price}</p>
-      <p>{rating}</p>
-    </div>
-  )
-}
+import { useAuth } from '../../context/AuthContext'
 
 export default function ProductDescription() {
+  const { user } = useAuth()
+
   const params = useParams()
   const navigate = useNavigate()
   const id = params.id
@@ -23,37 +15,6 @@ export default function ProductDescription() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [addingToCart, setAddingToCart] = useState(false)
-
-  const [comments, setComments] = useState([
-    {
-      id: 1,
-      text: 'Hermoso diseño y excelente calidad. ¡Me encantó!',
-      user: 'María López',
-      profilePicture: '/imagenes/persona.png',
-    },
-    {
-      id: 2,
-      text: 'Muy práctico y único. ¡Perfecto para regalar!',
-      user: 'Carlos Martínez',
-      profilePicture: '/imagenes/persona.png',
-    },
-  ])
-  const [newComment, setNewComment] = useState('')
-
-  const similarProducts = [
-    {
-      image: '/imagenes/ancestral.png',
-      name: 'Producto 1',
-      price: 'COP 170,000',
-      rating: '⭐⭐⭐⭐⭐',
-    },
-    {
-      image: '/imagenes/ancestral.png',
-      name: 'Producto 2',
-      price: 'COP 160,000',
-      rating: '⭐⭐⭐⭐',
-    },
-  ]
 
   const fetchProduct = async () => {
     try {
@@ -70,7 +31,6 @@ export default function ProductDescription() {
     }
   }
 
-
   const getCart = () => {
     try {
       return JSON.parse(localStorage.getItem('cart')) || []
@@ -79,7 +39,6 @@ export default function ProductDescription() {
       return []
     }
   }
-
 
   const saveCart = (cart) => {
     try {
@@ -90,6 +49,10 @@ export default function ProductDescription() {
   }
 
   const handleAddToCart = async () => {
+    if (!user) {
+      navigate('/login')
+      return
+    }
     if (!product || addingToCart) return
 
     try {
@@ -125,6 +88,11 @@ export default function ProductDescription() {
   }
 
   const handleBuyNow = () => {
+    if (!user) {
+      navigate('/login')
+      return
+    }
+
     if (!product) return
 
     try {
@@ -147,23 +115,6 @@ export default function ProductDescription() {
     }
   }
 
-  const handleCommentSubmit = (e) => {
-    e.preventDefault()
-    if (newComment.trim()) {
-      setComments([
-        ...comments,
-        {
-          id: comments.length + 1,
-          text: newComment,
-          user: 'Usuario Anónimo',
-          profilePicture: '/imagenes/persona.png',
-        },
-      ])
-      setNewComment('')
-    }
-  }
-
-  // Efecto para cargar el producto
   useEffect(() => {
     fetchProduct()
   }, [id])
@@ -194,8 +145,10 @@ export default function ProductDescription() {
 
         <div className="details-section">
           <h1 className="product-title">{product.name}</h1>
-          <p className="product-prices">{product.price}</p>
-          <p className="product-ratings">⭐⭐⭐⭐⭐ 5.0 (12 reseñas)</p>
+          <p className="product-prices">{`COP ${Number(
+            product.price
+          ).toLocaleString('es-CO')}`}</p>
+
           <p className="product-stocks">{product.stock} disponibles</p>
           <button
             className="btn-buys"
@@ -214,53 +167,9 @@ export default function ProductDescription() {
             {addingToCart ? 'Agregando...' : 'Añadir al carrito'}
           </button>
         </div>
-
-        <div className="product-description">
-          <p>{product.description}</p>
-        </div>
       </section>
-
-      <div className="comments-section">
-        <h2>Comentarios:</h2>
-        <ul className="comments-list">
-          {comments.map((comment) => (
-            <li key={comment.id} className="comment-item">
-              <img
-                src={comment.profilePicture}
-                alt={`Foto de perfil de ${comment.user}`}
-                className="comment-profile-pic"
-              />
-              <strong>{comment.user}:</strong> {comment.text}
-            </li>
-          ))}
-        </ul>
-        <form onSubmit={handleCommentSubmit} className="comment-form">
-          <textarea
-            value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
-            placeholder="Escribe tu comentario aquí..."
-            rows="3"
-            className="comment-input"
-          ></textarea>
-          <button type="submit" className="btn-submit-comment">
-            Enviar comentario
-          </button>
-        </form>
-      </div>
-
-      <div className="similar-products">
-        <h2>Artículos similares:</h2>
-        <div className="similar-products-grid">
-          {similarProducts.map((product, index) => (
-            <SimilarProductCard
-              key={index}
-              image={product.image}
-              name={product.name}
-              price={product.price}
-              rating={product.rating}
-            />
-          ))}
-        </div>
+      <div className="product-description">
+        <p>{product.description}</p>
       </div>
     </div>
   )
